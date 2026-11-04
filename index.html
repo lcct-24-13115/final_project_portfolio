@@ -1,815 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Julia Cassandra Alemania | BSIT Student Portfolio</title>
-  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, a BS Information Technology student and Dean's Lister. Skills, certifications, projects, and contact details.">
-  <meta name="author" content="Julia Cassandra U. Alemania">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, BS Information Technology student.">
+
   <meta name="theme-color" content="#0B6FA4">
-  <link rel="canonical" href="https://lcct-24-13115.github.io/final_project_portfolio/">
 
-  <!-- Link preview (Facebook, Messenger, LinkedIn, X) -->
+  <!-- Link preview (WhatsApp, Messenger, LinkedIn, Facebook, X) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Julia Cassandra Alemania | BSIT Student Portfolio">
+  <meta property="og:title" content="Julia Cassandra Alemania | Portfolio">
   <meta property="og:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
-  <meta property="og:url" content="https://lcct-24-13115.github.io/final_project_portfolio/">
-  <meta property="og:image" content="https://lcct-24-13115.github.io/final_project_portfolio/images/preview.png">
+  <meta property="og:url" content="https://lcct-24-13115.github.io/my_portfolio/">
+  <meta property="og:image" content="https://lcct-24-13115.github.io/my_portfolio/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Julia Cassandra Alemania | Portfolio">
+  <meta name="twitter:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
+  <meta name="twitter:image" content="https://lcct-24-13115.github.io/my_portfolio/preview.png">
 
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="My Portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Remember the theme before the page paints, so there is no flash -->
-  <script>
-    document.documentElement.classList.add("js");
-    try {
-      var saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    } catch (err) { /* storage unavailable: fall back to the system theme */ }
-  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <!-- Icons (Font Awesome, free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Own stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <title>Julia Cassandra Alemania | Portfolio</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin: 0; height: 100%; background: #FFFFFF; }
+    @media (prefers-color-scheme: dark) {
+      html, body { background: #101418; }
+    }
+    #loading {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+    #loading.hide { opacity: 0; pointer-events: none; }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 4px solid rgba(11, 111, 164, 0.2);
+      border-top-color: #0B6FA4;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a class="brand" href="#home" aria-label="Julia Cassandra Alemania, back to the top">Julia Alemania</a>
-
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        <span class="glyph" aria-hidden="true">&#9776;</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <button class="icon-btn fs-toggle" id="fsToggle" type="button" aria-label="Enter full screen" title="Enter full screen" hidden>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
-      </button>
-
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <span class="glyph" aria-hidden="true">&#9790;</span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- ===== HOME / INTRODUCTION ===== -->
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <figure class="hero-photo">
-          <img src="images/profile.jpg" width="690" height="700" alt="Portrait photo of Julia Cassandra Alemania">
-        </figure>
-        <div class="hero-text">
-          <p class="eyebrow">Hello, I am</p>
-          <h1 id="hero-title">Julia Cassandra U. Alemania</h1>
-          <p class="hero-role">
-            <span id="typed" data-words='["BSIT Student","Web Developer","Flutter Developer","Dean&#39;s Lister"]'>BSIT Student</span><span class="cursor" aria-hidden="true">|</span>
-          </p>
-          <p class="hero-sub">Age 21 &nbsp;|&nbsp; BS Information Technology &nbsp;|&nbsp; La Consolacion College Tanauan</p>
-          <div class="btn-row">
-            <a class="btn btn-light" href="docs/Julia_Alemania_CV.pdf" download><i class="fa-solid fa-download" aria-hidden="true"></i> Download CV</a>
-            <a class="btn btn-ghost" href="#projects"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> View my projects</a>
-            <a class="btn btn-ghost" href="#contact"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact me</a>
-          </div>
-          <ul class="social-row" aria-label="Quick links">
-            <li><a href="mailto:cassandraalemania@gmail.com" aria-label="Send me an email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
-            <li><a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ME ===== -->
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Get to know me</p>
-          <h2 id="about-title">About Me</h2>
-        </header>
-        <div class="grid grid-2">
-          <article class="card reveal">
-            <h3>Who I am</h3>
-            <p>I am a third-year BS Information Technology student at La Consolacion College Tanauan and a Dean's Lister. I enjoy programming, web and mobile app development, and solving problems with technology. I am looking for an IT internship or entry-level role where I can apply my technical skills, learn from real projects, and contribute to the success of the team.</p>
-            <h3>Career Objective</h3>
-            <p>To obtain a challenging internship or entry-level position in IT, where I can apply my technical skills in programming, systems analysis, and problem-solving, while gaining hands-on experience and contributing to the success of the organization.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Personal Details</h3>
-            <dl class="details">
-              <div><dt><i class="fa-solid fa-school" aria-hidden="true"></i> School</dt><dd>La Consolacion College Tanauan</dd></div>
-              <div><dt><i class="fa-solid fa-laptop-code" aria-hidden="true"></i> Course</dt><dd>BS Information Technology (3rd Year)</dd></div>
-              <div><dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Birthplace</dt><dd>Quezon City, Metro Manila</dd></div>
-              <div><dt><i class="fa-solid fa-church" aria-hidden="true"></i> Religion</dt><dd>Roman Catholic</dd></div>
-            </dl>
-          </article>
-        </div>
-
-        <h3 class="subheading reveal">What I am interested in</h3>
-        <ul class="grid grid-3 card-list">
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
-            <h4>Programming &amp; Web Development</h4>
-            <p>Building programs and websites with Python, Java, C++, HTML, CSS and JavaScript.</p>
-          </li>
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span>
-            <h4>Networking &amp; IT Support</h4>
-            <p>Completed the Cisco Network Technician Career Path: IP addressing, Cisco IOS configuration, troubleshooting, and network security.</p>
-          </li>
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i></span>
-            <h4>Mobile App Development</h4>
-            <p>Creating cross-platform apps with Flutter and Dart, focusing on clean design and a smooth user experience.</p>
-          </li>
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
-            <h4>Data Analytics &amp; Emerging Technologies</h4>
-            <p>Attending webinars and seminars on data analytics, cybersecurity, and cloud tools to learn how technology supports better decisions.</p>
-          </li>
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-flask" aria-hidden="true"></i></span>
-            <h4>Research</h4>
-            <p>Research Excellence Awardee (2023). Interested in using research to solve real problems with technology.</p>
-          </li>
-          <li class="card interest reveal">
-            <span class="interest-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
-            <h4>Graphic Design</h4>
-            <p>Champion, LCC Tanauan Graphic Design Contest (2024).</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== EDUCATION ===== -->
-    <section class="section alt" id="education" aria-labelledby="education-title">
-      <div class="container narrow">
-        <header class="section-head reveal">
-          <p class="eyebrow">My journey</p>
-          <h2 id="education-title">Education</h2>
-        </header>
-        <ol class="timeline">
-          <li class="timeline-item reveal current">
-            <article class="card">
-              <p class="years">2024 - Present</p>
-              <h3>La Consolacion College Tanauan</h3>
-              <p>Bachelor of Science in Information Technology</p>
-              <ul class="badges" aria-label="Honors received">
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Dean&#x27;s Lister (2025)</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Champion, Graphic Design Contest (2024)</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> 2nd Runner-Up, Organizational Performance (2024)</li>
-              </ul>
-            </article>
-          </li>
-          <li class="timeline-item reveal">
-            <article class="card">
-              <p class="years">2023 - 2024</p>
-              <h3>National Teachers College</h3>
-              <p>Bachelor of Science in Accountancy</p>
-            </article>
-          </li>
-          <li class="timeline-item reveal">
-            <article class="card">
-              <p class="years">2021 - 2023</p>
-              <h3>Immaculate Heart of Mary College Inc.</h3>
-              <p>Senior High School - Science, Technology, Engineering and Mathematics (STEM)</p>
-              <ul class="badges" aria-label="Honors received">
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Academic Awardee</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Leadership Awardee</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Best in Work Immersion (2023)</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Research Excellence Awardee (2023)</li>
-              </ul>
-            </article>
-          </li>
-          <li class="timeline-item reveal">
-            <article class="card">
-              <p class="years">2016 - 2021</p>
-              <h3>San Juan City Integrated High School</h3>
-              <p>High School</p>
-              <ul class="badges" aria-label="Honors received">
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Academic Awardee</li>
-              </ul>
-            </article>
-          </li>
-          <li class="timeline-item reveal">
-            <article class="card">
-              <p class="years">2010 - 2016</p>
-              <h3>San Juan City Integrated School</h3>
-              <p>Elementary</p>
-              <ul class="badges" aria-label="Honors received">
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Academic Awardee</li>
-                <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> Champion, Poster Making Contest (2013)</li>
-              </ul>
-            </article>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===== SKILLS & CERTIFICATIONS ===== -->
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">What I can do</p>
-          <h2 id="skills-title">Skills</h2>
-        </header>
-
-        <div class="grid grid-2">
-          <article class="card reveal">
-            <h3>Technical Skills</h3>
-            <h4 class="group-title">Programming</h4>
-            <ul class="chips">
-              <li>Python</li>
-              <li>Java</li>
-              <li>C</li>
-              <li>C++</li>
-              <li>Flutter &amp; Dart</li>
-            </ul>
-            <h4 class="group-title">Web Development</h4>
-            <ul class="chips">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>PHP</li>
-              <li>Laravel</li>
-              <li>MySQL</li>
-            </ul>
-            <h4 class="group-title">Networking &amp; Cisco</h4>
-            <ul class="chips">
-              <li>Computer Networking</li>
-              <li>IPv4 / IPv6 Addressing</li>
-              <li>Cisco IOS</li>
-              <li>Network Troubleshooting</li>
-            </ul>
-            <h4 class="group-title">IT Support &amp; Tools</h4>
-            <ul class="chips">
-              <li>Version Control (Git)</li>
-              <li>OS Installation</li>
-              <li>Computer Maintenance &amp; Troubleshooting</li>
-            </ul>
-          </article>
-          <article class="card reveal">
-            <h3>Non-Technical Skills</h3>
-            <ul class="chips">
-              <li>Leadership</li>
-              <li>Research</li>
-              <li>Graphic Design</li>
-              <li>Poster Making</li>
-              <li>Sports Journalism</li>
-              <li>Problem Solving</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3 class="subheading reveal"><i class="fa-solid fa-award" aria-hidden="true"></i> Certifications &amp; Training</h3>
-
-        <div class="filters reveal" role="group" aria-label="Filter certificates by category">
-          <button type="button" class="chip-btn active" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="chip-btn" data-filter="networking" aria-pressed="false">Networking</button>
-          <button type="button" class="chip-btn" data-filter="web" aria-pressed="false">Web</button>
-          <button type="button" class="chip-btn" data-filter="webinars" aria-pressed="false">Webinars &amp; Seminars</button>
-        </div>
-        <p class="filter-status" id="filterStatus" role="status" aria-live="polite"></p>
-        <p class="reveal"><a class="btn btn-outline" href="docs/Julia_Alemania_Certificates.zip" download><i class="fa-solid fa-file-zipper" aria-hidden="true"></i> Download all certificates (ZIP)</a></p>
-
-        <ul class="grid grid-3 card-list" id="certGrid">
-          <li class="cert" data-category="web">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_js_essentials_1.jpg" data-title="JavaScript Essentials 1" data-download="Julia_Alemania_JavaScript_Essentials_1.jpg" aria-label="View certificate: JavaScript Essentials 1">
-              <img src="images/certificates/cert_js_essentials_1.jpg" alt="Certificate: JavaScript Essentials 1" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>JavaScript Essentials 1</strong>
-                <span>Cisco Networking Academy with OpenEDG JavaScript Institute</span>
-                <span class="date">September 28, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_js_essentials_1.jpg" download="Julia_Alemania_JavaScript_Essentials_1.jpg" aria-label="Download certificate: JavaScript Essentials 1"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="web">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_html_essentials.jpg" data-title="HTML Essentials" data-download="Julia_Alemania_HTML_Essentials.jpg" aria-label="View certificate: HTML Essentials">
-              <img src="images/certificates/cert_html_essentials.jpg" alt="Certificate: HTML Essentials" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>HTML Essentials</strong>
-                <span>Cisco Networking Academy with JS Institute</span>
-                <span class="date">August 11, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_html_essentials.jpg" download="Julia_Alemania_HTML_Essentials.jpg" aria-label="Download certificate: HTML Essentials"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="networking">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_network_technician.jpg" data-title="Network Technician Career Path" data-download="Julia_Alemania_Network_Technician_Career_Path.jpg" aria-label="View certificate: Network Technician Career Path">
-              <img src="images/certificates/cert_network_technician.jpg" alt="Certificate: Network Technician Career Path" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Network Technician Career Path</strong>
-                <span>Cisco Networking Academy</span>
-                <span class="date">April 22, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_network_technician.jpg" download="Julia_Alemania_Network_Technician_Career_Path.jpg" aria-label="Download certificate: Network Technician Career Path"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="networking">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_network_support_security.jpg" data-title="Network Support and Security" data-download="Julia_Alemania_Network_Support_and_Security.jpg" aria-label="View certificate: Network Support and Security">
-              <img src="images/certificates/cert_network_support_security.jpg" alt="Certificate: Network Support and Security" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Network Support and Security</strong>
-                <span>Cisco Networking Academy</span>
-                <span class="date">April 20, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_network_support_security.jpg" download="Julia_Alemania_Network_Support_and_Security.jpg" aria-label="Download certificate: Network Support and Security"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="networking">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_network_addressing.jpg" data-title="Network Addressing and Basic Troubleshooting" data-download="Julia_Alemania_Network_Addressing_and_Basic_Troubleshooting.jpg" aria-label="View certificate: Network Addressing and Basic Troubleshooting">
-              <img src="images/certificates/cert_network_addressing.jpg" alt="Certificate: Network Addressing and Basic Troubleshooting" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Network Addressing and Basic Troubleshooting</strong>
-                <span>Cisco Networking Academy</span>
-                <span class="date">April 20, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_network_addressing.jpg" download="Julia_Alemania_Network_Addressing_and_Basic_Troubleshooting.jpg" aria-label="Download certificate: Network Addressing and Basic Troubleshooting"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="networking">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_networking_devices.jpg" data-title="Networking Devices and Basic Configuration" data-download="Julia_Alemania_Networking_Devices_and_Basic_Configuration.jpg" aria-label="View certificate: Networking Devices and Basic Configuration">
-              <img src="images/certificates/cert_networking_devices.jpg" alt="Certificate: Networking Devices and Basic Configuration" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Networking Devices and Basic Configuration</strong>
-                <span>Cisco Networking Academy</span>
-                <span class="date">April 8, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_networking_devices.jpg" download="Julia_Alemania_Networking_Devices_and_Basic_Configuration.jpg" aria-label="Download certificate: Networking Devices and Basic Configuration"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="networking">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_networking_basics.jpg" data-title="Networking Basics" data-download="Julia_Alemania_Networking_Basics.jpg" aria-label="View certificate: Networking Basics">
-              <img src="images/certificates/cert_networking_basics.jpg" alt="Certificate: Networking Basics" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Networking Basics</strong>
-                <span>Cisco Networking Academy</span>
-                <span class="date">April 7, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_networking_basics.jpg" download="Julia_Alemania_Networking_Basics.jpg" aria-label="Download certificate: Networking Basics"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_webinar_2.jpg" data-title="Cloud Tools for Productivity" data-download="Julia_Alemania_Cloud_Tools_for_Productivity.jpg" aria-label="View certificate: Cloud Tools for Productivity">
-              <img src="images/certificates/cert_webinar_2.jpg" alt="Certificate: Cloud Tools for Productivity" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Cloud Tools for Productivity</strong>
-                <span>Manila, Phils.</span>
-                <span class="date">October 14, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_webinar_2.jpg" download="Julia_Alemania_Cloud_Tools_for_Productivity.jpg" aria-label="Download certificate: Cloud Tools for Productivity"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_webinar_3.jpg" data-title="Data Analytics for Better Decisions" data-download="Julia_Alemania_Data_Analytics_for_Better_Decisions.jpg" aria-label="View certificate: Data Analytics for Better Decisions">
-              <img src="images/certificates/cert_webinar_3.jpg" alt="Certificate: Data Analytics for Better Decisions" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Data Analytics for Better Decisions</strong>
-                <span>Manila, Phils.</span>
-                <span class="date">October 15, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_webinar_3.jpg" download="Julia_Alemania_Data_Analytics_for_Better_Decisions.jpg" aria-label="Download certificate: Data Analytics for Better Decisions"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_webinar_4.jpg" data-title="Cybersecurity Awareness in a Digital World" data-download="Julia_Alemania_Cybersecurity_Awareness_in_a_Digital_World.jpg" aria-label="View certificate: Cybersecurity Awareness in a Digital World">
-              <img src="images/certificates/cert_webinar_4.jpg" alt="Certificate: Cybersecurity Awareness in a Digital World" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Cybersecurity Awareness in a Digital World</strong>
-                <span>Manila, Phils.</span>
-                <span class="date">October 16, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_webinar_4.jpg" download="Julia_Alemania_Cybersecurity_Awareness_in_a_Digital_World.jpg" aria-label="Download certificate: Cybersecurity Awareness in a Digital World"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_webinar_5.jpg" data-title="Social Media Marketing That Works" data-download="Julia_Alemania_Social_Media_Marketing_That_Works.jpg" aria-label="View certificate: Social Media Marketing That Works">
-              <img src="images/certificates/cert_webinar_5.jpg" alt="Certificate: Social Media Marketing That Works" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Social Media Marketing That Works</strong>
-                <span>Manila, Phils.</span>
-                <span class="date">October 17, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_webinar_5.jpg" download="Julia_Alemania_Social_Media_Marketing_That_Works.jpg" aria-label="Download certificate: Social Media Marketing That Works"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_webinar_6.jpg" data-title="Digital Career Opportunities &amp; Freelancing" data-download="Julia_Alemania_Digital_Career_Opportunities_Freelancing.jpg" aria-label="View certificate: Digital Career Opportunities &amp; Freelancing">
-              <img src="images/certificates/cert_webinar_6.jpg" alt="Certificate: Digital Career Opportunities &amp; Freelancing" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Digital Career Opportunities &amp; Freelancing</strong>
-                <span>Manila, Phils.</span>
-                <span class="date">October 18, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_webinar_6.jpg" download="Julia_Alemania_Digital_Career_Opportunities_Freelancing.jpg" aria-label="Download certificate: Digital Career Opportunities &amp; Freelancing"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_exposure_trip.jpg" data-title="BSIT Educational Exposure Trip during IT Week 2026" data-download="Julia_Alemania_BSIT_Educational_Exposure_Trip_during_IT_Week_2026.jpg" aria-label="View certificate: BSIT Educational Exposure Trip during IT Week 2026">
-              <img src="images/certificates/cert_exposure_trip.jpg" alt="Certificate: BSIT Educational Exposure Trip during IT Week 2026" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>BSIT Educational Exposure Trip during IT Week 2026</strong>
-                <span>Bonifacio Global City, Metro Manila</span>
-                <span class="date">March 23, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_exposure_trip.jpg" download="Julia_Alemania_BSIT_Educational_Exposure_Trip_during_IT_Week_2026.jpg" aria-label="Download certificate: BSIT Educational Exposure Trip during IT Week 2026"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_bridging_business_tech.jpg" data-title="Bridging Business and Technology for the Next Generation" data-download="Julia_Alemania_Bridging_Business_and_Technology_for_the_Next_Generation.jpg" aria-label="View certificate: Bridging Business and Technology for the Next Generation">
-              <img src="images/certificates/cert_bridging_business_tech.jpg" alt="Certificate: Bridging Business and Technology for the Next Generation" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Bridging Business and Technology for the Next Generation</strong>
-                <span>La Consolacion College Tanauan</span>
-                <span class="date">March 21, 2026</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_bridging_business_tech.jpg" download="Julia_Alemania_Bridging_Business_and_Technology_for_the_Next_Generation.jpg" aria-label="Download certificate: Bridging Business and Technology for the Next Generation"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-          <li class="cert" data-category="webinars">
-            <button type="button" class="cert-btn" data-full="images/certificates/cert_bitcon_2025.jpg" data-title="Batangas Information Technology Conference (BITCON) 2025" data-download="Julia_Alemania_Batangas_Information_Technology_Conference_BITCON_2025.jpg" aria-label="View certificate: Batangas Information Technology Conference (BITCON) 2025">
-              <img src="images/certificates/cert_bitcon_2025.jpg" alt="Certificate: Batangas Information Technology Conference (BITCON) 2025" loading="lazy" width="400" height="280">
-              <span class="cert-info">
-                <strong>Batangas Information Technology Conference (BITCON) 2025</strong>
-                <span>Lipa Academy for Sports, Culture and Arts Convention Center, Dagatan, Lipa City</span>
-                <span class="date">April 26, 2025</span>
-              </span>
-              <i class="fa-solid fa-magnifying-glass-plus zoom" aria-hidden="true"></i>
-            </button>
-            <a class="cert-dl" href="images/certificates/cert_bitcon_2025.jpg" download="Julia_Alemania_Batangas_Information_Technology_Conference_BITCON_2025.jpg" aria-label="Download certificate: Batangas Information Technology Conference (BITCON) 2025"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section class="section alt" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">My works</p>
-          <h2 id="projects-title">Projects</h2>
-        </header>
-        <div class="grid grid-2 project-grid">
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="tj" aria-label="Open 8 screenshots of Tom and Jerry: Intel Byte Chase">
-              <img src="images/projects/project_tom_and_jerry.png" alt="Screenshot of Tom and Jerry: Intel Byte Chase" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Tom and Jerry: Intel Byte Chase</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A Tom and Jerry themed maze game with INTEL (Information Technology Enthusiasts of La Consolacion) branding. Play alone against an AI on three difficulty levels, or play online in a room with a QR code or room code. Has player accounts, a leaderboard, and light/dark themes.</p>
-              <p><strong>My role:</strong> Solo developer. I designed and built the whole game myself, from the maze and AI to the online rooms.</p>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Solo mode against an AI with three difficulty levels</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Online rooms joined with a QR code or room code</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Player accounts with a leaderboard</li>
-              </ul>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Multiplayer</li>
-                <li>Firebase Hosting</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/tom_and_jerry_new" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-                <a class="btn btn-outline" href="https://tom-jerry-multiplayer.web.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo<span class="sr-only"> of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="tj">
-              <li><a href="images/projects/project_tj_01_splash.jpg" data-title="Splash screen">Splash screen</a></li>
-              <li><a href="images/projects/project_tj_03_main_menu.jpg" data-title="Main menu">Main menu</a></li>
-              <li><a href="images/projects/project_tj_04_login.jpg" data-title="Player login">Player login</a></li>
-              <li><a href="images/projects/project_tj_05_register.jpg" data-title="Register player">Register player</a></li>
-              <li><a href="images/projects/project_tj_06_game_mode.jpg" data-title="Select game mode">Select game mode</a></li>
-              <li><a href="images/projects/project_tj_07_character.jpg" data-title="Choose your character">Choose your character</a></li>
-              <li><a href="images/projects/project_tj_08_difficulty.jpg" data-title="Select difficulty">Select difficulty</a></li>
-              <li><a href="images/projects/project_tj_09_multiplayer.jpg" data-title="Multiplayer lobby">Multiplayer lobby</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="maint" aria-label="Open 8 screenshots of Maintenance Ticketing System">
-              <img src="images/projects/project_school_maintenance.png" alt="Screenshot of Maintenance Ticketing System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Maintenance Ticketing System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A web system for the school Maintenance Office. Staff file requests for materials or equipment, and each ticket moves through role-based approvals up to the school president.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, including the forms, role dashboards, and approval flow.</p>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Three request forms: facilities, requisition, and repairs</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Separate dashboards for requester, maintenance, finance, custodian, and president</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Maintenance board with New, Doing, and Done columns</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Advance-notice rules and in-app alerts with sound</li>
-              </ul>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>Blade</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/school-maintenance-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Maintenance Ticketing System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="maint">
-              <li><a href="images/projects/project_maint_01_login.jpg" data-title="Login with role selection">Login with role selection</a></li>
-              <li><a href="images/projects/project_maint_02_facilities_form.jpg" data-title="Form 1: Facilities &amp; equipment">Form 1: Facilities &amp; equipment</a></li>
-              <li><a href="images/projects/project_maint_03_requisition_slip.jpg" data-title="Form 2: Requisition slip">Form 2: Requisition slip</a></li>
-              <li><a href="images/projects/project_maint_04_repairs_form.jpg" data-title="Form 3: Repairs &amp; improvement">Form 3: Repairs &amp; improvement</a></li>
-              <li><a href="images/projects/project_maint_05_maintenance_board.jpg" data-title="Maintenance task board">Maintenance task board</a></li>
-              <li><a href="images/projects/project_maint_06_finance_dashboard.jpg" data-title="Finance dashboard">Finance dashboard</a></li>
-              <li><a href="images/projects/project_maint_07_custodian_dashboard.jpg" data-title="Property custodian dashboard">Property custodian dashboard</a></li>
-              <li><a href="images/projects/project_maint_08_president_dashboard.jpg" data-title="School president dashboard">School president dashboard</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="lib" aria-label="Open 11 screenshots of Integrated Library Management System">
-              <img src="images/projects/project_library_system.png" alt="Screenshot of Integrated Library Management System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 11 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Integrated Library Management System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A library system for book loans and returns, patron profiles, reservations, attendance logging, borrowing history reports, and staff accounts with roles.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, from the database to the reports.</p>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Issue and return books by scanning the patron ID and accession number</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Attendance logging with a visitors-per-hour chart</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Printable reports: loan history, overdue list, circulation summary, and shelf list</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Book reservations and patron profiles</li>
-              </ul>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>Blade</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/library-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Integrated Library Management System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="lib">
-              <li><a href="images/projects/project_lib_01_login.jpg" data-title="Staff login">Staff login</a></li>
-              <li><a href="images/projects/project_lib_02_dashboard.jpg" data-title="Dashboard">Dashboard</a></li>
-              <li><a href="images/projects/project_lib_03_books.jpg" data-title="Book catalog">Book catalog</a></li>
-              <li><a href="images/projects/project_lib_04_patrons.jpg" data-title="Patrons">Patrons</a></li>
-              <li><a href="images/projects/project_lib_05_issue_book.jpg" data-title="Issue book">Issue book</a></li>
-              <li><a href="images/projects/project_lib_06_return_book.jpg" data-title="Return book">Return book</a></li>
-              <li><a href="images/projects/project_lib_07_loans.jpg" data-title="Loans (circulation)">Loans (circulation)</a></li>
-              <li><a href="images/projects/project_lib_08_reservations.jpg" data-title="Reservations">Reservations</a></li>
-              <li><a href="images/projects/project_lib_09_attendance.jpg" data-title="Attendance logging">Attendance logging</a></li>
-              <li><a href="images/projects/project_lib_10_reports.jpg" data-title="Reports">Reports</a></li>
-              <li><a href="images/projects/project_lib_11_add_user.jpg" data-title="Add new user">Add new user</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="pf" aria-label="Open 6 screenshots of My Portfolio App (Flutter)">
-              <img src="images/projects/project_portfolio.png" alt="Screenshot of My Portfolio App (Flutter)" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 6 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>My Portfolio App (Flutter)</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>The Flutter version of this portfolio: a five-tab app with a light/dark theme, certificate gallery, and automatic deployment to GitHub Pages. This website is the HTML, CSS and JavaScript version of it.</p>
-              <p><strong>My role:</strong> Solo developer. I designed, coded, and deployed this app myself.</p>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Light and dark mode that remembers your choice</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Certificate gallery with filters, swipe, and zoom</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Checked by analysis and tests, then deployed automatically</li>
-              </ul>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Material 3</li>
-                <li>GitHub Actions</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/my_portfolio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of My Portfolio App (Flutter) (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="pf">
-              <li><a href="images/projects/project_pf_00_overview.jpg" data-title="Overview (Android, dark mode)">Overview (Android, dark mode)</a></li>
-              <li><a href="images/projects/project_pf_01_personal.png" data-title="Personal tab">Personal tab</a></li>
-              <li><a href="images/projects/project_pf_02_education.png" data-title="Education tab">Education tab</a></li>
-              <li><a href="images/projects/project_pf_03_skills.png" data-title="Skills tab">Skills tab</a></li>
-              <li><a href="images/projects/project_pf_04_interests.png" data-title="Interests tab">Interests tab</a></li>
-              <li><a href="images/projects/project_pf_05_contact.png" data-title="Contact tab">Contact tab</a></li>
-            </ul>
-          </article>
-        </div>
-
-        <h3 class="subheading reveal"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Awards &amp; Recognitions</h3>
-        <ul class="awards reveal">
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Dean&#x27;s Lister Recipient</strong><span>La Consolacion College Tanauan</span><span class="date">2025</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in LCCTanauan Graphic Design Contest</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Runner-Up in Organizational Performance (Group Competition)</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Best in Work Immersion</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Research Excellence Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Leadership Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Place in Sports Journalism</strong><span>Elementary Schools Division of San Juan City, Metro Manila</span><span class="date">2020</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated High School</span><span class="date">2016 - 2021</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in Poster Making Contest</strong><span>San Juan City Integrated School</span><span class="date">2013</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated School</span><span class="date">2010 - 2016</span></div></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Let's talk</p>
-          <h2 id="contact-title">Contact</h2>
-        </header>
-        <div class="grid grid-2 contact-grid">
-          <div>
-            <ul class="contact-list">
-              <li class="card reveal">
-                <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
-                <a href="mailto:cassandraalemania@gmail.com"><span class="label">Email</span><span class="value">cassandraalemania@gmail.com</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="cassandraalemania@gmail.com" data-label="Email" aria-label="Copy Email"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-solid fa-phone contact-icon" aria-hidden="true"></i>
-                <a href="tel:+639562973655"><span class="label">Phone</span><span class="value">0956-297-3655</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="0956-297-3655" data-label="Phone" aria-label="Copy Phone"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-facebook contact-icon" aria-hidden="true"></i>
-                <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener noreferrer"><span class="label">Facebook</span><span class="value">facebook.com/JCUA24</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="facebook.com/JCUA24" data-label="Facebook" aria-label="Copy Facebook"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-instagram contact-icon" aria-hidden="true"></i>
-                <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener noreferrer"><span class="label">Instagram</span><span class="value">instagram.com/makethoiu_</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="instagram.com/makethoiu_" data-label="Instagram" aria-label="Copy Instagram"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-tiktok contact-icon" aria-hidden="true"></i>
-                <a href="https://www.tiktok.com/@liaxdcute" target="_blank" rel="noopener noreferrer"><span class="label">TikTok</span><span class="value">tiktok.com/@liaxdcute</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="tiktok.com/@liaxdcute" data-label="TikTok" aria-label="Copy TikTok"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
-                <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/julia-cassandra-alemania-911831444</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="linkedin.com/in/julia-cassandra-alemania-911831444" data-label="LinkedIn" aria-label="Copy LinkedIn"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>
-                <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span><span class="value">github.com/lcct-24-13115</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="github.com/lcct-24-13115" data-label="GitHub" aria-label="Copy GitHub"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-solid fa-location-dot contact-icon" aria-hidden="true"></i>
-                <a href="https://www.google.com/maps/search/?api=1&query=Blk%2025%20Lot%2012%20Phase%201%2C%20Tanauan%20Park%20Place%2C%20Bagumbayan%2C%20Tanauan%20City%2C%20Batangas%204232" target="_blank" rel="noopener noreferrer"><span class="label">Address</span><span class="value">Blk 25 Lot 12 Phase 1, Tanauan Park Place, Bagumbayan, Tanauan City, Batangas 4232</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="Blk 25 Lot 12 Phase 1, Tanauan Park Place, Bagumbayan, Tanauan City, Batangas 4232" data-label="Address" aria-label="Copy Address"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-            </ul>
-          </div>
-
-          <form class="card contact-form reveal" id="contactForm" novalidate>
-            <h3>Send me a message</h3>
-            <p class="form-note">This opens your email app with your message ready to send.</p>
-            <div class="field">
-              <label for="cName">Your name</label>
-              <input type="text" id="cName" name="name" autocomplete="name" required minlength="2" aria-describedby="cNameErr">
-              <p class="error" id="cNameErr" role="alert"></p>
-            </div>
-            <div class="field">
-              <label for="cEmail">Your email</label>
-              <input type="email" id="cEmail" name="email" autocomplete="email" required aria-describedby="cEmailErr">
-              <p class="error" id="cEmailErr" role="alert"></p>
-            </div>
-            <div class="field">
-              <label for="cMessage">Message</label>
-              <textarea id="cMessage" name="message" rows="5" required minlength="10" aria-describedby="cMessageErr"></textarea>
-              <p class="error" id="cMessageErr" role="alert"></p>
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send message</button>
-
-            <p class="form-note send-via-note">Or send the same message through:</p>
-            <div class="send-via">
-              <button type="button" class="chip-btn" data-send="email"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email app</button>
-              <button type="button" class="chip-btn" data-send="linkedin"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</button>
-              <button type="button" class="chip-btn" data-send="messenger"><i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i> Messenger</button>
-              <button type="button" class="chip-btn" data-send="instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</button>
-            </div>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-
-        <h3 class="subheading reveal"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share my portfolio</h3>
-        <div class="share-row reveal" id="shareRow">
-          <button type="button" class="btn btn-outline" id="shareNative" hidden><i class="fa-solid fa-share-from-square" aria-hidden="true"></i> Share&hellip;</button>
-          <a class="btn btn-outline" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
-          <a class="btn btn-outline" data-share="facebook" href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook<span class="sr-only"> (opens in a new tab)</span></a>
-          <a class="btn btn-outline" data-share="email" href="#"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
-          <button type="button" class="btn btn-outline" id="copyLink"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy link</button>
-        </div>
-
-        <h3 class="subheading reveal"><i class="fa-solid fa-people-group" aria-hidden="true"></i> References</h3>
-        <ul class="grid grid-2 card-list">
-          <li class="card reference reveal">
-            <h4>Engr. Salem M. Layio</h4>
-            <p class="meta">Program Chair - BSIT</p>
-            <ul class="ref-links">
-              <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+639178898876">09178898876</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="09178898876" data-label="Phone number" aria-label="Copy phone number of Engr. Salem M. Layio"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:salemcoe@lcctanauan.edu.ph">salemcoe@lcctanauan.edu.ph</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="salemcoe@lcctanauan.edu.ph" data-label="Email" aria-label="Copy email of Engr. Salem M. Layio"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-            </ul>
-          </li>
-          <li class="card reference reveal">
-            <h4>Dr. Alona Cabrera</h4>
-            <p class="meta">Practicum Coordinator &amp; Teacher</p>
-            <ul class="ref-links">
-              <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+639205699666">09205699666</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="09205699666" data-label="Phone number" aria-label="Copy phone number of Dr. Alona Cabrera"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:cabrera.alona@lcctanauan.edu.ph">cabrera.alona@lcctanauan.edu.ph</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="cabrera.alona@lcctanauan.edu.ph" data-label="Email" aria-label="Copy email of Dr. Alona Cabrera"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-            </ul>
-          </li>
-          <li class="card reference reveal">
-            <h4>Mrs. Leah Lozendo</h4>
-            <p class="meta">College Professor</p>
-            <ul class="ref-links">
-              <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+639692099128">09692099128</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="09692099128" data-label="Phone number" aria-label="Copy phone number of Mrs. Leah Lozendo"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:leahllozendo@gmail.com">leahllozendo@gmail.com</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="leahllozendo@gmail.com" data-label="Email" aria-label="Copy email of Mrs. Leah Lozendo"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-            </ul>
-          </li>
-          <li class="card reference reveal">
-            <h4>Mr. Art Platon</h4>
-            <p class="meta">College Professor</p>
-            <ul class="ref-links">
-              <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+639307431059">09307431059</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="09307431059" data-label="Phone number" aria-label="Copy phone number of Mr. Art Platon"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-              <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:p.art.cedrick01@gmail.com">p.art.cedrick01@gmail.com</a>
-                <button type="button" class="icon-btn copy-btn" data-copy="p.art.cedrick01@gmail.com" data-label="Email" aria-label="Copy email of Mr. Art Platon"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript.</p>
-      <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
-    </div>
-  </footer>
-
-  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
-
-  <!-- Image viewer (opened by JavaScript) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-    <div class="lb-bar">
-      <p class="lb-title" id="lbTitle"></p>
-      <p class="lb-count" id="lbCount" aria-live="polite"></p>
-      <a class="icon-btn lb-dl" id="lbDownload" href="#" download aria-label="Download this image" title="Download this image"><i class="fa-solid fa-download" aria-hidden="true"></i></a>
-      <button type="button" class="icon-btn lb-close" id="lbClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-    </div>
-    <button type="button" class="icon-btn lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-    <img class="lb-img" id="lbImg" alt="">
-    <button type="button" class="icon-btn lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+  <!-- Shown until Flutter draws its first frame. -->
+  <div id="loading" role="status" aria-label="Loading portfolio">
+    <div class="spinner"></div>
   </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('loading');
+      if (!el) return;
+      el.classList.add('hide');
+      setTimeout(function () { el.remove(); }, 400);
+    });
+  </script>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-  <!-- Small message that confirms copying -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
