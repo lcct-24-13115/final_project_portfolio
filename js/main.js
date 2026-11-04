@@ -11,6 +11,9 @@
    8.  Copy to clipboard with a small message
    9.  Contact form validation (opens the email app)
    10. Back-to-top button and footer year
+   11. Full-screen button
+   12. Certificate / screenshot download (viewer button)
+   13. Share buttons (LinkedIn, Facebook, email, copy link)
    ========================================================== */
 
 "use strict";
@@ -211,6 +214,7 @@ function initLightbox() {
   const prev = $("#lbPrev");
   const next = $("#lbNext");
   const close = $("#lbClose");
+  const download = $("#lbDownload");
 
   let items = []; // [{ src, title }]
   let index = 0;
@@ -223,6 +227,9 @@ function initLightbox() {
     img.alt = item.title;
     title.textContent = item.title;
     count.textContent = `${index + 1} / ${items.length}`;
+    // Download button always points to the picture on screen.
+    download.href = item.src;
+    download.setAttribute("download", item.download || item.src.split("/").pop());
     prev.disabled = index === 0;
     next.disabled = index === items.length - 1;
     // Restart the zoom-in animation.
@@ -252,7 +259,7 @@ function initLightbox() {
   $$(".cert-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const visible = $$(".cert-btn").filter((b) => !b.closest(".cert").hidden);
-      const list = visible.map((b) => ({ src: b.dataset.full, title: b.dataset.title }));
+      const list = visible.map((b) => ({ src: b.dataset.full, title: b.dataset.title, download: b.dataset.download }));
       open(list, visible.indexOf(btn), btn);
     });
   });
@@ -281,7 +288,7 @@ function initLightbox() {
     else if (event.key === "ArrowRight") show(index + 1);
     else if (event.key === "Tab") {
       // Keep keyboard focus inside the viewer while it is open.
-      const focusable = [close, prev, next].filter((el) => !el.disabled);
+      const focusable = [download, close, prev, next].filter((el) => !el.disabled);
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (event.shiftKey && document.activeElement === first) {
@@ -349,6 +356,20 @@ function initCopyButtons() {
 }
 
 /* ---------- 9. Contact form ---------- */
+
+/* AUTOMATIC EMAIL: create a free access key at https://web3forms.com (enter
+   cassandraalemania@gmail.com), then paste the key between the quotes below.
+   While the key is empty, the form opens the visitor's email app instead. */
+const WEB3FORMS_KEY = "";
+
+/** Public links used by the "send through" buttons. */
+const CHANNELS = {
+  email: "mailto:cassandraalemania@gmail.com",
+  linkedin: "https://www.linkedin.com/in/julia-cassandra-alemania-911831444/",
+  messenger: "https://m.me/JCUA24",
+  instagram: "https://ig.me/m/makethoiu_",
+};
+
 function initContactForm() {
   const form = $("#contactForm");
   if (!form) return;
@@ -381,23 +402,100 @@ function initContactForm() {
     });
   });
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  /** Checks every field. Returns the message data, or null when something is wrong. */
+  function readValid() {
     const results = inputs.map(check);
     if (results.includes(false)) {
       status.textContent = "Please fix the highlighted fields.";
       inputs.find((input) => input.closest(".field").classList.contains("invalid")).focus();
+      return null;
+    }
+    const data = new FormData(form);
+    const name = data.get("name").trim();
+    const email = data.get("email").trim();
+    const message = data.get("message").trim();
+    return {
+      name,
+      email,
+      message,
+      subject: `Portfolio message from ${name}`,
+      text: `${message}\n\nFrom: ${name} (${email})`,
+    };
+  }
+
+  /** Opens the visitor's email app with the message filled in. */
+  function openMailApp(msg) {
+    window.location.href =
+      `${CHANNELS.email}?subject=${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(msg.text)}`;
+  }
+
+  /** Sends the message straight to my inbox through Web3Forms. */
+  async function sendAutomatically(msg) {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: msg.subject,
+        name: msg.name,
+        email: msg.email,
+        message: msg.message,
+        from_name: "Portfolio website",
+      }),
+    });
+    const result = await response.json();
+    if (!result.success) throw new Error(result.message || "Sending failed");
+  }
+
+  // Main "Send message" button.
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const msg = readValid();
+    if (!msg) return;
+    const submit = $("[type=submit]", form);
+
+    if (!WEB3FORMS_KEY) {
+      openMailApp(msg);
+      status.textContent = "Opening your email app. Thank you for reaching out!";
       return;
     }
 
-    const data = new FormData(form);
-    const subject = `Portfolio message from ${data.get("name").trim()}`;
-    const body = `${data.get("message").trim()}\n\nFrom: ${data.get("name").trim()} (${data.get("email").trim()})`;
-    window.location.href =
-      "mailto:cassandraalemania@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    submit.disabled = true;
+    status.textContent = "Sending...";
+    try {
+      await sendAutomatically(msg);
+      status.textContent = "Message sent! Thank you, I will reply to your email soon.";
+      form.reset();
+    } catch (error) {
+      status.textContent = "Could not send automatically. Opening your email app instead.";
+      openMailApp(msg);
+    } finally {
+      submit.disabled = false;
+    }
+  });
 
-    status.textContent = "Opening your email app. Thank you for reaching out!";
-    form.reset();
+  // "Or send through" buttons. LinkedIn, Messenger and Instagram do not allow
+  // a website to fill in a message, so the text is copied and the chat opens.
+  $$("[data-send]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const msg = readValid();
+      if (!msg) return;
+      const channel = btn.dataset.send;
+      if (channel === "email") {
+        openMailApp(msg);
+        status.textContent = "Opening your email app.";
+        return;
+      }
+      const names = { linkedin: "LinkedIn", messenger: "Messenger", instagram: "Instagram" };
+      try {
+        await copyText(msg.text);
+        status.textContent = `Your message is copied. Paste it in the ${names[channel]} chat that just opened.`;
+        showToast("Message copied. Paste it in the chat.");
+      } catch (error) {
+        status.textContent = `Opening ${names[channel]}. Please type your message there.`;
+      }
+      window.open(CHANNELS[channel], "_blank", "noopener");
+    });
   });
 }
 
@@ -416,6 +514,67 @@ function initPageExtras() {
   if (year) year.textContent = new Date().getFullYear();
 }
 
+/* ---------- 11. Full-screen button ---------- */
+function initFullscreen() {
+  const button = $("#fsToggle");
+  if (!button || !document.documentElement.requestFullscreen) return; // not supported: stays hidden
+  button.hidden = false;
+
+  const expand = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>';
+  const compress = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h5V3M21 8h-5V3M3 16h5v5M21 16h-5v5"/></svg>';
+
+  function update() {
+    const full = Boolean(document.fullscreenElement);
+    const label = full ? "Exit full screen" : "Enter full screen";
+    button.innerHTML = full ? compress : expand;
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
+  }
+
+  button.addEventListener("click", () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(() => showToast("Full screen is not allowed here."));
+  });
+  document.addEventListener("fullscreenchange", update);
+}
+
+/* ---------- 13. Share my portfolio ---------- */
+function initShare() {
+  const canonical = $('link[rel="canonical"]');
+  const pageUrl = canonical ? canonical.href : window.location.href.split("#")[0];
+  const text = "Check out the portfolio of Julia Cassandra Alemania, BSIT student.";
+  const links = {
+    linkedin: "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(pageUrl),
+    facebook: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageUrl),
+    email: "mailto:?subject=" + encodeURIComponent("Julia Alemania | Portfolio") +
+      "&body=" + encodeURIComponent(text + "\n" + pageUrl),
+  };
+  $$("[data-share]").forEach((a) => {
+    a.href = links[a.dataset.share];
+  });
+
+  const copyBtn = $("#copyLink");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await copyText(pageUrl);
+        showToast("Link copied to clipboard");
+      } catch (error) {
+        showToast("Could not copy the link.");
+      }
+    });
+  }
+
+  // Phones and some browsers have their own share sheet.
+  const nativeBtn = $("#shareNative");
+  if (nativeBtn && navigator.share) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener("click", () => {
+      navigator.share({ title: "Julia Alemania | Portfolio", text, url: pageUrl }).catch(() => {});
+    });
+  }
+}
+
 /* ---------- Start everything when the page is ready ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -428,4 +587,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initCopyButtons();
   initContactForm();
   initPageExtras();
+  initFullscreen();
+  initShare();
 });

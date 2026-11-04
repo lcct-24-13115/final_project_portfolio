@@ -3,7 +3,7 @@
 Personal portfolio website for **Web Technology (BSIT)**, built with plain HTML, CSS and JavaScript.
 It is the web version of my Flutter portfolio app.
 
-Live site: https://lcct-24-13115.github.io/my_portfolio/
+Live site: https://lcct-24-13115.github.io/final_project_portfolio/
 
 ## Sections
 Home, About Me, Education, Skills (with certificates), Projects (with awards), Contact (with references).
@@ -19,6 +19,10 @@ Home, About Me, Education, Skills (with certificates), Projects (with awards), C
 8. Copy-to-clipboard buttons
 9. Contact form validation
 10. Back-to-top button
+11. Full-screen button
+12. Download buttons for every certificate (and a ZIP of all certificates)
+13. Send message through email, LinkedIn, Messenger or Instagram
+14. Share my portfolio (LinkedIn, Facebook, email, copy link)
 
 ## Folder structure
 ```
@@ -38,4 +42,10 @@ Open `index.html` in a browser, or run `python -m http.server 8000` and visit ht
 ## Publish on GitHub Pages
 1. Put all files in the repository root (the `index.html` must be at the top level).
 2. Repository **Settings > Pages > Build and deployment**: Source = *Deploy from a branch*, Branch = `main`, folder = `/ (root)`.
-3. Wait a minute, then open https://lcct-24-13115.github.io/my_portfolio/
+3. Wait a minute, then open https://lcct-24-13115.github.io/final_project_portfolio/
+
+## Automatic email (contact form)
+1. Go to https://web3forms.com, enter cassandraalemania@gmail.com, and copy the free access key they email you.
+2. Open `js/main.js` and paste it here: `const WEB3FORMS_KEY = "your-key";`
+3. Commit and push. The form then sends the message straight to the inbox.
+Until a key is added, the form opens the visitor's email app instead.
