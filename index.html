@@ -23,6 +23,7 @@
   <!-- Remember the theme before the page paints, so there is no flash -->
   <script>
     document.documentElement.classList.add("js");
+    try { if (sessionStorage.getItem("launched")) document.documentElement.classList.add("no-launch"); } catch (err) { /* ignore */ }
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.setAttribute("data-theme", saved);
@@ -38,9 +39,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- Own stylesheet -->
   <link rel="stylesheet" href="css/julia-style.css">
+  <link rel="stylesheet" href="css/space-theme.css">
   <script src="js/julia-main.js" defer></script>
+  <script src="js/space-loader.js" defer></script>
 </head>
 <body>
+  <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
+  <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
+    <div class="launch-badge" aria-hidden="true"><span class="launch-initials">JA</span></div>
+    <p class="launch-name">Julia Cassandra Alemania</p>
+    <p class="launch-role">BSIT Student &middot; Portfolio</p>
+    <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
+    <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
+    <button type="button" class="launch-skip">Skip</button>
+  </div>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header" id="top">
@@ -78,6 +90,7 @@
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-visual">
+          <span class="orbit" aria-hidden="true"></span>
           <figure class="hero-photo">
             <img src="images/profile.jpg" width="690" height="700" alt="Portrait photo of Julia Cassandra Alemania">
           </figure>
@@ -111,6 +124,7 @@
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container">
         <header class="section-head reveal">
+          <p class="eyebrow">Meet the pilot</p>
           <h2 id="about-title">About Me</h2>
         </header>
         <ul class="stats reveal" aria-label="Portfolio highlights">
@@ -181,6 +195,7 @@
     <section class="section alt" id="education" aria-labelledby="education-title">
       <div class="container narrow">
         <header class="section-head reveal">
+          <p class="eyebrow">Training flights</p>
           <h2 id="education-title">Education</h2>
         </header>
         <ol class="timeline">
@@ -245,6 +260,7 @@
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head reveal">
+          <p class="eyebrow">Equipment on board</p>
           <h2 id="skills-title">Skills</h2>
         </header>
 
@@ -495,6 +511,7 @@
     <section class="section alt" id="experience" aria-labelledby="experience-title">
       <div class="container narrow">
         <header class="section-head reveal">
+          <p class="eyebrow">Flight log</p>
           <h2 id="experience-title">Experience &amp; Milestones</h2>
           <p>What I have built, learned, and achieved so far, year by year.</p>
         </header>
@@ -582,6 +599,7 @@
     <section class="section showcase" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head reveal">
+          <p class="eyebrow">Missions completed</p>
           <h2 id="projects-title">Projects</h2>
         </header>
         <div class="grid grid-2 project-grid">
@@ -776,6 +794,7 @@
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <header class="section-head reveal">
+          <p class="eyebrow">Open a channel</p>
           <h2 id="contact-title">Contact</h2>
         </header>
         <div class="grid grid-2 contact-grid">
@@ -913,7 +932,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript.</p>
+      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript. Thanks for visiting my corner of the universe.</p>
       <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
     </div>
   </footer>
