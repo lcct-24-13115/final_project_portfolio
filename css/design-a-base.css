@@ -65,8 +65,8 @@ h2.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3
 .btn-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px}
 
 /* ---------- Cards ---------- */
-.glass-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .3s,border-color .3s,box-shadow .3s}
-.glass-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.25);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.glass-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.glass-card:hover{transform:translateY(-12px) scale(1.02);border-color:rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(232,180,166,.25),0 0 40px rgba(110,198,255,.15),0 0 60px rgba(201,164,255,.1)}
 
 /* ---------- Grid helpers ---------- */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}

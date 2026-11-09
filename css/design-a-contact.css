@@ -30,8 +30,8 @@
 /* Big cards */
 .c-big{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:26px}
 @media(max-width:768px){.c-big{grid-template-columns:1fr}}
-.c-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
-.c-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+.c-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.c-card:hover{transform:translateY(-12px) scale(1.02);border-color:rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(232,180,166,.25),0 0 40px rgba(110,198,255,.15),0 0 60px rgba(201,164,255,.1)}
 .c-card-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .c-icon{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:1.2rem;color:var(--rose)}
 .c-tag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:rgba(20,163,160,.1);padding:4px 10px;border-radius:8px}
@@ -44,7 +44,8 @@
 
 /* Small social cards */
 .c-small{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.c-s-card{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.c-s-card{display:flex;align-items:center;gap:16px;padding:20px 22px;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.c-s-card:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(255,255,255,.35);box-shadow:0 20px 60px rgba(232,180,166,.2),0 0 30px rgba(110,198,255,.12),0 0 50px rgba(201,164,255,.08)}
 .c-s-card .c-icon{width:40px;height:40px;font-size:1.1rem}
 .c-s-card strong{font-size:1rem;display:block}
 .c-s-card .c-handle{font-size:.78rem;color:var(--mute)}
@@ -81,7 +82,8 @@
 .share-row a:hover,.share-row button:hover{background:rgba(255,255,255,.06);transform:translateY(-2px)}
 .ref-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 @media(max-width:768px){.ref-grid{grid-template-columns:1fr}}
-.ref-card{border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ref-card{border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.ref-card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(255,255,255,.35);box-shadow:0 25px 70px rgba(232,180,166,.22),0 0 35px rgba(110,198,255,.12),0 0 55px rgba(201,164,255,.08)}
 .ref-card h4{font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:4px}
 .ref-card .meta{font-size:.82rem;color:var(--mute);margin-bottom:12px}
 .ref-links{list-style:none;padding:0;display:grid;gap:8px}
