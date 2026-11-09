@@ -66,3 +66,11 @@
 .explore a:hover{transform:translateY(-5px);border-color:var(--brand)}
 .explore i{font-size:1.4rem;color:var(--link);margin-bottom:.4rem}
 .explore span{color:var(--text-muted);font-size:.92rem}
+
+/* ---------- Side breathing room (content no longer touches the edges) ---------- */
+.container{width:min(1120px,100% - clamp(3rem,18vw,14rem))}
+.container.narrow{width:min(900px,100% - clamp(3rem,18vw,14rem))}
+.header-inner{width:min(1320px,100% - clamp(3rem,8vw,8rem))}
+@media(max-width:860px){
+  .container,.container.narrow,.header-inner{width:calc(100% - 2.5rem)}
+}
