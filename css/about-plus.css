@@ -129,3 +129,52 @@
 .tile-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;font-size:1.25rem;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent)}
 @media(max-width:980px){.stack-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.stack-badge::after{animation:none}}
+
+/* ---------- Mission log: tap the alien ---------- */
+.m-ufo{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:filter .3s}
+.m-ufo:hover{filter:drop-shadow(0 0 42px rgba(127,240,255,.6))}
+.m-ufo:focus{outline:none}
+.m-ufo:focus-visible{filter:drop-shadow(0 0 6px var(--focus)) drop-shadow(0 0 28px rgba(255,194,75,.7))}
+.m-art:focus{outline:none}
+.m-art:focus-visible{filter:drop-shadow(0 0 6px var(--focus)) drop-shadow(0 0 20px rgba(255,194,75,.6))}
+.m-ufo .al-all,.m-ufo .al-ant,.m-ufo .al-head,.m-ufo .u-lights{transform-box:fill-box;transform-origin:center bottom}
+.m-hint{position:absolute;top:8px;right:max(4%,calc(50% - 250px));z-index:3;padding:.3rem .7rem;border-radius:999px;font:700 .75rem var(--display);letter-spacing:.04em;color:var(--text);background:var(--surface);border:1px solid var(--border);animation:hint 2.4s ease-in-out infinite;pointer-events:none;transition:opacity .3s}
+.mission-stage.played .m-hint{opacity:0;animation:none}
+@keyframes hint{50%{transform:translateY(-5px)}}
+
+.m-bubble{position:absolute;top:-6px;left:50%;z-index:4;max-width:min(300px,86%);padding:.6rem 1rem;border-radius:16px;font:700 .95rem/1.35 var(--display);color:var(--text);background:var(--surface);border:2px solid #3ff0c8;box-shadow:0 10px 30px rgba(63,240,200,.25);opacity:0;transform:translate(-50%,10px) scale(.8);transition:opacity .25s,transform .35s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.m-bubble::after{content:"";position:absolute;left:50%;bottom:-9px;width:14px;height:14px;background:inherit;border:inherit;border-top:0;border-left:0;transform:translateX(-50%) rotate(45deg)}
+.m-bubble.show{opacity:1;transform:translate(-50%,-34px) scale(1)}
+
+/* UFO zap */
+.m-ufo.zap{animation:zap .9s cubic-bezier(.3,1.4,.5,1)}
+@keyframes zap{
+  0%{transform:translateY(0) rotate(0) scale(1)}
+  20%{transform:translateY(-26px) rotate(-8deg) scale(1.06)}
+  45%{transform:translateY(-10px) rotate(7deg) scale(1.04)}
+  70%{transform:translateY(-18px) rotate(-3deg)}
+  100%{transform:translateY(0) rotate(0) scale(1)}}
+.m-ufo.zap .al-all{animation:alPop .9s ease-out}
+@keyframes alPop{30%{transform:translateY(-16px) scale(1.18)}60%{transform:translateY(-6px) scale(1.08)}}
+.m-ufo.zap .al-ant{animation:antWave .9s ease-in-out}
+@keyframes antWave{20%{transform:rotate(-14deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(8deg)}}
+.m-ufo.zap .al-head{animation:blink .9s}
+@keyframes blink{40%,50%{transform:scaleY(.15)}}
+.m-ufo.zap .u-lights{animation:lights .9s steps(2) 2}
+@keyframes lights{50%{fill:#ffe27a;filter:brightness(1.8)}}
+.m-ufo.zap ~ .m-beam,.mission-stage.zapping .m-beam{animation:beamZap .9s ease-out}
+@keyframes beamZap{0%,100%{opacity:1}30%{opacity:1;filter:blur(2px) brightness(2.2)}}
+
+/* stat art bounce */
+.m-art{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.m-art.bump{animation:bump .8s cubic-bezier(.3,1.5,.5,1)}
+@keyframes bump{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.18) rotate(-8deg)}60%{transform:scale(.96) rotate(6deg)}100%{transform:scale(1) rotate(0)}}
+
+/* sparkles */
+.m-spark{position:absolute;z-index:5;width:var(--s,12px);height:var(--s,12px);margin:calc(var(--s,12px)/-2) 0 0 calc(var(--s,12px)/-2);background:var(--c,#ffe27a);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);pointer-events:none;animation:spark .9s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:translate(0,0) scale(.3) rotate(0)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(180deg)}}
+
+@media(prefers-reduced-motion:reduce){
+  .m-ufo.zap,.m-ufo.zap *,.m-art.bump,.m-hint,.m-spark,.mission-stage.zapping .m-beam{animation:none!important}
+  .m-spark{display:none}
+}
