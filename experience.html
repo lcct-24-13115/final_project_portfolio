@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="css/design-a-experience.css?v=1">
 <link rel="stylesheet" href="css/design-a-enhancements.css?v=1">
 <link rel="stylesheet" href="css/design-a-interaction.css?v=1">
-<script src="js/design-a-common.js?v=1" defer></script>
-<script src="js/design-a-enhancements.js?v=1" defer></script>
-<script src="js/design-a-interaction.js?v=1" defer></script>
+  <script src="js/design-a-common.js?v=1" defer></script>
+  <script src="js/design-a-enhancements.js?v=1" defer></script>
+  <script src="js/design-a-interaction.js?v=1" defer></script>
+  <script src="js/certificates.js?v=1" defer></script>
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
@@ -115,6 +116,117 @@
       <ul class="xp-certs">
         <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Batangas Information Technology Conference (BITCON) 2025</strong><em>Lipa City · Apr 2025</em></span></div></li>
       </ul>
+    </div>
+
+    <!-- Certificate Gallery -->
+    <div class="cert-gallery-section" style="margin-top:40px">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;margin-bottom:20px;display:flex;align-items:center;gap:12px">
+        <i class="fa-solid fa-images" style="color:var(--rose)"></i>
+        View Certificates
+      </h3>
+      <div class="cert-gallery">
+        <div class="cert-item">
+          <img src="images/certificates/cert_js_essentials_1.jpg" alt="JavaScript Essentials 1 Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_js_essentials_1.jpg" download="JavaScript_Essentials_1.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">JavaScript Essentials 1</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_html_essentials.jpg" alt="HTML Essentials Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_html_essentials.jpg" download="HTML_Essentials.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">HTML Essentials</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_network_technician.jpg" alt="Network Technician Career Path Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_network_technician.jpg" download="Network_Technician_Career_Path.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">Network Technician Path</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_network_support_security.jpg" alt="Network Support and Security Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_network_support_security.jpg" download="Network_Support_Security.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">Network Support & Security</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_network_addressing.jpg" alt="Network Addressing Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_network_addressing.jpg" download="Network_Addressing.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">Network Addressing</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_networking_devices.jpg" alt="Networking Devices Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_networking_devices.jpg" download="Networking_Devices.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">Networking Devices</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_networking_basics.jpg" alt="Networking Basics Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_networking_basics.jpg" download="Networking_Basics.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">Networking Basics</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/certificates/cert_bitcon_2025.jpg" alt="BITCON 2025 Certificate" onclick="openCertModal(this.src)">
+          <div class="cert-overlay">
+            <button class="cert-view-btn" onclick="openCertModal(this.parentElement.parentElement.querySelector('img').src)">
+              <i class="fa-solid fa-eye"></i> View
+            </button>
+            <a class="cert-download-btn" href="images/certificates/cert_bitcon_2025.jpg" download="BITCON_2025.jpg">
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <p class="cert-caption">BITCON 2025</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px">
+        <a href="docs/Julia_Alemania_Certificates.zip" download="Julia_Alemania_All_Certificates.zip" class="btn light" style="display:inline-flex;align-items:center;gap:10px">
+          <i class="fa-solid fa-file-zipper"></i> Download All Certificates (ZIP)
+        </a>
+      </div>
     </div>
   </section>
 
