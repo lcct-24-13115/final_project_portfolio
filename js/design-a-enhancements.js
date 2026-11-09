@@ -21,11 +21,7 @@
       this.screen.className = 'loading-screen';
       this.screen.innerHTML = `
         <div class="loading-logo">
-          <div class="loading-ring"></div>
-          <div class="loading-ring"></div>
-          <div class="loading-ring"></div>
-          <div class="loading-ring"></div>
-          <div class="loading-center"></div>
+          <img src="images/logo.svg" alt="Julia Alemania Logo">
         </div>
         <div class="loading-text">Preparing your experience</div>
         <div class="loading-progress">
