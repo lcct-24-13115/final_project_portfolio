@@ -38,7 +38,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.6rem,11vw,7.6rem);
 
 /* chrome */
 .menu-btn{position:fixed;top:22px;left:22px;z-index:20;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);color:var(--ink);cursor:pointer;font-size:1rem;backdrop-filter:blur(8px)}
-.overlay{position:fixed;inset:0;z-index:15;background:rgba(4,5,13,.96);display:grid;place-content:center;gap:6px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.overlay{position:fixed;inset:0;z-index:15;background:transparent;display:grid;place-content:center;gap:6px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .overlay.open{opacity:1;visibility:visible}
 .overlay a{font-family:var(--serif);font-size:clamp(2rem,7vw,3.6rem);text-decoration:none;color:var(--ink);padding:4px 0}
 .overlay a:hover{color:var(--rose)}
@@ -74,6 +74,23 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);l
 footer{padding:30px 24px 90px;text-align:center;color:var(--mute);font-size:.8rem}
 @media(max-width:640px){.rows li{grid-template-columns:1fr}.copy{display:none}.socials{left:50%;transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.aurora i{animation:none}html{scroll-behavior:auto}}
+
+.overlay{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(8px,2.2vh,22px);overflow:hidden}
+.overlay a{position:relative;z-index:2;display:block;line-height:1;padding:0}
+.overlay a span{display:block;font-family:var(--serif);font-size:clamp(2.6rem,8.4vw,5.6rem);letter-spacing:-.01em;transition:transform .3s,color .3s}
+.overlay a small{display:block;margin-top:8px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.overlay a:hover span,.overlay a:focus-visible span{color:var(--rose);transform:scale(1.04)}
+.close-btn{position:absolute;top:22px;right:22px;z-index:3;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);color:var(--ink);cursor:pointer;font-size:1.1rem}
+.shards{position:absolute;inset:0;z-index:1;pointer-events:none}
+.tile{position:absolute;background:url(images/julia.jpg) no-repeat;opacity:0;transform:translate(0,0) rotate(0) scale(.1);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .6s;transition-delay:var(--d);animation:bob var(--t) ease-in-out infinite alternate}
+.overlay.open .tile{opacity:var(--o);transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)}
+@keyframes bob{from{translate:0 -10px}to{translate:8px 12px}}
+.cur{position:fixed;left:0;top:0;z-index:50;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(255,255,255,.55);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s,width .2s,height .2s,margin .2s}
+.cur::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:#fff}
+.cur.on{opacity:1}.cur.big{width:56px;height:56px;margin:-28px 0 0 -28px}
+.has-cur,.has-cur a,.has-cur button{cursor:none}
+@media(prefers-reduced-motion:reduce){.tile{animation:none;transition:none}}
+body.menu-open main{visibility:hidden}.socials,.copy{z-index:16}
 </style>
 </head>
 <body>
@@ -81,8 +98,14 @@ footer{padding:30px 24px 90px;text-align:center;color:var(--mute);font-size:.8re
 <div class="aurora" aria-hidden="true"><i></i><i></i></div>
 
 <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
-<nav class="overlay" id="overlay" aria-label="Main">
-  <a href="#top">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#awards">Awards</a><a href="#contact">Contact</a><a href="experience.html">Experience</a><a href="links.html">Links</a>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="#about"><span>About Me</span><small>A bit about me and what I study</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
 </nav>
 
 <main id="top">
@@ -90,7 +113,7 @@ footer{padding:30px 24px 90px;text-align:center;color:var(--mute);font-size:.8re
     <div class="photo"><img src="images/julia.jpg" alt="Portrait of Julia Cassandra Alemania" width="700" height="700"></div>
     <p class="roles">BSIT Student &nbsp;|&nbsp; Web Developer &nbsp;|&nbsp; Flutter Developer</p>
     <h1>Julia<br>Alemania</h1>
-    <div class="cta"><a class="btn" href="#about">Explore</a><a class="btn light" href="#projects">See my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+    <div class="cta"><button class="btn" type="button" id="exploreBtn">Explore</button><a class="btn light" href="#projects">See my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
   </section>
 
   <section class="s" id="about">
@@ -171,14 +194,28 @@ footer{padding:30px 24px 90px;text-align:center;color:var(--mute);font-size:.8re
   <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
   <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
 </div>
+<div class="cur" id="cur" aria-hidden="true"></div>
 <div class="copy">&copy; 2026 Julia Alemania</div>
 
 <script>
 const btn=document.getElementById('menuBtn'),ov=document.getElementById('overlay');
-function setMenu(o){ov.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');btn.firstElementChild.className=o?'fa-solid fa-xmark':'fa-solid fa-ellipsis'}
+function setMenu(o){document.body.classList.toggle('menu-open',o);ov.classList.toggle('open',o);ov.setAttribute('aria-hidden',!o);btn.setAttribute('aria-expanded',o);if(o)document.getElementById('closeBtn').focus()}
 btn.onclick=()=>setMenu(!ov.classList.contains('open'));
+document.getElementById('exploreBtn').onclick=()=>setMenu(true);
+document.getElementById('closeBtn').onclick=()=>setMenu(false);
 ov.querySelectorAll('a').forEach(a=>a.onclick=()=>setMenu(false));
 addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
+/* floating photo pieces behind the menu */
+const sh=document.getElementById('shards');
+for(let i=0;i<26;i++){const t=document.createElement('i'),s=60+Math.random()*90,a=Math.random()*6.28,r=Math.random()*230+30;
+t.className='tile';t.style.cssText=`left:50%;top:46%;width:${s}px;height:${s}px;background-size:${300+Math.random()*300}%;background-position:${Math.random()*100}% ${Math.random()*80}%;--x:${Math.cos(a)*r*1.35-s/2}px;--y:${Math.sin(a)*r*1.5-s/2}px;--r:${Math.random()*180-90}deg;--o:${.1+Math.random()*.2};--d:${(i*.025).toFixed(2)}s;--t:${6+Math.random()*6}s`;sh.appendChild(t)}
+
+/* cursor ring */
+if(matchMedia('(pointer:fine)').matches){const cur=document.getElementById('cur');let mx=0,my=0,cx=0,cy=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.classList.add('on');document.body.classList.add('has-cur');cur.classList.toggle('big',!!e.target.closest('a,button'))});
+document.addEventListener('mouseleave',()=>cur.classList.remove('on'));
+(function f(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;cur.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(f)})()}
 
 const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
 const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
