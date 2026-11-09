@@ -1,4 +1,4 @@
-# Julia Cassandra Alemania | Portfolio Website
+﻿# Julia Cassandra Alemania | Portfolio Website
 
 Personal portfolio website for **Web Technology (BSIT)**, built with plain HTML, CSS and JavaScript.
 It is the web version of my Flutter portfolio app.
@@ -27,8 +27,8 @@ Home, About Me, Education, Skills (with certificates), Projects (with awards), C
 ## Folder structure
 ```
 index.html
-css/style.css
-js/main.js
+css/julia-style.css
+js/julia-main.js
 fonts/        Poppins font files
 images/       profile, favicon, preview
   certificates/
@@ -46,6 +46,7 @@ Open `index.html` in a browser, or run `python -m http.server 8000` and visit ht
 
 ## Automatic email (contact form)
 1. Go to https://web3forms.com, enter cassandraalemania@gmail.com, and copy the free access key they email you.
-2. Open `js/main.js` and paste it here: `const WEB3FORMS_KEY = "your-key";`
+2. Open `js/julia-main.js` and paste it here: `const WEB3FORMS_KEY = "your-key";`
 3. Commit and push. The form then sends the message straight to the inbox.
 Until a key is added, the form opens the visitor's email app instead.
+
