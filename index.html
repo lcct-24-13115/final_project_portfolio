@@ -1,262 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Julia Cassandra Alemania | BSIT Student Portfolio</title>
-  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, a BS Information Technology student and Dean's Lister. Skills, certifications, projects, and contact details.">
-  <meta name="author" content="Julia Cassandra U. Alemania">
-  <meta name="theme-color" content="#0B6FA4">
-  <link rel="canonical" href="https://lcct-24-13115.github.io/final_project_portfolio/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julia Cassandra Alemania - BSIT Student & Web Developer</title>
+<meta name="description" content="Portfolio of Julia Cassandra U. Alemania, BS Information Technology student, web and Flutter developer, Dean's Lister.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<style>
+:root{--bg:#04050d;--ink:#f4efee;--mute:#a9a3b5;--rose:#e8b4a6;--teal:#14a3a0;--line:rgba(255,255,255,.12);--serif:'Gloock',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden}
+canvas#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;top:42%;width:60vw;height:26vh;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){left:-12vw;background:#0f6b66}
+.aurora i:nth-child(2){right:-10vw;background:#117f86;top:36%;animation-delay:-8s}
+@keyframes drift{to{transform:translate(6vw,-4vh) scale(1.15)}}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
 
-  <!-- Link preview (Facebook, Messenger, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Julia Cassandra Alemania | BSIT Student Portfolio">
-  <meta property="og:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
-  <meta property="og:url" content="https://lcct-24-13115.github.io/final_project_portfolio/">
-  <meta property="og:image" content="https://lcct-24-13115.github.io/final_project_portfolio/images/preview.png">
-  <meta name="twitter:card" content="summary_large_image">
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 80px}
+.photo{width:min(320px,70vw);aspect-ratio:1;border-radius:50%;padding:6px;background:conic-gradient(from 200deg,var(--rose),#7b5a74,var(--teal),var(--rose));box-shadow:0 0 90px rgba(232,180,166,.25)}
+.photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 22%;border:5px solid var(--bg);display:block}
+.roles{margin-top:28px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#cfc8d6}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.6rem,11vw,7.6rem);line-height:.92;letter-spacing:-.02em;margin-top:14px;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;justify-content:center}
+.btn{font:600 .78rem var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:17px 34px;border-radius:99px;border:1px solid var(--line);background:#0e0f17;color:var(--ink);transition:transform .2s,background .2s}
+.btn.light{background:#f1eeee;color:#0b0b12;border-color:#f1eeee}
+.btn:hover{transform:translateY(-2px)}
+.btn.light:hover{background:#fff}
 
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-  <link rel="icon" href="images/favicon.ico" sizes="any">
+/* chrome */
+.menu-btn{position:fixed;top:22px;left:22px;z-index:20;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);color:var(--ink);cursor:pointer;font-size:1rem;backdrop-filter:blur(8px)}
+.overlay{position:fixed;inset:0;z-index:15;background:rgba(4,5,13,.96);display:grid;place-content:center;gap:6px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.overlay.open{opacity:1;visibility:visible}
+.overlay a{font-family:var(--serif);font-size:clamp(2rem,7vw,3.6rem);text-decoration:none;color:var(--ink);padding:4px 0}
+.overlay a:hover{color:var(--rose)}
+.socials{position:fixed;left:22px;bottom:20px;z-index:10;display:flex;gap:18px;font-size:1.15rem}
+.socials a{color:#d7d2dd;opacity:.85}.socials a:hover{color:var(--rose);opacity:1}
+.copy{position:fixed;right:22px;bottom:22px;z-index:10;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 
-  <!-- Remember the theme before the page paints, so there is no flash -->
-  <script>
-    document.documentElement.classList.add("js");
-    try { if (sessionStorage.getItem("launched")) document.documentElement.classList.add("no-launch"); } catch (err) { /* ignore */ }
-    try {
-      var saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    } catch (err) { /* storage unavailable: fall back to the system theme */ }
-  </script>
-
-  <!-- Display font for headings (falls back to the bundled Poppins if it cannot load) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
-
-  <!-- Icons (Font Awesome, free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Own stylesheet -->
-  <link rel="stylesheet" href="css/julia-style.css?v=3">
-  <link rel="stylesheet" href="css/space-theme.css?v=3">
-  <link rel="stylesheet" href="css/about-plus.css?v=3">
-  <link rel="stylesheet" href="css/pages.css?v=3">
-  <script src="js/julia-main.js?v=3" defer></script>
-  <script src="js/space-loader.js?v=3" defer></script>
-  <script src="js/cursor.js?v=3" defer></script>
-  <script src="js/crewpass.js?v=3" defer></script>
-  <script src="js/mission-play.js?v=1" defer></script>
-  <script src="js/liftoff-jet.js?v=1" defer></script>
+/* sections */
+section.s{max-width:1000px;margin:0 auto;padding:90px 24px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin-bottom:28px}
+.lead{font-size:1.1rem;max-width:62ch;color:#e2dde6}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:34px}
+.stats b{display:block;font-family:var(--serif);font-weight:400;font-size:2.6rem;line-height:1;color:var(--rose)}
+.stats span{font-size:.82rem;color:var(--mute)}
+.rows{list-style:none;padding:0;border-top:1px solid var(--line)}
+.rows li{display:grid;grid-template-columns:150px 1fr;gap:8px 24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.rows time{color:var(--rose);font-size:.85rem;font-weight:500}
+.rows strong{font-weight:600}.rows p{color:var(--mute);font-size:.9rem}
+.proj{display:grid;gap:22px}
+.proj article{border:1px solid var(--line);border-radius:22px;padding:28px;background:rgba(14,15,23,.6);backdrop-filter:blur(6px)}
+.proj h3{font-family:var(--serif);font-weight:400;font-size:1.7rem}
+.proj .yr{color:var(--rose);font-size:.8rem}
+.proj p{color:#d3cdd9;margin:10px 0 14px;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tags span{font-size:.74rem;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.07)}
+.links a{font-size:.82rem;font-weight:600;margin-right:20px;text-decoration:none;border-bottom:1px solid var(--rose)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px}
+.skills h3{font-size:.95rem;font-weight:600;margin-bottom:8px;color:var(--rose)}
+.skills p{color:#d3cdd9;font-size:.95rem}
+.contact a.big{font-family:var(--serif);font-size:clamp(1.5rem,4.5vw,2.8rem);text-decoration:none;word-break:break-all}
+.contact a.big:hover{color:var(--rose)}
+.contact p{color:var(--mute);margin-top:14px}
+footer{padding:30px 24px 90px;text-align:center;color:var(--mute);font-size:.8rem}
+@media(max-width:640px){.rows li{grid-template-columns:1fr}.copy{display:none}.socials{left:50%;transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.aurora i{animation:none}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
-  <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
-    <div class="launch-brand">
-      <span class="launch-mark" aria-hidden="true"><img src="images/logo-mark.svg" alt="" width="96" height="96"></span>
-      <p class="launch-name"><span class="launch-first">Julia</span> <span class="launch-last">Alemania</span></p>
-      <p class="launch-tag">BS Information Technology</p>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main">
+  <a href="#top">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#awards">Awards</a><a href="#contact">Contact</a><a href="experience.html">Experience</a><a href="links.html">Links</a>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="photo"><img src="images/julia.jpg" alt="Portrait of Julia Cassandra Alemania" width="700" height="700"></div>
+    <p class="roles">BSIT Student &nbsp;|&nbsp; Web Developer &nbsp;|&nbsp; Flutter Developer</p>
+    <h1>Julia<br>Alemania</h1>
+    <div class="cta"><a class="btn" href="#about">Explore</a><a class="btn light" href="#projects">See my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+  </section>
+
+  <section class="s" id="about">
+    <h2>About me</h2>
+    <p class="lead">I'm a 3rd-year BS Information Technology student at La Consolacion College Tanauan. I build complete systems on my own, from the database and forms to dashboards and reports, and I'm looking for an IT internship or entry-level role where I can apply my skills in programming, systems analysis and problem-solving.</p>
+    <div class="stats"><div><b>4</b><span>projects built solo</span></div><div><b>2025</b><span>Dean's Lister</span></div><div><b>11</b><span>awards and honors</span></div></div>
+  </section>
+
+  <section class="s" id="projects">
+    <h2>Projects</h2>
+    <div class="proj">
+      <article><h3>Tom and Jerry: Intel Byte Chase</h3><span class="yr">2026 · Solo developer</span>
+        <p>A maze game with an AI at three difficulty levels. Play alone, or join an online room with a QR code or room code. Includes player accounts and a leaderboard.</p>
+        <div class="tags"><span>Flutter</span><span>Dart</span><span>Firebase</span></div>
+        <div class="links"><a href="https://tom-jerry-multiplayer.web.app/" target="_blank" rel="noopener">Play it live</a><a href="https://github.com/lcct-24-13115/tom_and_jerry_new" target="_blank" rel="noopener">GitHub</a></div></article>
+      <article><h3>Maintenance Ticketing System</h3><span class="yr">2026 · Solo developer</span>
+        <p>A web system for the school Maintenance Office. Requests for materials, equipment and repairs move through role-based approvals up to the school president, with a New, Doing, Done board for the maintenance team.</p>
+        <div class="tags"><span>Laravel</span><span>PHP</span><span>MySQL</span></div>
+        <div class="links"><a href="https://github.com/lcct-24-13115/school-maintenance-system" target="_blank" rel="noopener">GitHub</a></div></article>
+      <article><h3>Integrated Library Management System</h3><span class="yr">2026 · Solo developer</span>
+        <p>Handles book loans and returns, patron profiles, reservations, attendance logging, borrowing reports and staff accounts with roles.</p>
+        <div class="tags"><span>Laravel</span><span>PHP</span><span>MySQL</span></div>
+        <div class="links"><a href="https://github.com/lcct-24-13115/library-system" target="_blank" rel="noopener">GitHub</a></div></article>
+      <article><h3>Portfolio website and app</h3><span class="yr">2026 · Solo developer</span>
+        <p>My portfolio, built as a website with HTML, CSS and JavaScript and as a Flutter mobile app.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Flutter</span></div>
+        <div class="links"><a href="https://github.com/lcct-24-13115/my_portfolio" target="_blank" rel="noopener">GitHub</a></div></article>
     </div>
-    <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
-    <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
-    <button type="button" class="launch-skip">Skip</button>
-  </div>
+  </section>
 
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Julia Cassandra Alemania, back to the top">Julia Alemania</a>
-
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        <span class="glyph" aria-hidden="true">&#9776;</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-        <ul><li><a href="index.html" aria-current="page">About</a></li><li><a href="experience.html">Experience</a></li><li><a href="projects.html">Projects</a></li><li><a href="links.html">Links</a></li><li class="nav-cta"><a href="contact.html">Say hi &#128075;</a></li></ul>
-      </nav>
-
-      <button class="icon-btn fs-toggle" id="fsToggle" type="button" aria-label="Enter full screen" title="Enter full screen" hidden>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
-      </button>
-
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <span class="glyph" aria-hidden="true">&#9790;</span>
-      </button>
+  <section class="s" id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Programming</h3><p>Python, Java, C, C++, Dart, Flutter</p></div>
+      <div><h3>Web development</h3><p>HTML, CSS, JavaScript, PHP, Laravel, MySQL</p></div>
+      <div><h3>Systems and tools</h3><p>Computer maintenance and troubleshooting, Git version control, operating system installation, networking</p></div>
     </div>
-  </header>
+  </section>
 
-  <main id="main">
-    <section class="home-hero" id="home" aria-labelledby="hero-title">
-      <p class="eyebrow">Hello, I am</p>
-      <h1 id="hero-title">Julia Alemania</h1>
-      <p class="hero-role"><span id="typed" data-words='["BSIT Student","Web Developer","Flutter Developer","Dean&#39;s Lister"]'>BSIT Student</span><span class="cursor" aria-hidden="true">|</span></p>
-      <div class="hero-stage">
-        <div class="tags-l">
-          <p class="float-tag">Turning ideas<b>into systems</b></p>
-          <p class="float-tag">Designing for<b>every user</b></p>
-        </div>
-        <div class="orbit-wrap"><span class="ring" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span><img src="images/profile.jpg" width="690" height="700" alt="Portrait photo of Julia Cassandra Alemania"></div>
-        <div class="tags-r">
-          <p class="float-tag">Crafting mobile<b>experiences</b></p>
-          <p class="float-tag">Building clean<b>interfaces</b></p>
-        </div>
-      </div>
-      <div class="hero-pill"><a href="docs/Julia_Alemania_CV.pdf" download>Download CV <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a><a href="projects.html">View my work</a></div>
-      <ul class="social-row" aria-label="Quick links">
-        <li><a href="mailto:cassandraalemania@gmail.com" aria-label="Send me an email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
-        <li><a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
-      </ul>
-      <div class="marquee" aria-label="Training and recognition"><p>Trained &amp; recognized by</p><div class="marquee-track" aria-hidden="true"><span>Cisco Networking Academy</span><span>Network Technician Career Path</span><span>HTML Essentials</span><span>JavaScript Essentials</span><span>BITCON 2025</span><span>Dean's Lister 2025</span><span>Graphic Design Champion 2024</span><span>Research Excellence 2023</span><span>Flutter &amp; Dart</span><span>Laravel &amp; MySQL</span><span>Cisco Networking Academy</span><span>Network Technician Career Path</span><span>HTML Essentials</span><span>JavaScript Essentials</span><span>BITCON 2025</span><span>Dean's Lister 2025</span><span>Graphic Design Champion 2024</span><span>Research Excellence 2023</span><span>Flutter &amp; Dart</span><span>Laravel &amp; MySQL</span></div></div>
-    </section>
+  <section class="s" id="education">
+    <h2>Education and training</h2>
+    <ul class="rows">
+      <li><time>2024 - Present</time><div><strong>BS Information Technology</strong><p>La Consolacion College Tanauan</p></div></li>
+      <li><time>2021 - 2023</time><div><strong>Senior High School, STEM</strong><p>Immaculate Heart of Mary College Inc.</p></div></li>
+      <li><time>2026</time><div><strong>Machine Learning and Software Development Seminar</strong><p>La Consolacion College Tanauan · March 18-19</p></div></li>
+      <li><time>2026</time><div><strong>Robotics, Programming and Hackathon Training</strong><p>La Consolacion College Tanauan · March 18-19</p></div></li>
+      <li><time>2026</time><div><strong>Financial Technology and AI Industry Seminar</strong><p>TP ICAP, Bonifacio Global City · March 23</p></div></li>
+      <li><time>2025</time><div><strong>Batangas Information Technology Conference (BITCON)</strong><p>Lipa City · April 25</p></div></li>
+      <li><time>2025</time><div><strong>Intel Seminar: Navigating the AI Frontier</strong><p>La Consolacion College Tanauan · March 25</p></div></li>
+    </ul>
+  </section>
 
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Meet the pilot</p>
-          <h2 id="about-title">About Me</h2>
-        </header>
-        <div class="crew">
-          <div class="pass-wrap reveal">
-            <span class="lanyard" aria-hidden="true"></span>
-            <article class="crew-pass" aria-label="Crew pass of Julia Alemania">
-              <span class="pass-slot" aria-hidden="true"></span>
-              <div class="pass-top"><span class="chip" aria-hidden="true"></span><div><small>CREW PASS</small><code>No. JA-0925</code></div><span class="holo" aria-hidden="true"></span></div>
-              <p class="pass-hello">&gt; hello, world</p>
-              <p class="pass-hi">Hi &#128075;, I&rsquo;m</p>
-              <p class="pass-name">Julia<br>Alemania</p>
-              <p class="pass-role">I&rsquo;M A <b data-roles='["BSIT Student","Web Developer","Flutter Developer","Dean&#39;s Lister"]'>BSIT Student</b></p>
-              <ul class="pass-tiles">
-                <li><small>Studying</small><strong>3rd-year BSIT</strong></li>
-                <li><small>Honors</small><strong>Dean&rsquo;s Lister 2025</strong></li>
-                <li><small>Built solo</small><strong>4 projects</strong></li>
-              </ul>
-              <div class="pass-foot" aria-hidden="true"><span>&#10003; VERIFIED</span></div>
-            </article>
-          </div>
-          <ol class="tl">
-            <li><span class="tl-n">01</span><h4>The work</h4><p>I&rsquo;m a BSIT student who builds complete <em>systems</em> on my own, from the <em>database</em> and forms to dashboards and reports. My projects include a Library Management System, a School Maintenance System, a Tom and Jerry <em>game</em>, and this portfolio.</p></li>
-            <li><span class="tl-n">02</span><h4>The approach</h4><p>I start with the <em>people</em> who will use the system: who files a request, who approves it, and what each role needs to see. Then I design clear screens and <em>test</em> them before I deploy.</p></li>
-            <li><span class="tl-n">03</span><h4>The curiosity</h4><p>I keep <em>learning</em> through certifications, webinars and contests, from <em>networking</em> and web development to cybersecurity awareness and graphic <em>design</em>.</p></li>
-          </ol>
-        </div>
+  <section class="s" id="awards">
+    <h2>Awards and recognitions</h2>
+    <ul class="rows">
+      <li><time>2025</time><div><strong>Dean's Lister</strong><p>La Consolacion College Tanauan</p></div></li>
+      <li><time>2024</time><div><strong>Champion, Graphic Design Contest</strong><p>La Consolacion College Tanauan</p></div></li>
+      <li><time>2024</time><div><strong>Second Runner-Up, Organizational Performance</strong><p>La Consolacion College Tanauan</p></div></li>
+      <li><time>2023</time><div><strong>Best in Work Immersion and Research Excellence</strong><p>Immaculate Heart of Mary College Inc.</p></div></li>
+      <li><time>2021 - 2023</time><div><strong>Academic and Leadership Awardee</strong><p>Immaculate Heart of Mary College Inc.</p></div></li>
+      <li><time>2020</time><div><strong>Second Place, Sports Journalism</strong><p>Elementary Schools Division of San Juan City</p></div></li>
+    </ul>
+  </section>
 
-        <section class="mission" aria-labelledby="mission-title">
-          <header class="crafts-head reveal"><p class="eyebrow">Mission log</p><h3 id="mission-title">The story <span>so far</span></h3></header>
-          <div class="mission-stage"><div class="m-beam" aria-hidden="true"></div><div class="m-bubble" role="status" aria-live="polite"></div><span class="m-hint" aria-hidden="true">Tap the alien &#128125;</span><svg class="m-ufo" viewBox="0 0 360 210" role="button" tabindex="0" aria-label="Tap the alien to play an animation"><defs>
-<linearGradient id="uRim" x1="0" x2="1"><stop offset="0" stop-color="#3ff0c8"/><stop offset=".55" stop-color="#9dff8a"/><stop offset="1" stop-color="#ff7ad9"/></linearGradient>
-<linearGradient id="uBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2f6e"/><stop offset="1" stop-color="#05061a"/></linearGradient>
-<radialGradient id="uAl" cx=".4" cy=".35"><stop offset="0" stop-color="#d4ffc0"/><stop offset="1" stop-color="#3fd98a"/></radialGradient></defs>
-<g class="al-all"><ellipse cx="180" cy="62" rx="52" ry="50" fill="#7fb7ff" fill-opacity=".18" stroke="#bcd8ff" stroke-opacity=".5"/>
-<g class="al-ant"><path d="M170 52 L166 36 M190 52 L194 36" stroke="#7ff0a8" stroke-width="2" stroke-linecap="round"/><circle cx="166" cy="35" r="3.5" fill="#ff7ad9"/><circle cx="194" cy="35" r="3.5" fill="#ff7ad9"/></g>
-<g class="al-head"><ellipse cx="180" cy="74" rx="21" ry="19" fill="url(#uAl)"/><ellipse cx="172" cy="74" rx="4" ry="6" fill="#0a0d2b" transform="rotate(12 172 74)"/><ellipse cx="188" cy="74" rx="4" ry="6" fill="#0a0d2b" transform="rotate(-12 188 74)"/></g></g>
-<ellipse cx="180" cy="132" rx="170" ry="46" fill="none" stroke="url(#uRim)" stroke-width="12"/>
-<ellipse cx="180" cy="124" rx="166" ry="44" fill="url(#uBody)"/>
-<ellipse cx="180" cy="104" rx="104" ry="24" fill="#0d1040" stroke="#b9bfff" stroke-opacity=".7" stroke-width="2.5"/>
-<g class="u-lights" fill="#b45cff"><ellipse cx="60" cy="122" rx="7" ry="4"/><ellipse cx="95" cy="142" rx="8" ry="4.5"/><ellipse cx="145" cy="152" rx="8" ry="4.5"/><ellipse cx="215" cy="152" rx="8" ry="4.5"/><ellipse cx="265" cy="142" rx="8" ry="4.5"/><ellipse cx="300" cy="122" rx="7" ry="4"/></g></svg>
-            <ul class="m-stats">
-              <li class="reveal"><div class="m-art" role="button" tabindex="0" aria-label="Tap to play"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="lScr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2f78"/><stop offset="1" stop-color="#0b0d2e"/></linearGradient><linearGradient id="lBase" x1="0" x2="1"><stop offset="0" stop-color="#35d3ee"/><stop offset="1" stop-color="#1a1d55"/></linearGradient></defs>
-<ellipse cx="100" cy="136" rx="80" ry="8" fill="#35d3ee" fill-opacity=".25"/>
-<g transform="rotate(-4 100 70)"><rect x="32" y="10" width="124" height="82" rx="7" fill="url(#lScr)" stroke="#6fe3ff" stroke-opacity=".7" stroke-width="2"/>
-<rect x="42" y="20" width="44" height="5" rx="2.5" fill="#cfd6ff"/><rect x="42" y="30" width="34" height="4" rx="2" fill="#7f88d8"/><rect x="42" y="38" width="26" height="4" rx="2" fill="#7f88d8"/>
-<rect x="96" y="20" width="50" height="26" rx="3" fill="#ff8fd8"/><rect x="132" y="22" width="9" height="9" rx="1.5" fill="#ffe27a"/><rect x="96" y="50" width="50" height="8" rx="2" fill="#5ee08a"/>
-<rect x="42" y="56" width="32" height="20" rx="3" fill="#35c8ee"/><rect x="80" y="62" width="34" height="14" rx="3" fill="#b06cff"/><rect x="120" y="62" width="26" height="14" rx="3" fill="#5ee08a"/>
-<path d="M18 96 L170 96 L186 124 L8 124 Z" fill="url(#lBase)" stroke="#6fe3ff" stroke-opacity=".5"/>
-<g fill="#0b0d2e" fill-opacity=".7"><rect x="34" y="102" width="112" height="3" rx="1.5"/><rect x="30" y="108" width="120" height="3" rx="1.5"/><rect x="26" y="114" width="128" height="3" rx="1.5"/></g></g></svg></div><strong data-count="4">4</strong><h4>Projects built solo</h4><p>Web systems, a game and a mobile app, from database to launch.</p></li>
-              <li class="reveal m-mid"><div class="m-art" role="button" tabindex="0" aria-label="Tap to play"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><radialGradient id="pBall" cx=".35" cy=".3"><stop offset="0" stop-color="#d9f6ff"/><stop offset=".45" stop-color="#8a7bff"/><stop offset="1" stop-color="#2a1d8f"/></radialGradient><clipPath id="pClip"><circle cx="100" cy="72" r="38"/></clipPath></defs>
-<g transform="rotate(-18 100 72)"><ellipse cx="100" cy="72" rx="84" ry="22" fill="none" stroke="#7ff0ff" stroke-opacity=".5" stroke-width="2"/><ellipse cx="100" cy="72" rx="74" ry="18" fill="none" stroke="#ff9ae6" stroke-opacity=".5" stroke-width="2"/></g>
-<circle cx="100" cy="72" r="38" fill="url(#pBall)"/><g clip-path="url(#pClip)" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="5" stroke-linecap="round"><path d="M60 58 Q80 48 100 58 T140 56"/><path d="M58 74 Q80 64 100 74 T142 72"/><path d="M62 90 Q82 80 102 90 T138 88"/></g>
-<g transform="rotate(-18 100 72)"><path d="M16 72 A84 22 0 0 0 184 72" fill="none" stroke="#7ff0ff" stroke-width="2.5"/><path d="M26 72 A74 18 0 0 0 174 72" fill="none" stroke="#ff9ae6" stroke-width="2.5"/><circle cx="174" cy="72" r="5" fill="#ff7ad9"/><circle cx="30" cy="80" r="4" fill="#7ff0ff"/></g></svg></div><strong data-count="15">15</strong><h4>Certificates earned</h4><p>Networking, web development and webinars.</p></li>
-              <li class="reveal"><div class="m-art" role="button" tabindex="0" aria-label="Tap to play"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="sG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe98a"/><stop offset="1" stop-color="#f5a623"/></linearGradient></defs>
-<polygon points="100.0,26.0 115.3,55.0 147.6,60.5 124.7,84.0 129.4,116.5 100.0,102.0 70.6,116.5 75.3,84.0 52.4,60.5 84.7,55.0" fill="url(#sG)" stroke="url(#sG)" stroke-width="14" stroke-linejoin="round"/>
-<ellipse cx="86" cy="76" rx="4.5" ry="7" fill="#2a1a3a"/><ellipse cx="114" cy="76" rx="4.5" ry="7" fill="#2a1a3a"/><circle cx="87.5" cy="73" r="1.6" fill="#fff"/><circle cx="115.5" cy="73" r="1.6" fill="#fff"/>
-<circle cx="76" cy="88" r="5.5" fill="#ff8fa8" fill-opacity=".8"/><circle cx="124" cy="88" r="5.5" fill="#ff8fa8" fill-opacity=".8"/><path d="M92 90 Q100 98 108 90" fill="none" stroke="#2a1a3a" stroke-width="3" stroke-linecap="round"/>
-<polygon points="168.0,12.0 172.7,21.5 183.2,23.1 175.6,30.5 177.4,40.9 168.0,36.0 158.6,40.9 160.4,30.5 152.8,23.1 163.3,21.5" fill="#5ee8f0" stroke="#5ee8f0" stroke-width="5" stroke-linejoin="round"/><polygon points="30.0,106.0 33.5,113.1 41.4,114.3 35.7,119.9 37.1,127.7 30.0,124.0 22.9,127.7 24.3,119.9 18.6,114.3 26.5,113.1" fill="#ff8fd8" stroke="#ff8fd8" stroke-width="4" stroke-linejoin="round"/></svg></div><strong data-count="11">11</strong><h4>Awards and honors</h4><p>Dean&rsquo;s Lister, contest wins and more.</p></li>
-            </ul></div>
-        </section>
+  <section class="s contact" id="contact">
+    <h2>Let's work together</h2>
+    <a class="big" href="mailto:cassandraalemania@gmail.com">cassandraalemania@gmail.com</a>
+    <p>Open to internships and entry-level roles. Based in Tanauan City, Batangas · 0956-297-3655</p>
+    <div class="cta" style="justify-content:flex-start"><a class="btn light" href="docs/Julia_Alemania_CV.pdf" download>Download CV</a></div>
+  </section>
+</main>
 
-    <section class="section socials" aria-labelledby="socials-title"><div class="container">
-      <header class="crafts-head reveal"><p class="eyebrow">Find me online</p><h2 id="socials-title">Let&rsquo;s <span>connect</span></h2></header>
-      <ul class="social-grid">
-        <li class="reveal"><a class="social-card" style="--c:#3b8bff" href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Julia Cassandra Alemania (opens in a new tab)">
-          <span class="sc-cta">Connect <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-          <span class="sc-ico"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></span>
-          <i class="fa-brands fa-linkedin sc-mark" aria-hidden="true"></i>
-          <span class="sc-kind">Career</span><strong>LinkedIn</strong><span class="sc-handle">Julia Cassandra Alemania</span>
-        </a></li>
-        <li class="reveal"><a class="social-card" style="--c:#b06cff" href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer" aria-label="GitHub: lcct-24-13115 (opens in a new tab)">
-          <span class="sc-cta">Follow <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-          <span class="sc-ico"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
-          <i class="fa-brands fa-github sc-mark" aria-hidden="true"></i>
-          <span class="sc-kind">Code</span><strong>GitHub</strong><span class="sc-handle">lcct-24-13115</span>
-        </a></li>
-        <li class="reveal"><a class="social-card" style="--c:#4c8dff" href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener noreferrer" aria-label="Facebook: JCUA24 (opens in a new tab)">
-          <span class="sc-cta">Message <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-          <span class="sc-ico"><i class="fa-brands fa-facebook" aria-hidden="true"></i></span>
-          <i class="fa-brands fa-facebook sc-mark" aria-hidden="true"></i>
-          <span class="sc-kind">Social</span><strong>Facebook</strong><span class="sc-handle">JCUA24</span>
-        </a></li>
-        <li class="reveal"><a class="social-card" style="--c:#ff6fb5" href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @makethoiu_ (opens in a new tab)">
-          <span class="sc-cta">Follow <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-          <span class="sc-ico"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
-          <i class="fa-brands fa-instagram sc-mark" aria-hidden="true"></i>
-          <span class="sc-kind">Photos</span><strong>Instagram</strong><span class="sc-handle">@makethoiu_</span>
-        </a></li>
-        <li class="reveal"><a class="social-card" style="--c:#35d3ee" href="https://www.tiktok.com/@liaxdcute" target="_blank" rel="noopener noreferrer" aria-label="TikTok: @liaxdcute (opens in a new tab)">
-          <span class="sc-cta">Follow <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-          <span class="sc-ico"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></span>
-          <i class="fa-brands fa-tiktok sc-mark" aria-hidden="true"></i>
-          <span class="sc-kind">Clips</span><strong>TikTok</strong><span class="sc-handle">@liaxdcute</span>
-        </a></li>
-      </ul>
-    </div></section>
+<footer>Thanks for visiting.</footer>
 
-    <section class="section stack" id="stack" aria-labelledby="stack-title"><div class="container">
-      <header class="crafts-head reveal"><p class="eyebrow">What I work with</p><h2 id="stack-title">My <span>Tech Stack</span></h2></header>
-      <p class="stack-intro reveal">These are the tools I reach for most often. I use them to build complete systems, from the database and forms to dashboards and reports, and I back them up with training, which is why my certificates cover networking, web development and cybersecurity awareness.</p>
-      <div class="stack-grid"><article class="stack-card reveal" style="--c:#b06cff"><header><span class="stack-badge" aria-hidden="true">01</span><div><h3>Programming</h3><p>Languages I use to build programs and apps.</p></div></header><ul class="stack-tiles"><li><span class="tile-ico"><i class="fa-brands fa-python" aria-hidden="true"></i></span><span>Python</span></li><li><span class="tile-ico"><i class="fa-brands fa-java" aria-hidden="true"></i></span><span>Java</span></li><li><span class="tile-ico"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span>C</span></li><li><span class="tile-ico"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span>C++</span></li><li><span class="tile-ico"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i></span><span>Flutter</span></li><li><span class="tile-ico"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span><span>Dart</span></li></ul></article><article class="stack-card reveal" style="--c:#35c8ee"><header><span class="stack-badge" aria-hidden="true">02</span><div><h3>Web Development</h3><p>Front ends, back ends and the database behind them.</p></div></header><ul class="stack-tiles"><li><span class="tile-ico"><i class="fa-brands fa-html5" aria-hidden="true"></i></span><span>HTML</span></li><li><span class="tile-ico"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></span><span>CSS</span></li><li><span class="tile-ico"><i class="fa-brands fa-js" aria-hidden="true"></i></span><span>JavaScript</span></li><li><span class="tile-ico"><i class="fa-brands fa-php" aria-hidden="true"></i></span><span>PHP</span></li><li><span class="tile-ico"><i class="fa-brands fa-laravel" aria-hidden="true"></i></span><span>Laravel</span></li><li><span class="tile-ico"><i class="fa-solid fa-database" aria-hidden="true"></i></span><span>MySQL</span></li></ul></article><article class="stack-card reveal" style="--c:#3fe08c"><header><span class="stack-badge" aria-hidden="true">03</span><div><h3>Networking &amp; Tools</h3><p>Keeping systems connected, secure and under control.</p></div></header><ul class="stack-tiles"><li><span class="tile-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span>Networking</span></li><li><span class="tile-ico"><i class="fa-solid fa-terminal" aria-hidden="true"></i></span><span>Cisco IOS</span></li><li><span class="tile-ico"><i class="fa-brands fa-git-alt" aria-hidden="true"></i></span><span>Git</span></li><li><span class="tile-ico"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><span>Security</span></li><li><span class="tile-ico"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span><span>Support</span></li><li><span class="tile-ico"><i class="fa-solid fa-compact-disc" aria-hidden="true"></i></span><span>OS setup</span></li></ul></article></div>
-    </div></section>
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
 
-    <section class="section liftoff-sec" aria-labelledby="liftoff-title"><div class="container"><div class="liftoff reveal"><p class="eyebrow">Ready for liftoff?</p><h2 id="liftoff-title">Let&rsquo;s build <span>something out of this world</span></h2><div class="btn-row"><a class="btn btn-light" href="contact.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Say hi</a><a class="btn btn-ghost" id="launch-btn" href="projects.html"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> <span>See my projects</span></a></div><div class="lo-astro-wrap" aria-hidden="true"><svg class="lo-astro" viewBox="0 0 260 300">
-<defs><linearGradient id="aVisor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f43c9"/><stop offset="1" stop-color="#080b2a"/></linearGradient><radialGradient id="aGlow" cx=".5" cy=".5"><stop offset="0" stop-color="#ffe98a"/><stop offset="1" stop-color="#ffb23d"/></radialGradient></defs>
-<g class="a-flag"><line x1="214" y1="206" x2="214" y2="112" stroke="#b9c0ff" stroke-width="4" stroke-linecap="round"/><path d="M216 114 L252 124 L216 140 Z" fill="#ff7ad9"/><text x="226" y="132" font-size="12" font-weight="800" fill="#fff" font-family="Poppins,Arial,sans-serif">J</text></g>
-<rect x="66" y="126" width="128" height="120" rx="26" fill="#c3cbf5"/>
-<rect x="78" y="130" width="104" height="130" rx="42" fill="#f4f6ff" stroke="#cfd6f5" stroke-width="3"/>
-<rect x="104" y="170" width="52" height="36" rx="9" fill="#dfe4ff"/><circle cx="116" cy="188" r="5" fill="#3fe08c"/><circle cx="130" cy="188" r="5" fill="#ffc24b"/><circle cx="144" cy="188" r="5" fill="#ff7ad9"/>
-<line x1="176" y1="162" x2="208" y2="204" stroke="#f4f6ff" stroke-width="26" stroke-linecap="round"/><circle cx="212" cy="208" r="15" fill="#fff" stroke="#cfd6f5" stroke-width="3"/>
-<g class="a-wave"><line x1="84" y1="162" x2="48" y2="104" stroke="#f4f6ff" stroke-width="26" stroke-linecap="round"/><circle cx="44" cy="96" r="16" fill="#fff" stroke="#cfd6f5" stroke-width="3"/></g>
-<rect x="98" y="136" width="64" height="14" rx="7" fill="#aab4ff"/>
-<circle cx="130" cy="86" r="64" fill="#f4f6ff" stroke="#cfd6f5" stroke-width="4"/>
-<ellipse cx="130" cy="90" rx="48" ry="41" fill="url(#aVisor)"/>
-<ellipse cx="112" cy="72" rx="16" ry="8" fill="#fff" fill-opacity=".5" transform="rotate(-28 112 72)"/><circle cx="150" cy="104" r="3" fill="#fff" fill-opacity=".6"/>
-</svg></div></div></div></section>
-  </main>
+<script>
+const btn=document.getElementById('menuBtn'),ov=document.getElementById('overlay');
+function setMenu(o){ov.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');btn.firstElementChild.className=o?'fa-solid fa-xmark':'fa-solid fa-ellipsis'}
+btn.onclick=()=>setMenu(!ov.classList.contains('open'));
+ov.querySelectorAll('a').forEach(a=>a.onclick=()=>setMenu(false));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript. Thanks for visiting my corner of the universe.</p>
-      <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
-    </div>
-  </footer>
-
-  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
-
-  <!-- Image viewer (opened by JavaScript) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-    <div class="lb-bar">
-      <p class="lb-title" id="lbTitle"></p>
-      <p class="lb-count" id="lbCount" aria-live="polite"></p>
-      <a class="icon-btn lb-dl" id="lbDownload" href="#" download aria-label="Download this image" title="Download this image"><i class="fa-solid fa-download" aria-hidden="true"></i></a>
-      <button type="button" class="icon-btn lb-close" id="lbClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-    </div>
-    <button type="button" class="icon-btn lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-    <img class="lb-img" id="lbImg" alt="">
-    <button type="button" class="icon-btn lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-  </div>
-
-  <!-- Small message that confirms copying -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function size(){W=c.width=innerWidth;H=c.height=innerHeight;stars=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,p:Math.random()*6.28,s:Math.random()*.02+.005,g:Math.random()<.08}))}
+function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.p+=s.s;const a=.45+.55*Math.sin(s.p);x.globalAlpha=a;x.fillStyle=s.g?'#bcd6ff':'#fff';if(s.g){x.shadowColor='#9cc4ff';x.shadowBlur=14}else x.shadowBlur=0;x.beginPath();x.arc(s.x,s.y,s.g?s.r+1.6:s.r,0,6.28);x.fill()}x.globalAlpha=1;if(!still)requestAnimationFrame(draw)}
+addEventListener('resize',size);size();draw();
+</script>
 </body>
 </html>
