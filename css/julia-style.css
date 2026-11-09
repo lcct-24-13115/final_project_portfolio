@@ -1542,3 +1542,13 @@ ul, ol {
   font-size: 0.93rem;
   color: var(--text-muted);
 }
+
+/* ---------- Skill chip icons and Save contact ---------- */
+.chip-icon {
+  margin-right: 0.4rem;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+.save-contact {
+  margin-bottom: 1rem;
+}
