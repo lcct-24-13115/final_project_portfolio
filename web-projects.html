@@ -1,322 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Web Design &amp; Development | Julia Cassandra Alemania</title>
-  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, a BS Information Technology student and Dean's Lister. Skills, certifications, projects, and contact details.">
-  <meta name="author" content="Julia Cassandra U. Alemania">
-  <meta name="theme-color" content="#0B6FA4">
-  <link rel="canonical" href="https://lcct-24-13115.github.io/final_project_portfolio/">
-
-  <!-- Link preview (Facebook, Messenger, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Julia Cassandra Alemania | BSIT Student Portfolio">
-  <meta property="og:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
-  <meta property="og:url" content="https://lcct-24-13115.github.io/final_project_portfolio/">
-  <meta property="og:image" content="https://lcct-24-13115.github.io/final_project_portfolio/images/preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-  <link rel="icon" href="images/favicon.ico" sizes="any">
-
-  <!-- Remember the theme before the page paints, so there is no flash -->
-  <script>
-    document.documentElement.classList.add("js");
-    try { if (sessionStorage.getItem("launched")) document.documentElement.classList.add("no-launch"); } catch (err) { /* ignore */ }
-    try {
-      var saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    } catch (err) { /* storage unavailable: fall back to the system theme */ }
-  </script>
-
-  <!-- Display font for headings (falls back to the bundled Poppins if it cannot load) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
-
-  <!-- Icons (Font Awesome, free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Own stylesheet -->
-  <link rel="stylesheet" href="css/julia-style.css?v=3">
-  <link rel="stylesheet" href="css/space-theme.css?v=3">
-  <link rel="stylesheet" href="css/about-plus.css?v=3">
-  <link rel="stylesheet" href="css/pages.css?v=3">
-  <script src="js/julia-main.js?v=3" defer></script>
-  <script src="js/space-loader.js?v=3" defer></script>
-  <script src="js/cursor.js?v=3" defer></script>
-  <link rel="stylesheet" href="css/orbit-ui.css?v=1">
-  <script src="js/orbit-ui.js?v=1" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Design &amp; Development | Julia Cassandra Alemania</title>
+<meta name="description" content="Web design and development projects by Julia Cassandra U. Alemania — library system, maintenance ticketing, portfolio app, and more.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/design-a-base.css?v=1">
+<link rel="stylesheet" href="css/design-a-webprojects.css?v=1">
+<script src="js/design-a-common.js?v=1" defer></script>
 </head>
 <body>
-  <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
-  <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
-    <div class="launch-brand">
-      <span class="launch-mark" aria-hidden="true"><img src="images/logo-mark.svg" alt="" width="96" height="96"></span>
-      <p class="launch-name"><span class="launch-first">Julia</span> <span class="launch-last">Alemania</span></p>
-      <p class="launch-tag">BS Information Technology</p>
-    </div>
-    <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
-    <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
-    <button type="button" class="launch-skip">Skip</button>
-  </div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
 
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <a class="skip-link" href="#main">Skip to main content</a>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="about.html"><span>About Me</span><small>Who I am and how I work</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
+</nav>
 
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Julia Cassandra Alemania, back to the top">Julia Alemania</a>
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="page-hero" style="padding-top:110px;padding-bottom:40px">
+    <a class="back-link" href="projects.html"><i class="fa-solid fa-arrow-left"></i> Back to projects</a>
+    <p class="eyebrow">Digital Systems</p>
+    <h1>Web Design <span class="grad">&amp; Development</span></h1>
+    <p class="sub">A curated selection of my digital work, from complete web systems to games and apps, built from the database to the dashboard.</p>
+  </section>
 
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        <span class="glyph" aria-hidden="true">&#9776;</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-        <ul><li><a href="about.html">About Me</a></li><li><a href="experience.html">Experience</a></li><li><a href="projects.html" aria-current="page">Projects</a></li><li><a href="links.html">Links</a></li><li class="nav-cta"><a href="contact.html">Say hi &#128075;</a></li></ul>
-      </nav>
-
-      <button class="icon-btn fs-toggle" id="fsToggle" type="button" aria-label="Enter full screen" title="Enter full screen" hidden>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
-      </button>
-
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <span class="glyph" aria-hidden="true">&#9790;</span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="page-top section showcase" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow"><a href="projects.html" style="color:inherit;text-decoration:none">&larr; Project Nexus</a> &nbsp;·&nbsp; Digital systems</p>
-          <h2 id="projects-title">Projects</h2>
-        </header>
-        <div class="grid grid-2 project-grid">
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="tj" aria-label="Open 8 screenshots of Tom and Jerry: Intel Byte Chase">
-              <img src="images/projects/project_tom_and_jerry.png" alt="Screenshot of Tom and Jerry: Intel Byte Chase" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Tom and Jerry: Intel Byte Chase</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A Tom and Jerry themed maze game with INTEL (Information Technology Enthusiasts of La Consolacion) branding. Play alone against an AI on three difficulty levels, or play online in a room with a QR code or room code. Has player accounts, a leaderboard, and light/dark themes.</p>
-              <p><strong>My role:</strong> Solo developer. I designed and built the whole game myself, from the maze and AI to the online rooms.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>A maze game that feels fair whether you play alone against the computer or online with friends.</dd></div>
-                <div><dt>What I built</dt><dd>A Flutter game with an AI at three difficulty levels, online rooms joined by QR code or room code, player accounts, and a leaderboard.</dd></div>
-                <div><dt>Result</dt><dd>Live and playable online, so anyone with the link can try it.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Solo mode against an AI with three difficulty levels</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Online rooms joined with a QR code or room code</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Player accounts with a leaderboard</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Multiplayer</li>
-                <li>Firebase Hosting</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/tom_and_jerry_new" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-                <a class="btn btn-outline" href="https://tom-jerry-multiplayer.web.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo<span class="sr-only"> of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="tj">
-              <li><a href="images/projects/project_tj_01_splash.jpg" data-title="Splash screen">Splash screen</a></li>
-              <li><a href="images/projects/project_tj_03_main_menu.jpg" data-title="Main menu">Main menu</a></li>
-              <li><a href="images/projects/project_tj_04_login.jpg" data-title="Player login">Player login</a></li>
-              <li><a href="images/projects/project_tj_05_register.jpg" data-title="Register player">Register player</a></li>
-              <li><a href="images/projects/project_tj_06_game_mode.jpg" data-title="Select game mode">Select game mode</a></li>
-              <li><a href="images/projects/project_tj_07_character.jpg" data-title="Choose your character">Choose your character</a></li>
-              <li><a href="images/projects/project_tj_08_difficulty.jpg" data-title="Select difficulty">Select difficulty</a></li>
-              <li><a href="images/projects/project_tj_09_multiplayer.jpg" data-title="Multiplayer lobby">Multiplayer lobby</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="maint" aria-label="Open 8 screenshots of Maintenance Ticketing System">
-              <img src="images/projects/project_school_maintenance.png" alt="Screenshot of Maintenance Ticketing System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Maintenance Ticketing System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A web system for the school Maintenance Office. Staff file requests for materials or equipment, and each ticket moves through role-based approvals up to the school president.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, including the forms, role dashboards, and approval flow.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>Requests for materials, equipment, and repairs have to pass through several offices before they are approved.</dd></div>
-                <div><dt>What I built</dt><dd>A Laravel system with three request forms, a dashboard for each role from requester to president, and a New, Doing, and Done board for the maintenance team.</dd></div>
-                <div><dt>Result</dt><dd>Every request can be followed from filing to approval to completion in one place, with alerts when it needs someone&#x27;s attention.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Three request forms: facilities, requisition, and repairs</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Separate dashboards for requester, maintenance, finance, custodian, and president</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Maintenance board with New, Doing, and Done columns</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Advance-notice rules and in-app alerts with sound</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>Blade</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/school-maintenance-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Maintenance Ticketing System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="maint">
-              <li><a href="images/projects/project_maint_01_login.jpg" data-title="Login with role selection">Login with role selection</a></li>
-              <li><a href="images/projects/project_maint_02_facilities_form.jpg" data-title="Form 1: Facilities &amp; equipment">Form 1: Facilities &amp; equipment</a></li>
-              <li><a href="images/projects/project_maint_03_requisition_slip.jpg" data-title="Form 2: Requisition slip">Form 2: Requisition slip</a></li>
-              <li><a href="images/projects/project_maint_04_repairs_form.jpg" data-title="Form 3: Repairs &amp; improvement">Form 3: Repairs &amp; improvement</a></li>
-              <li><a href="images/projects/project_maint_05_maintenance_board.jpg" data-title="Maintenance task board">Maintenance task board</a></li>
-              <li><a href="images/projects/project_maint_06_finance_dashboard.jpg" data-title="Finance dashboard">Finance dashboard</a></li>
-              <li><a href="images/projects/project_maint_07_custodian_dashboard.jpg" data-title="Property custodian dashboard">Property custodian dashboard</a></li>
-              <li><a href="images/projects/project_maint_08_president_dashboard.jpg" data-title="School president dashboard">School president dashboard</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="lib" aria-label="Open 11 screenshots of Integrated Library Management System">
-              <img src="images/projects/project_library_system.png" alt="Screenshot of Integrated Library Management System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 11 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Integrated Library Management System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A library system for book loans and returns, patron profiles, reservations, attendance logging, borrowing history reports, and staff accounts with roles.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, from the database to the reports.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>A library needs to track loans, returns, reservations, and visitors without losing records.</dd></div>
-                <div><dt>What I built</dt><dd>A Laravel system where staff scan the patron ID and accession number to issue or return a book, log attendance, and print loan, overdue, circulation, and shelf reports.</dd></div>
-                <div><dt>Result</dt><dd>Daily library work, from checkout to reports, runs from one system with role-based staff accounts.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Issue and return books by scanning the patron ID and accession number</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Attendance logging with a visitors-per-hour chart</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Printable reports: loan history, overdue list, circulation summary, and shelf list</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Book reservations and patron profiles</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>Blade</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/library-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Integrated Library Management System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="lib">
-              <li><a href="images/projects/project_lib_01_login.jpg" data-title="Staff login">Staff login</a></li>
-              <li><a href="images/projects/project_lib_02_dashboard.jpg" data-title="Dashboard">Dashboard</a></li>
-              <li><a href="images/projects/project_lib_03_books.jpg" data-title="Book catalog">Book catalog</a></li>
-              <li><a href="images/projects/project_lib_04_patrons.jpg" data-title="Patrons">Patrons</a></li>
-              <li><a href="images/projects/project_lib_05_issue_book.jpg" data-title="Issue book">Issue book</a></li>
-              <li><a href="images/projects/project_lib_06_return_book.jpg" data-title="Return book">Return book</a></li>
-              <li><a href="images/projects/project_lib_07_loans.jpg" data-title="Loans (circulation)">Loans (circulation)</a></li>
-              <li><a href="images/projects/project_lib_08_reservations.jpg" data-title="Reservations">Reservations</a></li>
-              <li><a href="images/projects/project_lib_09_attendance.jpg" data-title="Attendance logging">Attendance logging</a></li>
-              <li><a href="images/projects/project_lib_10_reports.jpg" data-title="Reports">Reports</a></li>
-              <li><a href="images/projects/project_lib_11_add_user.jpg" data-title="Add new user">Add new user</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="pf" aria-label="Open 6 screenshots of My Portfolio App (Flutter)">
-              <img src="images/projects/project_portfolio.png" alt="Screenshot of My Portfolio App (Flutter)" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 6 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>My Portfolio App (Flutter)</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>The Flutter version of this portfolio: a five-tab app with a light/dark theme, certificate gallery, and automatic deployment to GitHub Pages. This website is the HTML, CSS and JavaScript version of it.</p>
-              <p><strong>My role:</strong> Solo developer. I designed, coded, and deployed this app myself.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>Show my skills, certificates, and projects in a way that works on any device and in light or dark mode.</dd></div>
-                <div><dt>What I built</dt><dd>A five-tab Flutter app with a certificate gallery, filters, swipe, and zoom, plus this website as the HTML, CSS, and JavaScript version.</dd></div>
-                <div><dt>Result</dt><dd>Published online and checked by analysis and tests, then deployed automatically with GitHub Actions.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Light and dark mode that remembers your choice</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Certificate gallery with filters, swipe, and zoom</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Checked by analysis and tests, then deployed automatically</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Material 3</li>
-                <li>GitHub Actions</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/my_portfolio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of My Portfolio App (Flutter) (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="pf">
-              <li><a href="images/projects/project_pf_00_overview.jpg" data-title="Overview (Android, dark mode)">Overview (Android, dark mode)</a></li>
-              <li><a href="images/projects/project_pf_01_personal.png" data-title="Personal tab">Personal tab</a></li>
-              <li><a href="images/projects/project_pf_02_education.png" data-title="Education tab">Education tab</a></li>
-              <li><a href="images/projects/project_pf_03_skills.png" data-title="Skills tab">Skills tab</a></li>
-              <li><a href="images/projects/project_pf_04_interests.png" data-title="Interests tab">Interests tab</a></li>
-              <li><a href="images/projects/project_pf_05_contact.png" data-title="Contact tab">Contact tab</a></li>
-            </ul>
-          </article>
+  <!-- ===== Projects ===== -->
+  <section style="max-width:1000px;margin:0 auto;padding:0 24px 60px">
+    <div class="proj-grid">
+      <!-- Tom and Jerry -->
+      <article class="proj-card">
+        <div class="proj-cover">
+          <img src="images/projects/project_tom_and_jerry.png" alt="Screenshot of Tom and Jerry: Intel Byte Chase" loading="lazy" width="1280" height="720">
+          <span class="shots-badge"><i class="fa-regular fa-images"></i> 8 screenshots</span>
         </div>
+        <div class="proj-body">
+          <h3>Tom and Jerry: Intel Byte Chase</h3>
+          <p class="meta">2026 · Class project</p>
+          <p>A Tom and Jerry themed maze game with INTEL branding. Play alone against an AI on three difficulty levels, or play online in a room with a QR code or room code. Has player accounts, a leaderboard, and light/dark themes.</p>
+          <p><strong>My role:</strong> Solo developer. I designed and built the whole game myself.</p>
+          <details>
+            <summary>Case study and features</summary>
+            <div class="case">
+              <div><dt>Challenge</dt><dd>A maze game that feels fair whether you play alone or online.</dd></div>
+              <div><dt>What I built</dt><dd>A Flutter game with AI, online rooms, player accounts, and leaderboard.</dd></div>
+              <div><dt>Result</dt><dd>Live and playable online.</dd></div>
+            </div>
+          </details>
+          <ul class="checks">
+            <li><i class="fa-solid fa-circle-check"></i> Solo mode against AI with three difficulty levels</li>
+            <li><i class="fa-solid fa-circle-check"></i> Online rooms joined with QR code or room code</li>
+            <li><i class="fa-solid fa-circle-check"></i> Player accounts with a leaderboard</li>
+          </ul>
+          <ul class="proj-chips"><li>Flutter</li><li>Dart</li><li>Multiplayer</li><li>Firebase Hosting</li></ul>
+          <div class="proj-btns">
+            <a class="proj-btn" href="https://github.com/lcct-24-13115/tom_and_jerry_new" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="proj-btn-outline" href="https://tom-jerry-multiplayer.web.app/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a>
+          </div>
+        </div>
+      </article>
 
-        <h3 class="subheading reveal"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Awards &amp; Recognitions</h3>
-        <ul class="awards reveal">
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Dean&#x27;s Lister Recipient</strong><span>La Consolacion College Tanauan</span><span class="date">2025</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in LCCTanauan Graphic Design Contest</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Runner-Up in Organizational Performance (Group Competition)</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Best in Work Immersion</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Research Excellence Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Leadership Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Place in Sports Journalism</strong><span>Elementary Schools Division of San Juan City, Metro Manila</span><span class="date">2020</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated High School</span><span class="date">2016 - 2021</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in Poster Making Contest</strong><span>San Juan City Integrated School</span><span class="date">2013</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated School</span><span class="date">2010 - 2016</span></div></li>
-        </ul>
-      </div>
-    </section>
-  </main>
+      <!-- Maintenance -->
+      <article class="proj-card">
+        <div class="proj-cover">
+          <img src="images/projects/project_school_maintenance.png" alt="Screenshot of Maintenance Ticketing System" loading="lazy" width="1280" height="720">
+          <span class="shots-badge"><i class="fa-regular fa-images"></i> 8 screenshots</span>
+        </div>
+        <div class="proj-body">
+          <h3>Maintenance Ticketing System</h3>
+          <p class="meta">2026 · Class project</p>
+          <p>A web system for the school Maintenance Office. Staff file requests for materials or equipment, and each ticket moves through role-based approvals up to the school president.</p>
+          <p><strong>My role:</strong> Solo developer. I built the whole system myself.</p>
+          <details>
+            <summary>Case study and features</summary>
+            <div class="case">
+              <div><dt>Challenge</dt><dd>Requests have to pass through several offices before approval.</dd></div>
+              <div><dt>What I built</dt><dd>A Laravel system with role dashboards and a Kanban-style board.</dd></div>
+              <div><dt>Result</dt><dd>Every request followed from filing to completion.</dd></div>
+            </div>
+          </details>
+          <ul class="checks">
+            <li><i class="fa-solid fa-circle-check"></i> Three request forms: facilities, requisition, and repairs</li>
+            <li><i class="fa-solid fa-circle-check"></i> Separate dashboards for each role</li>
+            <li><i class="fa-solid fa-circle-check"></i> Maintenance board with New, Doing, Done columns</li>
+          </ul>
+          <ul class="proj-chips"><li>Laravel</li><li>PHP</li><li>MySQL</li><li>Blade</li></ul>
+          <div class="proj-btns">
+            <a class="proj-btn" href="https://github.com/lcct-24-13115/school-maintenance-system" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript. Thanks for visiting my corner of the universe.</p>
-      <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+      <!-- Library -->
+      <article class="proj-card">
+        <div class="proj-cover">
+          <img src="images/projects/project_library_system.png" alt="Screenshot of Integrated Library Management System" loading="lazy" width="1280" height="720">
+          <span class="shots-badge"><i class="fa-regular fa-images"></i> 11 screenshots</span>
+        </div>
+        <div class="proj-body">
+          <h3>Integrated Library Management System</h3>
+          <p class="meta">2026 · Class project</p>
+          <p>A library system for book loans and returns, patron profiles, reservations, attendance logging, borrowing history reports, and staff accounts with roles.</p>
+          <p><strong>My role:</strong> Solo developer. I built the whole system from database to reports.</p>
+          <details>
+            <summary>Case study and features</summary>
+            <div class="case">
+              <div><dt>Challenge</dt><dd>Track loans, returns, reservations and visitors without losing records.</dd></div>
+              <div><dt>What I built</dt><dd>A Laravel system with barcode scanning, attendance and printable reports.</dd></div>
+              <div><dt>Result</dt><dd>Daily library work runs from one system.</dd></div>
+            </div>
+          </details>
+          <ul class="checks">
+            <li><i class="fa-solid fa-circle-check"></i> Issue and return books by scanning IDs</li>
+            <li><i class="fa-solid fa-circle-check"></i> Attendance logging with visitors-per-hour chart</li>
+            <li><i class="fa-solid fa-circle-check"></i> Printable reports: loan, overdue, circulation, shelf</li>
+          </ul>
+          <ul class="proj-chips"><li>Laravel</li><li>PHP</li><li>Blade</li><li>Tailwind CSS</li></ul>
+          <div class="proj-btns">
+            <a class="proj-btn" href="https://github.com/lcct-24-13115/library-system" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Portfolio App -->
+      <article class="proj-card">
+        <div class="proj-cover">
+          <img src="images/projects/project_portfolio.png" alt="Screenshot of My Portfolio App (Flutter)" loading="lazy" width="1280" height="720">
+          <span class="shots-badge"><i class="fa-regular fa-images"></i> 6 screenshots</span>
+        </div>
+        <div class="proj-body">
+          <h3>My Portfolio App (Flutter)</h3>
+          <p class="meta">2026 · Class project</p>
+          <p>The Flutter version of this portfolio: a five-tab app with a light/dark theme, certificate gallery, and automatic deployment to GitHub Pages.</p>
+          <p><strong>My role:</strong> Solo developer. I designed, coded and deployed this app myself.</p>
+          <details>
+            <summary>Case study and features</summary>
+            <div class="case">
+              <div><dt>Challenge</dt><dd>Show skills and certificates on any device in light or dark mode.</dd></div>
+              <div><dt>What I built</dt><dd>A five-tab Flutter app with gallery, filters, swipe and zoom.</dd></div>
+              <div><dt>Result</dt><dd>Published online with automated deployment.</dd></div>
+            </div>
+          </details>
+          <ul class="checks">
+            <li><i class="fa-solid fa-circle-check"></i> Light and dark mode that remembers your choice</li>
+            <li><i class="fa-solid fa-circle-check"></i> Certificate gallery with filters, swipe, and zoom</li>
+            <li><i class="fa-solid fa-circle-check"></i> Deployed automatically with GitHub Actions</li>
+          </ul>
+          <ul class="proj-chips"><li>Flutter</li><li>Dart</li><li>Material 3</li><li>GitHub Actions</li></ul>
+          <div class="proj-btns">
+            <a class="proj-btn" href="https://github.com/lcct-24-13115/my_portfolio" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </article>
     </div>
-  </footer>
+  </section>
 
-  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
+  <!-- ===== Awards ===== -->
+  <section class="awards-section">
+    <h3><i class="fa-solid fa-trophy"></i> Awards &amp; Recognitions</h3>
+    <ul class="awards">
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Dean&rsquo;s Lister Recipient</strong><span>La Consalacion College Tanauan</span></div><span class="date">2025</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Champion in LCCTanauan Graphic Design Contest</strong><span>La Consalacion College Tanauan</span></div><span class="date">2024</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Second Runner-Up in Organizational Performance</strong><span>La Consalacion College Tanauan</span></div><span class="date">2024</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Best in Work Immersion</strong><span>Immaculate Heart of Mary College Inc.</span></div><span class="date">2023</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Research Excellence Awardee</strong><span>Immaculate Heart of Mary College Inc.</span></div><span class="date">2023</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Leadership Awardee</strong><span>Immaculate Heart of Mary College Inc.</span></div><span class="date">2021-2023</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Academic Awardee</strong><span>Immaculate Heart of Mary College Inc.</span></div><span class="date">2021-2023</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Second Place in Sports Journalism</strong><span>SDS San Juan City, Metro Manila</span></div><span class="date">2020</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated High School</span></div><span class="date">2016-2021</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Champion in Poster Making Contest</strong><span>San Juan City Integrated School</span></div><span class="date">2013</span></li>
+      <li><i class="fa-solid fa-trophy"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated School</span></div><span class="date">2010-2016</span></li>
+    </ul>
+  </section>
+</main>
 
-  <!-- Image viewer (opened by JavaScript) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-    <div class="lb-bar">
-      <p class="lb-title" id="lbTitle"></p>
-      <p class="lb-count" id="lbCount" aria-live="polite"></p>
-      <a class="icon-btn lb-dl" id="lbDownload" href="#" download aria-label="Download this image" title="Download this image"><i class="fa-solid fa-download" aria-hidden="true"></i></a>
-      <button type="button" class="icon-btn lb-close" id="lbClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-    </div>
-    <button type="button" class="icon-btn lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-    <img class="lb-img" id="lbImg" alt="">
-    <button type="button" class="icon-btn lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-  </div>
-
-  <!-- Small message that confirms copying -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
 </body>
 </html>

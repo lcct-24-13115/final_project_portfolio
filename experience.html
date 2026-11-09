@@ -1,254 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Experience | Julia Cassandra Alemania</title>
-  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, a BS Information Technology student and Dean's Lister. Skills, certifications, projects, and contact details.">
-  <meta name="author" content="Julia Cassandra U. Alemania">
-  <meta name="theme-color" content="#0B6FA4">
-  <link rel="canonical" href="https://lcct-24-13115.github.io/final_project_portfolio/">
-
-  <!-- Link preview (Facebook, Messenger, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Julia Cassandra Alemania | BSIT Student Portfolio">
-  <meta property="og:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
-  <meta property="og:url" content="https://lcct-24-13115.github.io/final_project_portfolio/">
-  <meta property="og:image" content="https://lcct-24-13115.github.io/final_project_portfolio/images/preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-  <link rel="icon" href="images/favicon.ico" sizes="any">
-
-  <!-- Remember the theme before the page paints, so there is no flash -->
-  <script>
-    document.documentElement.classList.add("js");
-    try { if (sessionStorage.getItem("launched")) document.documentElement.classList.add("no-launch"); } catch (err) { /* ignore */ }
-    try {
-      var saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    } catch (err) { /* storage unavailable: fall back to the system theme */ }
-  </script>
-
-  <!-- Display font for headings (falls back to the bundled Poppins if it cannot load) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
-
-  <!-- Icons (Font Awesome, free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Own stylesheet -->
-  <link rel="stylesheet" href="css/julia-style.css?v=3">
-  <link rel="stylesheet" href="css/space-theme.css?v=3">
-  <link rel="stylesheet" href="css/about-plus.css?v=3">
-  <link rel="stylesheet" href="css/pages.css?v=3">
-  <link rel="stylesheet" href="css/experience-plus.css?v=1">
-  <script src="js/julia-main.js?v=3" defer></script>
-  <script src="js/space-loader.js?v=3" defer></script>
-  <script src="js/cursor.js?v=3" defer></script>
-  <script src="js/experience-plus.js?v=1" defer></script>
-  <link rel="stylesheet" href="css/orbit-ui.css?v=1">
-  <script src="js/orbit-ui.js?v=1" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experience | Julia Cassandra Alemania</title>
+<meta name="description" content="Experience, certifications and milestones of Julia Cassandra U. Alemania, BSIT student and Dean's Lister.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/design-a-base.css?v=1">
+<link rel="stylesheet" href="css/design-a-experience.css?v=1">
+<script src="js/design-a-common.js?v=1" defer></script>
 </head>
 <body>
-  <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
-  <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
-    <div class="launch-brand">
-      <span class="launch-mark" aria-hidden="true"><img src="images/logo-mark.svg" alt="" width="96" height="96"></span>
-      <p class="launch-name"><span class="launch-first">Julia</span> <span class="launch-last">Alemania</span></p>
-      <p class="launch-tag">BS Information Technology</p>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="about.html"><span>About Me</span><small>Who I am and how I work</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
+</nav>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="page-hero" style="padding-top:110px;padding-bottom:30px">
+    <p class="eyebrow">My journey so far</p>
+    <h1>Experience <span class="grad">&amp; milestones</span></h1>
+    <p class="sub">I&rsquo;m a BSIT student, so my flight log is made of projects, certifications and school achievements rather than job titles. This is what I&rsquo;ve built, learned and won so far.</p>
+  </section>
+
+  <!-- ===== Journey ===== -->
+  <section style="max-width:1000px;margin:0 auto;padding:40px 24px 60px">
+    <p class="sec-eyebrow">Timeline</p>
+    <h2 class="sec-title" style="margin-bottom:36px">The <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent">journey</span></h2>
+    <ol class="xp-list">
+      <li class="xp-item">
+        <div class="xp-date"><b>2026</b><small>Present</small></div>
+        <article class="xp-card">
+          <header class="xp-card-head"><span class="xp-pill">2026</span><h3>Building projects and earning certifications</h3></header>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-code"></i> Projects</p><ul><li>Tom and Jerry: Intel Byte Chase (Flutter multiplayer game)</li><li>Maintenance Ticketing System (Laravel)</li><li>Integrated Library Management System (Laravel)</li><li>My Portfolio App (Flutter) and this website</li></ul></div>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-graduation-cap"></i> Training</p><ul><li>Cisco Network Technician Career Path (April)</li><li>HTML Essentials (August)</li><li>JavaScript Essentials 1 (September)</li></ul></div>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-calendar-check"></i> Events</p><ul><li>Bridging Business and Technology for the Next Generation (March)</li><li>BSIT Educational Exposure Trip, IT Week 2026, Bonifacio Global City (March)</li><li>Webinar series on cloud tools, data analytics, cybersecurity, social media marketing, and freelancing (October)</li></ul></div>
+          <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot"></i> La Consolacion College Tanauan</span><span class="xp-badge">Current</span></footer>
+        </article>
+      </li>
+      <li class="xp-item">
+        <div class="xp-date"><b>2025</b><small>Dean&rsquo;s Lister</small></div>
+        <article class="xp-card">
+          <header class="xp-card-head"><span class="xp-pill">2025</span><h3>Dean&rsquo;s Lister year</h3></header>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy"></i> Achievements</p><ul><li>Dean&rsquo;s Lister, La Consolacion College Tanauan</li></ul></div>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-calendar-check"></i> Events</p><ul><li>Batangas Information Technology Conference (BITCON) 2025, Lipa City (April)</li></ul></div>
+          <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot"></i> Tanauan City, Batangas</span></footer>
+        </article>
+      </li>
+      <li class="xp-item">
+        <div class="xp-date"><b>2024</b><small>Year one</small></div>
+        <article class="xp-card">
+          <header class="xp-card-head"><span class="xp-pill">2024</span><h3>Started BS Information Technology</h3></header>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy"></i> Achievements</p><ul><li>Champion, LCC Tanauan Graphic Design Contest</li><li>Second Runner-Up, Organizational Performance (Group Competition)</li></ul></div>
+          <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot"></i> La Consolacion College Tanauan</span></footer>
+        </article>
+      </li>
+      <li class="xp-item">
+        <div class="xp-date"><b>2023</b><small>Senior high</small></div>
+        <article class="xp-card">
+          <header class="xp-card-head"><span class="xp-pill">2023</span><h3>Senior high school recognitions</h3></header>
+          <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy"></i> Achievements</p><ul><li>Best in Work Immersion, Immaculate Heart of Mary College Inc.</li><li>Research Excellence Awardee, Immaculate Heart of Mary College Inc.</li></ul></div>
+          <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot"></i> Immaculate Heart of Mary College Inc.</span></footer>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Certifications ===== -->
+  <section class="xp-certs-section">
+    <p class="sec-eyebrow">Credentials</p>
+    <h2 class="sec-title">Certifications <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent">&amp; training</span></h2>
+    <p style="color:var(--mute);font-size:.95rem;max-width:62ch;margin-bottom:24px;line-height:1.7">Courses and events are how I keep up. These are the certifications and events I have completed so far.</p>
+
+    <ul class="xp-legend"><li class="xp-c-net"><i></i>Networking <small>5</small></li><li class="xp-c-web"><i></i>Web <small>2</small></li><li class="xp-c-evt"><i></i>Events &amp; webinars <small>8</small></li></ul>
+
+    <div class="xp-year">
+      <div class="xp-year-label"><b>2026</b><small>14 credentials</small></div>
+      <ul class="xp-certs">
+        <li><div class="xp-cert xp-c-web"><span class="xp-cert-ico"><i class="fa-solid fa-code"></i></span><span class="xp-cert-txt"><small>Web</small><strong>JavaScript Essentials 1</strong><em>Cisco · Sep 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-web"><span class="xp-cert-ico"><i class="fa-solid fa-code"></i></span><span class="xp-cert-txt"><small>Web</small><strong>HTML Essentials</strong><em>Cisco · Aug 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Technician Career Path</strong><em>Cisco · Apr 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Support and Security</strong><em>Cisco · Apr 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Addressing and Basic Troubleshooting</strong><em>Cisco · Apr 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Networking Devices and Basic Configuration</strong><em>Cisco · Apr 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Networking Basics</strong><em>Cisco · Apr 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Cloud Tools for Productivity</strong><em>Webinar · Oct 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Data Analytics for Better Decisions</strong><em>Webinar · Oct 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Cybersecurity Awareness in a Digital World</strong><em>Webinar · Oct 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Social Media Marketing That Works</strong><em>Webinar · Oct 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Digital Career Opportunities &amp; Freelancing</strong><em>Webinar · Oct 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>BSIT Educational Exposure Trip, IT Week 2026</strong><em>BGC · Mar 2026</em></span></div></li>
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Bridging Business and Technology</strong><em>LCCT · Mar 2026</em></span></div></li>
+      </ul>
     </div>
-    <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
-    <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
-    <button type="button" class="launch-skip">Skip</button>
-  </div>
-
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Julia Cassandra Alemania, back to the top">Julia Alemania</a>
-
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        <span class="glyph" aria-hidden="true">&#9776;</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-        <ul><li><a href="about.html">About Me</a></li><li><a href="experience.html" aria-current="page">Experience</a></li><li><a href="projects.html">Projects</a></li><li><a href="links.html">Links</a></li><li class="nav-cta"><a href="contact.html">Say hi &#128075;</a></li></ul>
-      </nav>
-
-      <button class="icon-btn fs-toggle" id="fsToggle" type="button" aria-label="Enter full screen" title="Enter full screen" hidden>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
-      </button>
-
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <span class="glyph" aria-hidden="true">&#9790;</span>
-      </button>
+    <div class="xp-year">
+      <div class="xp-year-label"><b>2025</b><small>1 credential</small></div>
+      <ul class="xp-certs">
+        <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Batangas Information Technology Conference (BITCON) 2025</strong><em>Lipa City · Apr 2025</em></span></div></li>
+      </ul>
     </div>
-  </header>
+  </section>
 
-  <main id="main" class="xp-space">
-    <!-- Experience redesign (css/experience-plus.css, js/experience-plus.js) -->
-    <section class="xp-hero" aria-labelledby="xp-title">
-      <div class="xp-wrap xp-center">
-        <p class="xp-eyebrow">My journey so far</p>
-        <h1 id="xp-title">Experience <span class="xp-grad">&amp; milestones</span></h1>
-        <p class="xp-lead">I&rsquo;m a BSIT student, so my flight log is made of projects, certifications and school achievements rather than job titles. This is what I&rsquo;ve built, learned and won so far, year by year.</p>
-        <nav class="xp-tabs" aria-label="Jump to a section">
-          <a href="#xp-journey" class="active">Journey</a>
-          <a href="#xp-certs">Certifications</a>
-          <a href="#xp-skills">Skills</a>
-          <a href="#xp-edu">Education</a>
-        </nav>
-      </div>
-    </section>
+  <!-- ===== Skills ===== -->
+  <section class="xp-skills-section">
+    <p class="sec-eyebrow">Expertise</p>
+    <h2 class="sec-title">Specialized <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent">skills</span></h2>
+    <p style="color:var(--mute);font-size:.95rem;max-width:62ch;margin-bottom:24px;line-height:1.7">I like having a foot in both building and creating, so what I make works properly and looks right for the people using it.</p>
 
-    <section class="xp-section" id="xp-journey" aria-label="Journey">
-      <div class="xp-wrap">
-        <ol class="xp-list">
-        <li class="xp-item xp-amber reveal">
-          <div class="xp-date"><b>2026</b><small>Present</small></div>
-          <i class="xp-dot" aria-hidden="true"></i>
-          <article class="xp-card">
-            <header class="xp-card-head"><span class="xp-pill">2026</span><h3>Building projects and earning certifications</h3></header>
-            <div class="xp-card-body">
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-code" aria-hidden="true"></i> Projects</p><ul><li>Tom and Jerry: Intel Byte Chase (Flutter multiplayer game)</li><li>Maintenance Ticketing System (Laravel)</li><li>Integrated Library Management System (Laravel)</li><li>My Portfolio App (Flutter) and this website</li></ul></div>
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Training</p><ul><li>Cisco Network Technician Career Path (April)</li><li>HTML Essentials (August)</li><li>JavaScript Essentials 1 (September)</li></ul></div>
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Events</p><ul><li>Bridging Business and Technology for the Next Generation (March)</li><li>BSIT Educational Exposure Trip, IT Week 2026, Bonifacio Global City (March)</li><li>Webinar series on cloud tools, data analytics, cybersecurity, social media marketing, and freelancing (October)</li></ul></div>
-            </div>
-            <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> La Consolacion College Tanauan</span><span class="xp-badge xp-badge-now">Current</span></footer>
-          </article>
-        </li>
-        <li class="xp-item xp-blue reveal">
-          <div class="xp-date"><b>2025</b><small>Dean’s Lister</small></div>
-          <i class="xp-dot" aria-hidden="true"></i>
-          <article class="xp-card">
-            <header class="xp-card-head"><span class="xp-pill">2025</span><h3>Dean’s Lister year</h3></header>
-            <div class="xp-card-body">
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Achievements</p><ul><li>Dean’s Lister, La Consolacion College Tanauan</li></ul></div>
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Events</p><ul><li>Batangas Information Technology Conference (BITCON) 2025, Lipa City (April)</li></ul></div>
-            </div>
-            <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Tanauan City, Batangas</span></footer>
-          </article>
-        </li>
-        <li class="xp-item xp-violet reveal">
-          <div class="xp-date"><b>2024</b><small>Year one</small></div>
-          <i class="xp-dot" aria-hidden="true"></i>
-          <article class="xp-card">
-            <header class="xp-card-head"><span class="xp-pill">2024</span><h3>Started BS Information Technology</h3></header>
-            <div class="xp-card-body">
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Achievements</p><ul><li>Champion, LCC Tanauan Graphic Design Contest</li><li>Second Runner-Up, Organizational Performance (Group Competition)</li></ul></div>
-            </div>
-            <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> La Consolacion College Tanauan</span></footer>
-          </article>
-        </li>
-        <li class="xp-item xp-green reveal">
-          <div class="xp-date"><b>2023</b><small>Senior high</small></div>
-          <i class="xp-dot" aria-hidden="true"></i>
-          <article class="xp-card">
-            <header class="xp-card-head"><span class="xp-pill">2023</span><h3>Senior high school recognitions</h3></header>
-            <div class="xp-card-body">
-              <div class="xp-group"><p class="xp-label"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Achievements</p><ul><li>Best in Work Immersion, Immaculate Heart of Mary College Inc.</li><li>Research Excellence Awardee, Immaculate Heart of Mary College Inc.</li></ul></div>
-            </div>
-            <footer class="xp-card-foot"><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Immaculate Heart of Mary College Inc.</span></footer>
-          </article>
-        </li>
-        </ol>
-      </div>
-    </section>
+    <ul class="xp-bubbles">
+      <li class="xp-b xp-b-build xp-m">Python</li>
+      <li class="xp-b xp-b-build xp-m">Java</li>
+      <li class="xp-b xp-b-build xp-s">C</li>
+      <li class="xp-b xp-b-build xp-s">C++</li>
+      <li class="xp-b xp-b-build xp-l">Flutter &amp; Dart</li>
+      <li class="xp-b xp-b-build xp-m">HTML</li>
+      <li class="xp-b xp-b-build xp-m">CSS</li>
+      <li class="xp-b xp-b-build xp-l">JavaScript</li>
+      <li class="xp-b xp-b-build xp-s">PHP</li>
+      <li class="xp-b xp-b-build xp-m">Laravel</li>
+      <li class="xp-b xp-b-build xp-m">MySQL</li>
+      <li class="xp-b xp-b-build xp-s">Git</li>
+      <li class="xp-b xp-b-net xp-l">Computer Networking</li>
+      <li class="xp-b xp-b-net xp-s">IPv4 / IPv6</li>
+      <li class="xp-b xp-b-net xp-m">Cisco IOS</li>
+      <li class="xp-b xp-b-net xp-m">Network Troubleshooting</li>
+      <li class="xp-b xp-b-net xp-s">OS Installation</li>
+      <li class="xp-b xp-b-net xp-m">PC Maintenance</li>
+      <li class="xp-b xp-b-create xp-l">Graphic Design</li>
+      <li class="xp-b xp-b-create xp-m">Poster Making</li>
+      <li class="xp-b xp-b-create xp-m">Sports Journalism</li>
+      <li class="xp-b xp-b-create xp-m">Leadership</li>
+      <li class="xp-b xp-b-create xp-s">Research</li>
+      <li class="xp-b xp-b-create xp-m">Problem Solving</li>
+    </ul>
+  </section>
 
-    <section class="xp-section" id="xp-certs" aria-labelledby="xp-certs-title">
-      <div class="xp-wrap">
-        <p class="xp-eyebrow">Credentials</p>
-        <h2 class="xp-title" id="xp-certs-title">Certifications <span class="xp-grad">&amp; training</span></h2>
-        <p class="xp-lead">Courses and events are how I keep up. These are the certifications and events I have completed so far.</p>
-        <ul class="xp-legend"><li class="xp-c-net"><i></i>Networking <small>5</small></li><li class="xp-c-web"><i></i>Web <small>2</small></li><li class="xp-c-evt"><i></i>Events &amp; webinars <small>8</small></li></ul>
-        <div class="xp-year reveal"><div class="xp-year-label"><b>2026</b><small>14 credentials</small></div><ul class="xp-certs">
-            <li><div class="xp-cert xp-c-web"><span class="xp-cert-ico"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Web</small><strong>JavaScript Essentials 1</strong><em>Cisco Networking Academy with OpenEDG JavaScript Institute · Sep 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-web"><span class="xp-cert-ico"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Web</small><strong>HTML Essentials</strong><em>Cisco Networking Academy with JS Institute · Aug 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Technician Career Path</strong><em>Cisco Networking Academy · Apr 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Support and Security</strong><em>Cisco Networking Academy · Apr 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Network Addressing and Basic Troubleshooting</strong><em>Cisco Networking Academy · Apr 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Networking Devices and Basic Configuration</strong><em>Cisco Networking Academy · Apr 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-net"><span class="xp-cert-ico"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Networking</small><strong>Networking Basics</strong><em>Cisco Networking Academy · Apr 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Cloud Tools for Productivity</strong><em>Webinar series, Manila · Oct 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Data Analytics for Better Decisions</strong><em>Webinar series, Manila · Oct 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Cybersecurity Awareness in a Digital World</strong><em>Webinar series, Manila · Oct 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Social Media Marketing That Works</strong><em>Webinar series, Manila · Oct 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Digital Career Opportunities &amp; Freelancing</strong><em>Webinar series, Manila · Oct 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>BSIT Educational Exposure Trip, IT Week 2026</strong><em>Bonifacio Global City · Mar 2026</em></span></div></li>
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Bridging Business and Technology for the Next Generation</strong><em>La Consolacion College Tanauan · Mar 2026</em></span></div></li>
-        </ul></div>
-        <div class="xp-year reveal"><div class="xp-year-label"><b>2025</b><small>1 credential</small></div><ul class="xp-certs">
-            <li><div class="xp-cert xp-c-evt"><span class="xp-cert-ico"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="xp-cert-txt"><small>Events</small><strong>Batangas Information Technology Conference (BITCON) 2025</strong><em>Lipa City · Apr 2025</em></span></div></li>
-        </ul></div>
-      </div>
-    </section>
-
-    <section class="xp-section" id="xp-skills" aria-labelledby="xp-skills-title">
-      <div class="xp-wrap">
-        <p class="xp-eyebrow">Expertise</p>
-        <h2 class="xp-title" id="xp-skills-title">Specialized <span class="xp-grad">skills</span></h2>
-        <p class="xp-lead">I like having a foot in both building and creating, so what I make works properly and looks right for the people using it.</p>
-        <div class="xp-filters" role="group" aria-label="Filter skills">
-          <button type="button" class="active" data-skill="all" aria-pressed="true">All</button>
-          <button type="button" data-skill="build" aria-pressed="false">Build <small>Code &amp; web</small></button>
-          <button type="button" data-skill="net" aria-pressed="false">Network &amp; IT <small>Cisco, systems</small></button>
-          <button type="button" data-skill="create" aria-pressed="false">Create <small>Design &amp; people</small></button>
-        </div>
-        <ul class="xp-bubbles" id="xpBubbles"><li class="xp-b xp-b-build xp-m" data-group="build"><span>Python</span></li><li class="xp-b xp-b-build xp-m" data-group="build"><span>Java</span></li><li class="xp-b xp-b-build xp-s" data-group="build"><span>C</span></li><li class="xp-b xp-b-build xp-s" data-group="build"><span>C++</span></li><li class="xp-b xp-b-build xp-l" data-group="build"><span>Flutter &amp; Dart</span></li><li class="xp-b xp-b-build xp-m" data-group="build"><span>HTML</span></li><li class="xp-b xp-b-build xp-m" data-group="build"><span>CSS</span></li><li class="xp-b xp-b-build xp-l" data-group="build"><span>JavaScript</span></li><li class="xp-b xp-b-build xp-s" data-group="build"><span>PHP</span></li><li class="xp-b xp-b-build xp-m" data-group="build"><span>Laravel</span></li><li class="xp-b xp-b-build xp-m" data-group="build"><span>MySQL</span></li><li class="xp-b xp-b-build xp-s" data-group="build"><span>Git</span></li><li class="xp-b xp-b-net xp-l" data-group="net"><span>Computer Networking</span></li><li class="xp-b xp-b-net xp-s" data-group="net"><span>IPv4 / IPv6</span></li><li class="xp-b xp-b-net xp-m" data-group="net"><span>Cisco IOS</span></li><li class="xp-b xp-b-net xp-m" data-group="net"><span>Network Troubleshooting</span></li><li class="xp-b xp-b-net xp-s" data-group="net"><span>OS Installation</span></li><li class="xp-b xp-b-net xp-m" data-group="net"><span>PC Maintenance</span></li><li class="xp-b xp-b-create xp-l" data-group="create"><span>Graphic Design</span></li><li class="xp-b xp-b-create xp-m" data-group="create"><span>Poster Making</span></li><li class="xp-b xp-b-create xp-m" data-group="create"><span>Sports Journalism</span></li><li class="xp-b xp-b-create xp-m" data-group="create"><span>Leadership</span></li><li class="xp-b xp-b-create xp-s" data-group="create"><span>Research</span></li><li class="xp-b xp-b-create xp-m" data-group="create"><span>Problem Solving</span></li></ul>
-      </div>
-    </section>
-
-    <section class="xp-section" id="xp-edu" aria-labelledby="xp-edu-title">
-      <div class="xp-wrap">
-        <p class="xp-eyebrow">Education background</p>
-        <h2 class="xp-title" id="xp-edu-title">Academic <span class="xp-grad">history</span></h2>
-        <p class="xp-lead">The classroom is where I learned how to learn, and how to keep going when things get tough.</p>
-        <div class="xp-edu-grid">
-          <article class="xp-edu xp-blue reveal"><span class="xp-edu-ico"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span><p class="xp-edu-years">2024 – Present</p><p class="xp-edu-level">Undergraduate</p><h3>BS Information Technology</h3><p class="xp-edu-school">La Consolacion College Tanauan</p><p class="xp-edu-desc">Dean’s Lister (2025), Champion in the Graphic Design Contest (2024) and 2nd Runner-Up in Organizational Performance (2024).</p></article>
-          <article class="xp-edu xp-violet reveal"><span class="xp-edu-ico"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></span><p class="xp-edu-years">2023 – 2024</p><p class="xp-edu-level">Undergraduate</p><h3>BS Accountancy</h3><p class="xp-edu-school">National Teachers College</p><p class="xp-edu-desc">A year in accountancy before shifting to Information Technology.</p></article>
-          <article class="xp-edu xp-green reveal"><span class="xp-edu-ico"><i class="fa-solid fa-school" aria-hidden="true"></i></span><p class="xp-edu-years">2021 – 2023</p><p class="xp-edu-level">Senior high</p><h3>STEM Strand</h3><p class="xp-edu-school">Immaculate Heart of Mary College Inc.</p><p class="xp-edu-desc">Academic and Leadership Awardee, Best in Work Immersion and Research Excellence Awardee (2023).</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="xp-cta" aria-labelledby="xp-cta-title">
-      <div class="xp-wrap xp-center">
-        <p class="xp-eyebrow">Ready for liftoff?</p>
-        <h2 class="xp-cta-title" id="xp-cta-title">Let&rsquo;s build <span class="xp-grad">something out of this world</span></h2>
-        <div class="xp-actions">
-          <a class="xp-btn xp-btn-grad" href="contact.html">Say hi <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-          <a class="xp-btn xp-btn-ghost" href="projects.html">See my projects</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript. Thanks for visiting my corner of the universe.</p>
-      <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+  <!-- ===== Education ===== -->
+  <section class="xp-edu-section">
+    <p class="sec-eyebrow">Education background</p>
+    <h2 class="sec-title">Academic <span style="background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent">history</span></h2>
+    <p style="color:var(--mute);font-size:.95rem;max-width:62ch;margin-bottom:32px;line-height:1.7">The classroom is where I learned how to learn, and how to keep going when things get tough.</p>
+    <div class="xp-edu-grid">
+      <article class="xp-edu">
+        <span class="xp-edu-ico"><i class="fa-solid fa-graduation-cap"></i></span>
+        <p class="xp-edu-years">2024 – Present</p>
+        <p class="xp-edu-level">Undergraduate</p>
+        <h3>BS Information Technology</h3>
+        <p class="xp-edu-school">La Consolacion College Tanauan</p>
+        <p class="xp-edu-desc">Dean&rsquo;s Lister (2025), Champion in the Graphic Design Contest (2024) and 2nd Runner-Up in Organizational Performance (2024).</p>
+      </article>
+      <article class="xp-edu">
+        <span class="xp-edu-ico"><i class="fa-solid fa-building-columns"></i></span>
+        <p class="xp-edu-years">2023 – 2024</p>
+        <p class="xp-edu-level">Undergraduate</p>
+        <h3>BS Accountancy</h3>
+        <p class="xp-edu-school">National Teachers College</p>
+        <p class="xp-edu-desc">A year in accountancy before shifting to Information Technology.</p>
+      </article>
+      <article class="xp-edu">
+        <span class="xp-edu-ico"><i class="fa-solid fa-school"></i></span>
+        <p class="xp-edu-years">2021 – 2023</p>
+        <p class="xp-edu-level">Senior high</p>
+        <h3>STEM Strand</h3>
+        <p class="xp-edu-school">Immaculate Heart of Mary College Inc.</p>
+        <p class="xp-edu-desc">Academic and Leadership Awardee, Best in Work Immersion and Research Excellence Awardee (2023).</p>
+      </article>
     </div>
-  </footer>
+  </section>
 
-  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
-
-  <!-- Image viewer (opened by JavaScript) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-    <div class="lb-bar">
-      <p class="lb-title" id="lbTitle"></p>
-      <p class="lb-count" id="lbCount" aria-live="polite"></p>
-      <a class="icon-btn lb-dl" id="lbDownload" href="#" download aria-label="Download this image" title="Download this image"><i class="fa-solid fa-download" aria-hidden="true"></i></a>
-      <button type="button" class="icon-btn lb-close" id="lbClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <!-- ===== CTA ===== -->
+  <section class="xp-cta">
+    <p class="sec-eyebrow">Ready for liftoff?</p>
+    <h2>Let&rsquo;s build <span class="grad">something out of this world</span></h2>
+    <div class="xp-actions">
+      <a class="btn light" href="contact.html">Say hi <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      <a class="btn" href="projects.html">See my projects</a>
     </div>
-    <button type="button" class="icon-btn lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-    <img class="lb-img" id="lbImg" alt="">
-    <button type="button" class="icon-btn lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-  </div>
+  </section>
+</main>
 
-  <!-- Small message that confirms copying -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
 </body>
 </html>
