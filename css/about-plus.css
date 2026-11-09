@@ -1,0 +1,20 @@
+/* About page extras: story steps, "What I do" crafts, liftoff CTA. Delete the <link> in index.html to remove. */
+.story-steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);counter-reset:s}
+.story-steps li{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.5rem 1.5rem 1.5rem;overflow:hidden}
+.story-steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;right:1rem;top:.2rem;font:800 3.6rem/1 var(--display);color:var(--brand);opacity:.12}
+.story-steps h4{margin:0 0 .5rem;font-family:var(--display);color:var(--link)}
+.story-steps p{margin:0;color:var(--text-muted);line-height:1.65}
+.crafts{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin:1rem 0 2rem;padding:0;list-style:none}
+.craft{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:transform .25s,border-color .25s}
+.craft:hover{transform:translateY(-4px);border-color:var(--brand)}
+.craft-num{font:800 .85rem var(--display);letter-spacing:.14em;color:var(--link)}
+.craft h4{margin:.4rem 0 .5rem;font-family:var(--display);font-size:1.2rem}
+.craft p{margin:0 0 1rem;color:var(--text-muted);line-height:1.6}
+.craft .chips{margin:0}
+.liftoff{text-align:center;padding:clamp(2.5rem,6vw,4.5rem) 1.5rem;border-radius:calc(var(--radius)*1.5);color:#fff;background:radial-gradient(circle at 20% 0,#4a3fd6 0,transparent 55%),radial-gradient(circle at 85% 100%,#b02f8f 0,transparent 50%),#10143f;position:relative;overflow:hidden}
+.liftoff::before{content:"";position:absolute;inset:0;background-image:var(--stars);background-size:var(--stars-size);opacity:.7;pointer-events:none}
+.liftoff>*{position:relative}
+.liftoff .eyebrow{color:#ffd88a}
+.liftoff h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);margin:.4rem 0 1.5rem;color:#fff}
+.liftoff .btn-row{justify-content:center}
+@media(max-width:860px){.story-steps,.crafts{grid-template-columns:1fr}}
