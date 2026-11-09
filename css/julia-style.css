@@ -1586,3 +1586,67 @@ ul, ol {
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+/* ---------- About: bolder intro and profile pass ---------- */
+#about .about-lead h3:first-child {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.1;
+}
+#about .about-lead p {
+  max-width: 60ch;
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+#about .about-pass {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(255, 194, 75, 0.28), transparent 45%),
+    linear-gradient(160deg, var(--brand), var(--brand-deep) 75%);
+}
+#about .about-pass::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--sun), var(--blush));
+}
+.pass-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+.pass-photo {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  border: 3px solid var(--sun);
+  border-radius: 50%;
+  object-fit: cover;
+}
+.pass-name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+#about .about-pass h3,
+#about .about-pass dd {
+  color: #fff;
+}
+#about .about-pass dt,
+#about .about-pass dt i {
+  color: rgba(255, 255, 255, 0.78);
+}
+#about .about-pass .details > div {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+#about .how-i-work {
+  border-left: 6px solid var(--sun);
+  font-size: 1.08rem;
+}
