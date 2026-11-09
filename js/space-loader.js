@@ -47,7 +47,7 @@
     if (event.key === "Escape") finish();
   });
 
-  const duration = 1700;
+  const duration = 2600;
   const start = performance.now();
   function tick(now) {
     if (finished) return;

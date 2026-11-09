@@ -46,7 +46,11 @@
 <body>
   <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
   <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
-    <img class="launch-logo" src="images/logo-long.svg" alt="Julia Alemania" width="315" height="64">
+    <div class="launch-brand">
+      <span class="launch-mark" aria-hidden="true"><img src="images/logo-mark.svg" alt="" width="96" height="96"></span>
+      <p class="launch-name"><span class="launch-first">Julia</span> <span class="launch-last">Alemania</span></p>
+      <p class="launch-tag">BS Information Technology</p>
+    </div>
     <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
     <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
     <button type="button" class="launch-skip">Skip</button>

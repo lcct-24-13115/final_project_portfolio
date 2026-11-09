@@ -19,7 +19,7 @@
     520px 410px, 520px 410px, 520px 410px;
 }
 
-/* ---------- Loading screen (stays blue) ---------- */
+/* ---------- Loading screen (colours drift: blue, violet, rose, teal) ---------- */
 .launch {
   display: none;
 }
@@ -35,13 +35,8 @@
   padding: 1.5rem;
   text-align: center;
   color: #fff;
-  background:
-    var(--stars),
-    radial-gradient(ellipse at 20% 20%, rgba(60, 90, 255, 0.55), transparent 56%),
-    radial-gradient(ellipse at 80% 75%, rgba(40, 120, 255, 0.4), transparent 54%),
-    radial-gradient(ellipse at 55% 5%, rgba(110, 130, 255, 0.35), transparent 50%),
-    #070a22;
-  background-size: var(--stars-size), auto, auto, auto, auto;
+  background: #070a22;
+  overflow: hidden;
   transition: opacity 0.6s ease, visibility 0.6s ease;
   /* Safety net: if the script never runs, the screen still leaves. */
   animation: launch-fallback 0.6s ease 5s forwards;
@@ -64,22 +59,6 @@ html.launching {
     pointer-events: none;
   }
 }
-.launch-logo {
-  width: min(430px, 82vw);
-  height: auto;
-  filter: drop-shadow(0 0 24px rgba(90, 120, 255, 0.6));
-  animation: logo-in 0.9s ease both;
-}
-@keyframes logo-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
 .launch-bar {
   width: min(280px, 70vw);
   height: 5px;
@@ -94,6 +73,7 @@ html.launching {
   border-radius: 5px;
   background: linear-gradient(90deg, #6f87ff, #ffffff);
   box-shadow: 0 0 12px rgba(140, 165, 255, 0.9);
+  animation: launch-hue 4.5s ease-in-out infinite;
 }
 .launch-status {
   margin: 0;
@@ -501,4 +481,108 @@ html.launching {
   .stats li:hover {
     transform: none;
   }
+}
+
+/* ---------- Launch screen: logo lockup and drifting colours ---------- */
+.js .launch::before,
+.js .launch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.js .launch::before {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(60, 90, 255, 0.6), transparent 56%),
+    radial-gradient(ellipse at 80% 75%, rgba(40, 120, 255, 0.45), transparent 54%),
+    radial-gradient(ellipse at 55% 5%, rgba(130, 110, 255, 0.4), transparent 50%);
+  animation: launch-hue 4.5s ease-in-out infinite;
+}
+.js .launch::after {
+  background: var(--stars);
+  background-size: var(--stars-size);
+}
+.launch > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes launch-hue {
+  0%   { filter: hue-rotate(0deg); }
+  25%  { filter: hue-rotate(-45deg); }
+  55%  { filter: hue-rotate(70deg); }
+  80%  { filter: hue-rotate(110deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+.launch-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  animation: logo-in 0.9s ease both;
+}
+.launch-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 132px;
+  height: 132px;
+  margin-bottom: 0.4rem;
+}
+.launch-mark img {
+  width: 96px;
+  height: 96px;
+  filter: drop-shadow(0 0 22px rgba(150, 160, 255, 0.75));
+}
+.launch-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  animation: spin 14s linear infinite;
+}
+.launch-mark::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 12px var(--sun);
+  transform-origin: 50% 63px;
+  animation: spin 4.5s linear infinite;
+}
+.launch-name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 9vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.launch-first {
+  font-weight: 800;
+  background: linear-gradient(180deg, #ffffff, #c9d2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(150, 160, 255, 0.55));
+}
+.launch-last {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+}
+.launch-tag {
+  margin: 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.72);
+}
+@keyframes logo-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
 }
