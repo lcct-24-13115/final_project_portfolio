@@ -63,3 +63,28 @@
   }
   requestAnimationFrame(tick);
 })();
+
+/* ==========================================================
+   Scroll progress bar (the glowing trail at the top)
+   ========================================================== */
+(function () {
+  const bar = document.querySelector(".scroll-progress span");
+  if (!bar) return;
+
+  let waiting = false;
+  function update() {
+    waiting = false;
+    const root = document.documentElement;
+    const max = root.scrollHeight - root.clientHeight;
+    const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    bar.style.width = (ratio * 100).toFixed(1) + "%";
+  }
+  function onScroll() {
+    if (waiting) return;
+    waiting = true;
+    requestAnimationFrame(update);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();

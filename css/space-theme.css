@@ -278,3 +278,261 @@ html.launching {
     overflow: auto;
   }
 }
+
+/* ==========================================================
+   POLISH: nebula glow, planets, glass cards, glowing details
+   ========================================================== */
+
+/* ---------- Hero: nebula colours instead of a flat blue ---------- */
+.hero {
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(125, 95, 255, 0.45), transparent 52%),
+    radial-gradient(ellipse at 88% 85%, rgba(255, 120, 190, 0.3), transparent 48%),
+    radial-gradient(ellipse at 60% 8%, rgba(70, 150, 255, 0.25), transparent 45%),
+    var(--hero-bg);
+}
+.hero::before {
+  background: radial-gradient(circle, rgba(255, 150, 200, 0.4), rgba(120, 100, 255, 0.18) 52%, transparent 72%);
+  opacity: 1;
+}
+
+/* Name in a soft white-to-gold gradient */
+.hero h1 {
+  color: #fff;
+  background: linear-gradient(180deg, #ffffff 35%, #ffe3a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(20, 10, 90, 0.45));
+}
+.hero-hello {
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Hero decorations: planet, moon, shooting stars ---------- */
+.space-deco {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.planet {
+  position: absolute;
+  top: 9%;
+  left: 3%;
+  width: 78px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffe0ad, #f0a35a 48%, #8a4b2a 100%);
+  box-shadow: inset -12px -9px 20px rgba(0, 0, 0, 0.45), 0 0 34px rgba(255, 170, 90, 0.35);
+  animation: float 9s ease-in-out infinite alternate;
+}
+.planet::after {
+  content: "";
+  position: absolute;
+  left: -48%;
+  right: -48%;
+  top: 50%;
+  height: 28%;
+  margin-top: -14%;
+  border: 4px solid rgba(255, 228, 175, 0.55);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+.moon {
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  width: 34px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #c9cfe8 60%, #7f88b0);
+  box-shadow: inset -6px -4px 9px rgba(0, 0, 0, 0.3), 0 0 22px rgba(200, 210, 255, 0.4);
+  animation: float 11s ease-in-out infinite alternate-reverse;
+}
+@keyframes float {
+  from {
+    transform: translateY(-8px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+.shoot {
+  position: absolute;
+  width: 130px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+  opacity: 0;
+  transform: rotate(-27deg);
+}
+.shoot.s1 {
+  top: 16%;
+  left: 62%;
+  animation: shoot 8s linear 2s infinite;
+}
+.shoot.s2 {
+  top: 46%;
+  left: 30%;
+  animation: shoot 11s linear 6s infinite;
+}
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: rotate(-27deg) translateX(0);
+  }
+  3% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+    transform: rotate(-27deg) translateX(-340px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-27deg) translateX(-340px);
+  }
+}
+
+/* ---------- Scroll progress bar (a glowing trail) ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 150;
+  pointer-events: none;
+}
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--sun), #ff8ac0, #7b8cff);
+  box-shadow: 0 0 12px rgba(255, 194, 75, 0.8);
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---------- Header ---------- */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sun), transparent);
+  opacity: 0.55;
+}
+.brand::before {
+  content: "\2726";
+  margin-right: 0.45rem;
+  color: var(--sun);
+}
+
+/* ---------- Section titles ---------- */
+.section-head h2::after {
+  width: 96px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--sun), #ff8ac0, #7b8cff);
+  box-shadow: 0 0 14px rgba(255, 194, 75, 0.5);
+}
+.eyebrow::before {
+  display: inline-block;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+/* ---------- Cards: soft glass with a glow on hover ---------- */
+.card {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.25s, background 0.3s, transform 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--link);
+  box-shadow: 0 14px 34px rgba(45, 60, 219, 0.22), 0 0 0 1px rgba(255, 194, 75, 0.25);
+}
+.project-cover img {
+  transition: transform 0.6s ease;
+}
+.project:hover .project-cover img {
+  transform: scale(1.04);
+}
+
+/* ---------- Stats ---------- */
+.stats li {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.stats li:hover {
+  transform: translateY(-4px);
+  border-color: var(--link);
+  box-shadow: 0 12px 28px rgba(45, 60, 219, 0.22);
+}
+.stats strong {
+  background: linear-gradient(135deg, var(--link), #c05cff 55%, #ff8ac0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Timeline: stars on a glowing path ---------- */
+.timeline::before {
+  width: 3px;
+  background: linear-gradient(var(--sun), var(--brand) 40%, rgba(45, 60, 219, 0.1));
+  opacity: 0.75;
+}
+.timeline-item::before {
+  box-shadow: 0 0 12px rgba(45, 60, 219, 0.55);
+}
+.timeline-item.current::before {
+  box-shadow: 0 0 0 5px rgba(255, 194, 75, 0.35), 0 0 22px 4px rgba(255, 194, 75, 0.6);
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary:hover {
+  box-shadow: 0 0 0 4px rgba(45, 60, 219, 0.25), 0 8px 22px rgba(45, 60, 219, 0.4);
+}
+.btn-ghost:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Dark mode: nebula glows behind alternating sections ---------- */
+:root[data-theme="dark"] .section.alt {
+  background:
+    radial-gradient(ellipse at 90% 8%, rgba(125, 95, 255, 0.2), transparent 50%),
+    radial-gradient(ellipse at 4% 92%, rgba(255, 120, 190, 0.12), transparent 45%),
+    rgba(18, 22, 56, 0.72);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .section.alt {
+    background:
+      radial-gradient(ellipse at 90% 8%, rgba(125, 95, 255, 0.2), transparent 50%),
+      radial-gradient(ellipse at 4% 92%, rgba(255, 120, 190, 0.12), transparent 45%),
+      rgba(18, 22, 56, 0.72);
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid rgba(255, 194, 75, 0.35);
+}
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 1100px) {
+  .planet,
+  .moon {
+    display: none;
+  }
+}
+@media (hover: none) {
+  .card:hover,
+  .stats li:hover {
+    transform: none;
+  }
+}
