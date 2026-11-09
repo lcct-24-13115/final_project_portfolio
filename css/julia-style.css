@@ -1515,3 +1515,30 @@ ul, ol {
     font-size: 0.8rem;
   }
 }
+
+/* Project case summary */
+.case {
+  margin: 0.9rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--brand);
+  background: var(--bg-alt);
+  border-radius: 0 12px 12px 0;
+}
+.case div {
+  margin-bottom: 0.55rem;
+}
+.case div:last-child {
+  margin-bottom: 0;
+}
+.case dt {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--link);
+}
+.case dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+}
