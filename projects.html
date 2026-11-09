@@ -58,7 +58,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);
 .go i{width:50px;height:50px;border-radius:50%;background:#f1eeee;color:#0b0b12;display:grid;place-items:center;transition:transform .3s}
 .card:hover .go i{transform:rotate(45deg)}
 .web{--dot:var(--blue);--tint:#9fc3d6}
-.web .bg{background:radial-gradient(ellipse at 70% 20%,#12467a 0,transparent 60%),linear-gradient(160deg,#0a2a52,#050b1c 70%)}
+.web .bg{background:url(images/web-design-bg.jpg) center/cover no-repeat}
 .shots img{position:absolute;display:block;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:16px;border:1px solid rgba(255,255,255,.22);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.04);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .shots .s1{top:9%;left:7%;width:44%;transform:rotate(-5deg);z-index:1}
 .shots .s2{top:7%;right:6%;width:42%;transform:rotate(4deg);z-index:2}
@@ -111,11 +111,6 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:46p
   <section class="choose" aria-label="Web design and development projects">
     <a class="card web" href="web-projects.html">
       <span class="bg" aria-hidden="true"></span>
-      <span class="bg shots" aria-hidden="true" style="background:none">
-        <img class="s1" src="images/projects/project_lib_02_dashboard.jpg" alt="" width="1280" height="720" loading="eager">
-        <img class="s2" src="images/projects/project_tj_03_main_menu.jpg" alt="" width="1280" height="720" loading="eager">
-        <img class="s3" src="images/projects/project_maint_08_president_dashboard.jpg" alt="" width="1280" height="720" loading="eager">
-      </span>
       <span class="num">01</span>
       <span class="count">4 Projects</span>
       <span class="kicker">Digital Systems</span>
