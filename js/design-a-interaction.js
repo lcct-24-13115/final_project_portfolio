@@ -192,7 +192,7 @@ class BackToTop {
     // Create button
     this.button = document.createElement('button');
     this.button.className = 'back-to-top';
-    this.button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    this.button.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
     this.button.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(this.button);
 
@@ -212,6 +212,97 @@ class BackToTop {
         behavior: 'smooth'
       });
     });
+  }
+}
+
+// ---------- Swipe Gestures for Mobile Menu ----------
+class SwipeGestures {
+  constructor() {
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+    this.minSwipeDistance = 50;
+    this.init();
+  }
+
+  init() {
+    // Only enable on touch devices
+    if (!('ontouchstart' in window)) {
+      return;
+    }
+
+    document.addEventListener('touchstart', (e) => {
+      this.touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', (e) => {
+      this.touchEndX = e.changedTouches[0].screenX;
+      this.handleSwipe();
+    }, false);
+  }
+
+  handleSwipe() {
+    const swipeDistance = this.touchEndX - this.touchStartX;
+    
+    // Ignore if swipe distance is too small
+    if (Math.abs(swipeDistance) < this.minSwipeDistance) {
+      return;
+    }
+
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentIndex = this.pageOrder.indexOf(currentPath);
+
+    // Swipe left - next page
+    if (swipeDistance < -this.minSwipeDistance) {
+      if (currentIndex < this.pageOrder.length - 1) {
+        window.location.href = this.pageOrder[currentIndex + 1];
+      }
+    }
+    
+    // Swipe right - previous page
+    if (swipeDistance > this.minSwipeDistance) {
+      if (currentIndex > 0) {
+        window.location.href = this.pageOrder[currentIndex - 1];
+      }
+    }
+  }
+
+  get pageOrder() {
+    return ['index.html', 'about.html', 'experience.html', 'projects.html', 'contact.html'];
+  }
+}
+
+// ---------- Page Indicator Badge ----------
+class PageIndicator {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    const menuBtn = document.getElementById('menuBtn');
+    if (!menuBtn) return;
+
+    // Create badge
+    const badge = document.createElement('div');
+    badge.className = 'page-indicator-badge';
+    
+    // Get current page name
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const pageNames = {
+      'index.html': 'Home',
+      'about.html': 'About',
+      'experience.html': 'Exp',
+      'projects.html': 'Proj',
+      'contact.html': 'Contact',
+      'links.html': 'Links'
+    };
+    
+    badge.textContent = pageNames[currentPath] || 'Page';
+    menuBtn.appendChild(badge);
+
+    // Animate badge on load
+    setTimeout(() => {
+      badge.classList.add('show');
+    }, 500);
   }
 }
 
@@ -241,4 +332,17 @@ document.addEventListener('DOMContentLoaded', () => {
   new KeyboardShortcuts();
   new MouseTrail(8);
   new BackToTop();
+  new SwipeGestures();
+  new PageIndicator();
+  
+  // Add swipe hints on mobile
+  if (window.innerWidth <= 768) {
+    const leftHint = document.createElement('div');
+    leftHint.className = 'swipe-hint-left';
+    document.body.appendChild(leftHint);
+    
+    const rightHint = document.createElement('div');
+    rightHint.className = 'swipe-hint-right';
+    document.body.appendChild(rightHint);
+  }
 });
