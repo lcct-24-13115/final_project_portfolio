@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphic Design | Julia Cassandra Alemania</title>
+<meta name="description" content="A curated selection of Julia Alemania's digital systems and graphic design work.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<style>
+:root{--bg:#04050d;--ink:#f4efee;--mute:#a9a3b5;--rose:#e8b4a6;--teal:#14a3a0;--blue:#6ec6ff;--violet:#c9a4ff;--line:rgba(255,255,255,.14);--serif:'Gloock',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;min-height:100svh;overflow-x:hidden}
+canvas#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;top:22%;width:60vw;height:26vh;border-radius:50%;filter:blur(80px);opacity:.45;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){left:-12vw;background:#0f6b66}
+.aurora i:nth-child(2){right:-10vw;background:#1b4f9c;top:18%;animation-delay:-8s}
+@keyframes drift{to{transform:translate(6vw,-4vh) scale(1.15)}}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+main,header,footer{position:relative;z-index:1}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:center;gap:28px;padding:26px 20px 0;position:relative}
+.brand{font-family:var(--serif);font-size:1.35rem;letter-spacing:.01em;white-space:nowrap}
+.pill{display:flex;align-items:center;gap:4px;padding:8px;border:1px solid var(--line);border-radius:99px;background:rgba(14,15,23,.72);backdrop-filter:blur(10px)}
+.pill a{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:12px 20px;border-radius:99px;color:#c9c4d3;transition:background .2s,color .2s}
+.pill a:hover{color:#fff}
+.pill a[aria-current=page]{background:rgba(255,255,255,.1);color:#fff}
+.pill .sep{width:1px;height:22px;background:var(--line);margin:0 6px}
+.pill a.hi{color:#fff}
+.back{position:absolute;top:26px;left:26px;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);display:grid;place-items:center;font-size:1rem;color:var(--ink);transition:transform .2s}
+.back:hover{transform:translateX(-3px)}
+
+/* hero */
+.head{text-align:center;padding:64px 20px 44px}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:1;letter-spacing:-.02em;margin-top:10px;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.sub{max-width:720px;margin:14px auto 0;color:var(--mute);font-size:1.02rem}
+
+/* gallery */
+.gal{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.tile{position:relative;aspect-ratio:4/5;border-radius:28px;border:1px solid var(--line);overflow:hidden;background:rgba(14,15,23,.6);display:grid;place-items:center;text-align:center;padding:20px}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile.empty{border-style:dashed;color:var(--mute);font-size:.82rem}
+.tile.empty i{display:block;font-size:1.8rem;color:var(--violet);margin-bottom:10px}
+.note{max-width:620px;margin:34px auto 0;text-align:center;color:var(--mute);font-size:.9rem;padding:0 20px}
+footer{display:flex;justify-content:space-between;align-items:center;padding:46px 28px 30px;color:var(--mute)}
+.socials{display:flex;gap:18px;font-size:1.2rem}
+.socials a{color:#d7d2dd;opacity:.85}.socials a:hover{color:var(--rose);opacity:1}
+.copy{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+@media(max-width:900px){.top{flex-direction:column;gap:14px;padding-top:84px}.pill{max-width:100%;overflow-x:auto}.pill a{padding:11px 14px;font-size:.66rem}.head{padding-top:40px}footer{flex-direction:column;gap:14px}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<header class="top">
+  <a class="back" href="index.html" aria-label="Back to home"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+  <a class="brand" href="index.html">Julia Alemania</a>
+  <nav class="pill" aria-label="Main">
+    <a href="index.html#about">About Me</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html" aria-current="page">Projects</a>
+    <a href="links.html">Quick Links</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a class="hi" href="contact.html">Say Hi &#128075;</a>
+  </nav>
+</header>
+
+<main>
+  <section class="head">
+    <p class="eyebrow"><a href="projects.html">&larr; Project Nexus</a> &nbsp;·&nbsp; Creative Vision</p>
+    <h1>Graphic Design</h1>
+    <p class="sub">Posters, layouts and visual work. Champion, Graphic Design Contest, La Consolacion College Tanauan (2024).</p>
+  </section>
+  <!-- To add your work: put images in images/graphics/ and replace an empty tile with
+       <figure class="tile"><img src="images/graphics/your-file.jpg" alt="Describe the design" loading="lazy"></figure> -->
+  <section class="gal" aria-label="Graphic design gallery">
+    <figure class="tile empty"><div><i class="fa-solid fa-palette" aria-hidden="true"></i>Poster / layout coming soon</div></figure>
+    <figure class="tile empty"><div><i class="fa-solid fa-pen-nib" aria-hidden="true"></i>Poster / layout coming soon</div></figure>
+    <figure class="tile empty"><div><i class="fa-solid fa-image" aria-hidden="true"></i>Poster / layout coming soon</div></figure>
+  </section>
+</main>
+<footer>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+  </div>
+  <div class="copy">&copy; 2026 Julia Alemania</div>
+</footer>
+
+<script>
+const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function size(){W=c.width=innerWidth;H=c.height=innerHeight;stars=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,p:Math.random()*6.28,s:Math.random()*.02+.005,g:Math.random()<.08}))}
+function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.p+=s.s;const a=.45+.55*Math.sin(s.p);x.globalAlpha=a;x.fillStyle=s.g?'#bcd6ff':'#fff';if(s.g){x.shadowColor='#9cc4ff';x.shadowBlur=14}else x.shadowBlur=0;x.beginPath();x.arc(s.x,s.y,s.g?s.r+1.6:s.r,0,6.28);x.fill()}x.globalAlpha=1;if(!still)requestAnimationFrame(draw)}
+addEventListener('resize',()=>{size();if(still)draw()});size();draw();
+</script>
+</body>
+</html>

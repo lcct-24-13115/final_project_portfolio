@@ -1,320 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects | Julia Cassandra Alemania</title>
-  <meta name="description" content="Portfolio of Julia Cassandra U. Alemania, a BS Information Technology student and Dean's Lister. Skills, certifications, projects, and contact details.">
-  <meta name="author" content="Julia Cassandra U. Alemania">
-  <meta name="theme-color" content="#0B6FA4">
-  <link rel="canonical" href="https://lcct-24-13115.github.io/final_project_portfolio/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Julia Cassandra Alemania</title>
+<meta name="description" content="A curated selection of Julia Alemania's digital systems and graphic design work.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<style>
+:root{--bg:#04050d;--ink:#f4efee;--mute:#a9a3b5;--rose:#e8b4a6;--teal:#14a3a0;--blue:#6ec6ff;--violet:#c9a4ff;--line:rgba(255,255,255,.14);--serif:'Gloock',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;min-height:100svh;overflow-x:hidden}
+canvas#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;top:22%;width:60vw;height:26vh;border-radius:50%;filter:blur(80px);opacity:.45;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){left:-12vw;background:#0f6b66}
+.aurora i:nth-child(2){right:-10vw;background:#1b4f9c;top:18%;animation-delay:-8s}
+@keyframes drift{to{transform:translate(6vw,-4vh) scale(1.15)}}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+main,header,footer{position:relative;z-index:1}
 
-  <!-- Link preview (Facebook, Messenger, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Julia Cassandra Alemania | BSIT Student Portfolio">
-  <meta property="og:description" content="BS Information Technology student. Skills, certifications, projects, and contact details.">
-  <meta property="og:url" content="https://lcct-24-13115.github.io/final_project_portfolio/">
-  <meta property="og:image" content="https://lcct-24-13115.github.io/final_project_portfolio/images/preview.png">
-  <meta name="twitter:card" content="summary_large_image">
+/* top bar */
+.top{display:flex;align-items:center;justify-content:center;gap:28px;padding:26px 20px 0;position:relative}
+.brand{font-family:var(--serif);font-size:1.35rem;letter-spacing:.01em;white-space:nowrap}
+.pill{display:flex;align-items:center;gap:4px;padding:8px;border:1px solid var(--line);border-radius:99px;background:rgba(14,15,23,.72);backdrop-filter:blur(10px)}
+.pill a{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:12px 20px;border-radius:99px;color:#c9c4d3;transition:background .2s,color .2s}
+.pill a:hover{color:#fff}
+.pill a[aria-current=page]{background:rgba(255,255,255,.1);color:#fff}
+.pill .sep{width:1px;height:22px;background:var(--line);margin:0 6px}
+.pill a.hi{color:#fff}
+.back{position:absolute;top:26px;left:26px;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);display:grid;place-items:center;font-size:1rem;color:var(--ink);transition:transform .2s}
+.back:hover{transform:translateX(-3px)}
 
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
-  <link rel="icon" href="images/favicon.ico" sizes="any">
+/* hero */
+.head{text-align:center;padding:64px 20px 44px}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:1;letter-spacing:-.02em;margin-top:10px;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.sub{max-width:720px;margin:14px auto 0;color:var(--mute);font-size:1.02rem}
 
-  <!-- Remember the theme before the page paints, so there is no flash -->
-  <script>
-    document.documentElement.classList.add("js");
-    try { if (sessionStorage.getItem("launched")) document.documentElement.classList.add("no-launch"); } catch (err) { /* ignore */ }
-    try {
-      var saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    } catch (err) { /* storage unavailable: fall back to the system theme */ }
-  </script>
+/* cards */
+.choose{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:34px;position:relative}
+.or{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:68px;height:68px;border-radius:50%;background:#05060c;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:1.5rem}
+.card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(640px,78svh);padding:40px;border-radius:44px;border:1px solid var(--line);overflow:hidden;isolation:isolate;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(1.1)}
+.card:hover .bg{transform:scale(1.07)}
+.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(4,5,13,.96) 8%,rgba(4,5,13,.55) 48%,rgba(4,5,13,.15) 100%)}
+.num,.count{position:absolute;top:30px;font-size:.7rem;font-weight:800;letter-spacing:.16em;padding:10px 16px;border-radius:99px;background:rgba(8,9,16,.7);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.num{left:30px}.count{right:30px;display:flex;align-items:center;gap:9px;text-transform:uppercase}
+.count::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.kicker{font-size:.72rem;font-weight:800;letter-spacing:.38em;text-transform:uppercase;color:var(--dot)}
+.card h2{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;margin:12px 0 28px;background:linear-gradient(180deg,#fff,var(--tint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.go{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;padding:8px 8px 8px 30px;border-radius:99px;border:1px solid var(--line);background:rgba(8,9,16,.55);backdrop-filter:blur(8px);font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.go i{width:50px;height:50px;border-radius:50%;background:#f1eeee;color:#0b0b12;display:grid;place-items:center;transition:transform .3s}
+.card:hover .go i{transform:rotate(45deg)}
+.web{--dot:var(--blue);--tint:#9fc3d6}
+.gfx{--dot:var(--violet);--tint:#d9c3ff}
+.web .bg{background-image:linear-gradient(135deg,rgba(6,40,80,.55),rgba(4,5,13,.2)),url(images/projects/project_school_maintenance.png);background-position:left center}
+.gfx .bg{background:
+  radial-gradient(circle at 24% 26%,#b56bff 0 7%,transparent 7.5%),
+  radial-gradient(circle at 68% 18%,#ff7ad9 0 9%,transparent 9.5%),
+  radial-gradient(circle at 80% 46%,#6ea8ff 0 5.5%,transparent 6%),
+  radial-gradient(circle at 42% 52%,#8b5cf6 0 11%,transparent 11.5%),
+  radial-gradient(circle at 14% 58%,#ffb86b 0 4%,transparent 4.5%),
+  linear-gradient(145deg,#2a1450,#4a2b86 45%,#1a0f3a)}
 
-  <!-- Display font for headings (falls back to the bundled Poppins if it cannot load) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+footer{display:flex;justify-content:space-between;align-items:center;padding:46px 28px 30px;color:var(--mute)}
+.socials{display:flex;gap:18px;font-size:1.2rem}
+.socials a{color:#d7d2dd;opacity:.85}.socials a:hover{color:var(--rose);opacity:1}
+.copy{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
 
-  <!-- Icons (Font Awesome, free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Own stylesheet -->
-  <link rel="stylesheet" href="css/julia-style.css?v=3">
-  <link rel="stylesheet" href="css/space-theme.css?v=3">
-  <link rel="stylesheet" href="css/about-plus.css?v=3">
-  <link rel="stylesheet" href="css/pages.css?v=3">
-  <script src="js/julia-main.js?v=3" defer></script>
-  <script src="js/space-loader.js?v=3" defer></script>
-  <script src="js/cursor.js?v=3" defer></script>
+@media(max-width:900px){
+  .top{flex-direction:column;gap:14px;padding-top:84px}
+  .pill{max-width:100%;overflow-x:auto}
+  .pill a{padding:11px 14px;font-size:.66rem}
+  .choose{grid-template-columns:1fr;gap:26px}
+  .or{display:none}
+  .card{min-height:480px;padding:28px;border-radius:34px}
+  .head{padding-top:40px}
+  footer{flex-direction:column;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){.aurora i,.card,.card .bg,.go i{animation:none;transition:none}}
+</style>
 </head>
 <body>
-  <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
-  <div class="launch" id="launch" role="status" aria-label="Loading portfolio">
-    <div class="launch-brand">
-      <span class="launch-mark" aria-hidden="true"><img src="images/logo-mark.svg" alt="" width="96" height="96"></span>
-      <p class="launch-name"><span class="launch-first">Julia</span> <span class="launch-last">Alemania</span></p>
-      <p class="launch-tag">BS Information Technology</p>
-    </div>
-    <div class="launch-bar" aria-hidden="true"><span class="launch-fill"></span></div>
-    <p class="launch-status">Preparing for launch <span data-launch-percent>0%</span></p>
-    <button type="button" class="launch-skip">Skip</button>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<header class="top">
+  <a class="back" href="index.html" aria-label="Back to home"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+  <a class="brand" href="index.html">Julia Alemania</a>
+  <nav class="pill" aria-label="Main">
+    <a href="index.html#about">About Me</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html" aria-current="page">Projects</a>
+    <a href="links.html">Quick Links</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a class="hi" href="contact.html">Say Hi &#128075;</a>
+  </nav>
+</header>
+
+<main>
+  <section class="head">
+    <p class="eyebrow">Creative Portfolio</p>
+    <h1>Project Nexus</h1>
+    <p class="sub">A curated selection of my digital work, from complete web systems and apps to graphic design and posters.</p>
+  </section>
+
+  <section class="choose" aria-label="Choose a portfolio">
+    <a class="card web" href="web-projects.html">
+      <span class="bg" aria-hidden="true"></span>
+      <span class="num">01</span>
+      <span class="count">4 Projects</span>
+      <span class="kicker">Digital Systems</span>
+      <h2>Web Design &amp; Development</h2>
+      <span class="go">Enter Portfolio <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+    </a>
+    <span class="or" aria-hidden="true">or</span>
+    <a class="card gfx" href="graphic-design.html">
+      <span class="bg" aria-hidden="true"></span>
+      <span class="num">02</span>
+      <span class="count">Gallery</span>
+      <span class="kicker">Creative Vision</span>
+      <h2>Graphic Design</h2>
+      <span class="go">Explore Gallery <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
   </div>
+  <div class="copy">&copy; 2026 Julia Alemania</div>
+</footer>
 
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header" id="top">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Julia Cassandra Alemania, back to the top">Julia Alemania</a>
-
-      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
-        <span class="glyph" aria-hidden="true">&#9776;</span>
-      </button>
-
-      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
-        <ul><li><a href="index.html">About</a></li><li><a href="experience.html">Experience</a></li><li><a href="projects.html" aria-current="page">Projects</a></li><li><a href="links.html">Links</a></li><li class="nav-cta"><a href="contact.html">Say hi &#128075;</a></li></ul>
-      </nav>
-
-      <button class="icon-btn fs-toggle" id="fsToggle" type="button" aria-label="Enter full screen" title="Enter full screen" hidden>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
-      </button>
-
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <span class="glyph" aria-hidden="true">&#9790;</span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="page-top section showcase" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Missions completed</p>
-          <h2 id="projects-title">Projects</h2>
-        </header>
-        <div class="grid grid-2 project-grid">
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="tj" aria-label="Open 8 screenshots of Tom and Jerry: Intel Byte Chase">
-              <img src="images/projects/project_tom_and_jerry.png" alt="Screenshot of Tom and Jerry: Intel Byte Chase" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Tom and Jerry: Intel Byte Chase</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A Tom and Jerry themed maze game with INTEL (Information Technology Enthusiasts of La Consolacion) branding. Play alone against an AI on three difficulty levels, or play online in a room with a QR code or room code. Has player accounts, a leaderboard, and light/dark themes.</p>
-              <p><strong>My role:</strong> Solo developer. I designed and built the whole game myself, from the maze and AI to the online rooms.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>A maze game that feels fair whether you play alone against the computer or online with friends.</dd></div>
-                <div><dt>What I built</dt><dd>A Flutter game with an AI at three difficulty levels, online rooms joined by QR code or room code, player accounts, and a leaderboard.</dd></div>
-                <div><dt>Result</dt><dd>Live and playable online, so anyone with the link can try it.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Solo mode against an AI with three difficulty levels</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Online rooms joined with a QR code or room code</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Player accounts with a leaderboard</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Multiplayer</li>
-                <li>Firebase Hosting</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/tom_and_jerry_new" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-                <a class="btn btn-outline" href="https://tom-jerry-multiplayer.web.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo<span class="sr-only"> of Tom and Jerry: Intel Byte Chase (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="tj">
-              <li><a href="images/projects/project_tj_01_splash.jpg" data-title="Splash screen">Splash screen</a></li>
-              <li><a href="images/projects/project_tj_03_main_menu.jpg" data-title="Main menu">Main menu</a></li>
-              <li><a href="images/projects/project_tj_04_login.jpg" data-title="Player login">Player login</a></li>
-              <li><a href="images/projects/project_tj_05_register.jpg" data-title="Register player">Register player</a></li>
-              <li><a href="images/projects/project_tj_06_game_mode.jpg" data-title="Select game mode">Select game mode</a></li>
-              <li><a href="images/projects/project_tj_07_character.jpg" data-title="Choose your character">Choose your character</a></li>
-              <li><a href="images/projects/project_tj_08_difficulty.jpg" data-title="Select difficulty">Select difficulty</a></li>
-              <li><a href="images/projects/project_tj_09_multiplayer.jpg" data-title="Multiplayer lobby">Multiplayer lobby</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="maint" aria-label="Open 8 screenshots of Maintenance Ticketing System">
-              <img src="images/projects/project_school_maintenance.png" alt="Screenshot of Maintenance Ticketing System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 8 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Maintenance Ticketing System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A web system for the school Maintenance Office. Staff file requests for materials or equipment, and each ticket moves through role-based approvals up to the school president.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, including the forms, role dashboards, and approval flow.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>Requests for materials, equipment, and repairs have to pass through several offices before they are approved.</dd></div>
-                <div><dt>What I built</dt><dd>A Laravel system with three request forms, a dashboard for each role from requester to president, and a New, Doing, and Done board for the maintenance team.</dd></div>
-                <div><dt>Result</dt><dd>Every request can be followed from filing to approval to completion in one place, with alerts when it needs someone&#x27;s attention.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Three request forms: facilities, requisition, and repairs</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Separate dashboards for requester, maintenance, finance, custodian, and president</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Maintenance board with New, Doing, and Done columns</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Advance-notice rules and in-app alerts with sound</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>Blade</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/school-maintenance-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Maintenance Ticketing System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="maint">
-              <li><a href="images/projects/project_maint_01_login.jpg" data-title="Login with role selection">Login with role selection</a></li>
-              <li><a href="images/projects/project_maint_02_facilities_form.jpg" data-title="Form 1: Facilities &amp; equipment">Form 1: Facilities &amp; equipment</a></li>
-              <li><a href="images/projects/project_maint_03_requisition_slip.jpg" data-title="Form 2: Requisition slip">Form 2: Requisition slip</a></li>
-              <li><a href="images/projects/project_maint_04_repairs_form.jpg" data-title="Form 3: Repairs &amp; improvement">Form 3: Repairs &amp; improvement</a></li>
-              <li><a href="images/projects/project_maint_05_maintenance_board.jpg" data-title="Maintenance task board">Maintenance task board</a></li>
-              <li><a href="images/projects/project_maint_06_finance_dashboard.jpg" data-title="Finance dashboard">Finance dashboard</a></li>
-              <li><a href="images/projects/project_maint_07_custodian_dashboard.jpg" data-title="Property custodian dashboard">Property custodian dashboard</a></li>
-              <li><a href="images/projects/project_maint_08_president_dashboard.jpg" data-title="School president dashboard">School president dashboard</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="lib" aria-label="Open 11 screenshots of Integrated Library Management System">
-              <img src="images/projects/project_library_system.png" alt="Screenshot of Integrated Library Management System" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 11 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>Integrated Library Management System</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>A library system for book loans and returns, patron profiles, reservations, attendance logging, borrowing history reports, and staff accounts with roles.</p>
-              <p><strong>My role:</strong> Solo developer. I built the whole system myself, from the database to the reports.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>A library needs to track loans, returns, reservations, and visitors without losing records.</dd></div>
-                <div><dt>What I built</dt><dd>A Laravel system where staff scan the patron ID and accession number to issue or return a book, log attendance, and print loan, overdue, circulation, and shelf reports.</dd></div>
-                <div><dt>Result</dt><dd>Daily library work, from checkout to reports, runs from one system with role-based staff accounts.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Issue and return books by scanning the patron ID and accession number</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Attendance logging with a visitors-per-hour chart</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Printable reports: loan history, overdue list, circulation summary, and shelf list</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Book reservations and patron profiles</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Laravel</li>
-                <li>PHP</li>
-                <li>Blade</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/library-system" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of Integrated Library Management System (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="lib">
-              <li><a href="images/projects/project_lib_01_login.jpg" data-title="Staff login">Staff login</a></li>
-              <li><a href="images/projects/project_lib_02_dashboard.jpg" data-title="Dashboard">Dashboard</a></li>
-              <li><a href="images/projects/project_lib_03_books.jpg" data-title="Book catalog">Book catalog</a></li>
-              <li><a href="images/projects/project_lib_04_patrons.jpg" data-title="Patrons">Patrons</a></li>
-              <li><a href="images/projects/project_lib_05_issue_book.jpg" data-title="Issue book">Issue book</a></li>
-              <li><a href="images/projects/project_lib_06_return_book.jpg" data-title="Return book">Return book</a></li>
-              <li><a href="images/projects/project_lib_07_loans.jpg" data-title="Loans (circulation)">Loans (circulation)</a></li>
-              <li><a href="images/projects/project_lib_08_reservations.jpg" data-title="Reservations">Reservations</a></li>
-              <li><a href="images/projects/project_lib_09_attendance.jpg" data-title="Attendance logging">Attendance logging</a></li>
-              <li><a href="images/projects/project_lib_10_reports.jpg" data-title="Reports">Reports</a></li>
-              <li><a href="images/projects/project_lib_11_add_user.jpg" data-title="Add new user">Add new user</a></li>
-            </ul>
-          </article>
-          <article class="card project reveal">
-            <button type="button" class="project-cover" data-gallery="pf" aria-label="Open 6 screenshots of My Portfolio App (Flutter)">
-              <img src="images/projects/project_portfolio.png" alt="Screenshot of My Portfolio App (Flutter)" loading="lazy" width="1280" height="720">
-              <span class="shots-badge"><i class="fa-regular fa-images" aria-hidden="true"></i> 6 screenshots</span>
-            </button>
-            <div class="project-body">
-              <h3>My Portfolio App (Flutter)</h3>
-              <p class="meta">2026 · Class project</p>
-              <p>The Flutter version of this portfolio: a five-tab app with a light/dark theme, certificate gallery, and automatic deployment to GitHub Pages. This website is the HTML, CSS and JavaScript version of it.</p>
-              <p><strong>My role:</strong> Solo developer. I designed, coded, and deployed this app myself.</p>
-              <details class="project-more">
-                <summary>Case study and features</summary>
-                <dl class="case">
-                <div><dt>Challenge</dt><dd>Show my skills, certificates, and projects in a way that works on any device and in light or dark mode.</dd></div>
-                <div><dt>What I built</dt><dd>A five-tab Flutter app with a certificate gallery, filters, swipe, and zoom, plus this website as the HTML, CSS, and JavaScript version.</dd></div>
-                <div><dt>Result</dt><dd>Published online and checked by analysis and tests, then deployed automatically with GitHub Actions.</dd></div>
-              </dl>
-              <ul class="checks">
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Light and dark mode that remembers your choice</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Certificate gallery with filters, swipe, and zoom</li>
-                <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Checked by analysis and tests, then deployed automatically</li>
-              </ul>
-              </details>
-              <ul class="chips small" aria-label="Technologies used">
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>Material 3</li>
-                <li>GitHub Actions</li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn-primary" href="https://github.com/lcct-24-13115/my_portfolio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> repository of My Portfolio App (Flutter) (opens in a new tab)</span></a>
-              </div>
-            </div>
-            <ul class="gallery-list" hidden data-gallery-list="pf">
-              <li><a href="images/projects/project_pf_00_overview.jpg" data-title="Overview (Android, dark mode)">Overview (Android, dark mode)</a></li>
-              <li><a href="images/projects/project_pf_01_personal.png" data-title="Personal tab">Personal tab</a></li>
-              <li><a href="images/projects/project_pf_02_education.png" data-title="Education tab">Education tab</a></li>
-              <li><a href="images/projects/project_pf_03_skills.png" data-title="Skills tab">Skills tab</a></li>
-              <li><a href="images/projects/project_pf_04_interests.png" data-title="Interests tab">Interests tab</a></li>
-              <li><a href="images/projects/project_pf_05_contact.png" data-title="Contact tab">Contact tab</a></li>
-            </ul>
-          </article>
-        </div>
-
-        <h3 class="subheading reveal"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Awards &amp; Recognitions</h3>
-        <ul class="awards reveal">
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Dean&#x27;s Lister Recipient</strong><span>La Consolacion College Tanauan</span><span class="date">2025</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in LCCTanauan Graphic Design Contest</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Runner-Up in Organizational Performance (Group Competition)</strong><span>La Consolacion College Tanauan</span><span class="date">2024</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Best in Work Immersion</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Research Excellence Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Leadership Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>Immaculate Heart of Mary College Inc.</span><span class="date">2021 - 2023</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Second Place in Sports Journalism</strong><span>Elementary Schools Division of San Juan City, Metro Manila</span><span class="date">2020</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated High School</span><span class="date">2016 - 2021</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Champion in Poster Making Contest</strong><span>San Juan City Integrated School</span><span class="date">2013</span></div></li>
-          <li><i class="fa-solid fa-trophy" aria-hidden="true"></i><div><strong>Academic Awardee</strong><span>San Juan City Integrated School</span><span class="date">2010 - 2016</span></div></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Julia Cassandra U. Alemania. Built with HTML, CSS and JavaScript. Thanks for visiting my corner of the universe.</p>
-      <a href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
-    </div>
-  </footer>
-
-  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
-
-  <!-- Image viewer (opened by JavaScript) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-    <div class="lb-bar">
-      <p class="lb-title" id="lbTitle"></p>
-      <p class="lb-count" id="lbCount" aria-live="polite"></p>
-      <a class="icon-btn lb-dl" id="lbDownload" href="#" download aria-label="Download this image" title="Download this image"><i class="fa-solid fa-download" aria-hidden="true"></i></a>
-      <button type="button" class="icon-btn lb-close" id="lbClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-    </div>
-    <button type="button" class="icon-btn lb-nav lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-    <img class="lb-img" id="lbImg" alt="">
-    <button type="button" class="icon-btn lb-nav lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-  </div>
-
-  <!-- Small message that confirms copying -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function size(){W=c.width=innerWidth;H=c.height=innerHeight;stars=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,p:Math.random()*6.28,s:Math.random()*.02+.005,g:Math.random()<.08}))}
+function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.p+=s.s;const a=.45+.55*Math.sin(s.p);x.globalAlpha=a;x.fillStyle=s.g?'#bcd6ff':'#fff';if(s.g){x.shadowColor='#9cc4ff';x.shadowBlur=14}else x.shadowBlur=0;x.beginPath();x.arc(s.x,s.y,s.g?s.r+1.6:s.r,0,6.28);x.fill()}x.globalAlpha=1;if(!still)requestAnimationFrame(draw)}
+addEventListener('resize',()=>{size();if(still)draw()});size();draw();
+</script>
 </body>
 </html>
