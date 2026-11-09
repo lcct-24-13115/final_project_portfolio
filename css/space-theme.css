@@ -532,6 +532,13 @@ html.launching {
   width: 96px;
   height: 96px;
   filter: drop-shadow(0 0 22px rgba(150, 160, 255, 0.75));
+  animation: mark-float 4s ease-in-out infinite;
+}
+@keyframes mark-float {
+  50% { transform: translateY(-6px) scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .launch-mark img { animation: none; }
 }
 .launch-mark::before {
   content: "";
