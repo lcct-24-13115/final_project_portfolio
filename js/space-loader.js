@@ -54,6 +54,8 @@
     const progress = Math.min((now - start) / duration, 1);
     const value = Math.round(progress * 100);
     fill.style.width = value + "%";
+    /* The colours drift from blue, through violet and pink, to gold. */
+    screen.style.setProperty("--h", String(Math.round(225 + progress * 170)));
     percent.textContent = value + "%";
     if (progress < 1) {
       requestAnimationFrame(tick);
