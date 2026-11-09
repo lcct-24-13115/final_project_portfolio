@@ -34,3 +34,25 @@
   }, { rootMargin: "-35% 0px -45% 0px" });
   items.forEach((li) => io.observe(li));
 })();
+
+/* Mission log: numbers count up when they scroll into view. */
+(function () {
+  const nums = Array.from(document.querySelectorAll("[data-count]"));
+  if (nums.length === 0) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const end = Number(e.target.dataset.count);
+      const start = performance.now();
+      (function tick(now) {
+        const t = Math.min((now - start) / 1300, 1);
+        e.target.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+  }, { threshold: 0.6 });
+  nums.forEach((n) => io.observe(n));
+})();
