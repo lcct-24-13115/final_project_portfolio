@@ -19,7 +19,7 @@
     520px 410px, 520px 410px, 520px 410px;
 }
 
-/* ---------- Loading screen ---------- */
+/* ---------- Loading screen (stays blue) ---------- */
 .launch {
   display: none;
 }
@@ -31,17 +31,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.1rem;
+  gap: 1.4rem;
   padding: 1.5rem;
   text-align: center;
   color: #fff;
-  --h: 225;
   background:
     var(--stars),
-    radial-gradient(ellipse at 18% 22%, hsl(var(--h) 85% 55% / 0.6), transparent 56%),
-    radial-gradient(ellipse at 82% 72%, hsl(calc(var(--h) + 70) 85% 60% / 0.5), transparent 54%),
-    radial-gradient(ellipse at 58% 6%, hsl(calc(var(--h) - 60) 80% 62% / 0.4), transparent 50%),
-    #090c22;
+    radial-gradient(ellipse at 20% 20%, rgba(60, 90, 255, 0.55), transparent 56%),
+    radial-gradient(ellipse at 80% 75%, rgba(40, 120, 255, 0.4), transparent 54%),
+    radial-gradient(ellipse at 55% 5%, rgba(110, 130, 255, 0.35), transparent 50%),
+    #070a22;
   background-size: var(--stars-size), auto, auto, auto, auto;
   transition: opacity 0.6s ease, visibility 0.6s ease;
   /* Safety net: if the script never runs, the screen still leaves. */
@@ -65,85 +64,46 @@ html.launching {
     pointer-events: none;
   }
 }
-.launch-badge {
-  position: relative;
-  width: 104px;
-  height: 104px;
-  display: grid;
-  place-items: center;
+.launch-logo {
+  width: min(430px, 82vw);
+  height: auto;
+  filter: drop-shadow(0 0 24px rgba(90, 120, 255, 0.6));
+  animation: logo-in 0.9s ease both;
 }
-.launch-badge::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1.5px dashed rgba(255, 255, 255, 0.45);
-  border-radius: 50%;
-  animation: spin 9s linear infinite;
-}
-.launch-badge::after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  border-radius: 50%;
-  background: var(--sun);
-  box-shadow: 0 0 14px 3px rgba(255, 194, 75, 0.7);
-  transform-origin: 6px 57px;
-  animation: spin 9s linear infinite;
-}
-.launch-initials {
-  width: 74px;
-  height: 74px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: hsl(var(--h) 75% 52%);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12), 0 0 34px hsl(var(--h) 90% 60% / 0.7);
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.7rem;
-  letter-spacing: 0.02em;
-}
-.launch-name {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.7rem, 6vw, 2.6rem);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-.launch-role {
-  margin: 0;
-  color: #c9cfff;
-  font-size: 0.95rem;
+@keyframes logo-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .launch-bar {
   width: min(280px, 70vw);
-  height: 6px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.18);
+  height: 5px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.16);
   overflow: hidden;
 }
 .launch-fill {
   display: block;
   width: 0;
   height: 100%;
-  border-radius: 6px;
-  background: linear-gradient(90deg, hsl(calc(var(--h) - 40) 90% 65%), hsl(var(--h) 95% 68%));
-  box-shadow: 0 0 12px hsl(var(--h) 95% 65% / 0.8);
+  border-radius: 5px;
+  background: linear-gradient(90deg, #6f87ff, #ffffff);
+  box-shadow: 0 0 12px rgba(140, 165, 255, 0.9);
 }
 .launch-status {
   margin: 0;
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c9cfff;
+  color: #b8c4ff;
 }
 .launch-skip {
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
   padding: 0.35rem 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px;
@@ -296,15 +256,6 @@ html.launching {
     radial-gradient(ellipse at 12% 18%, rgba(125, 95, 255, 0.5), transparent 52%),
     radial-gradient(ellipse at 88% 85%, rgba(255, 120, 190, 0.34), transparent 48%),
     radial-gradient(ellipse at 60% 8%, rgba(70, 150, 255, 0.3), transparent 45%);
-  animation: nebula-shift 18s ease-in-out infinite alternate;
-}
-@keyframes nebula-shift {
-  from {
-    filter: hue-rotate(-35deg);
-  }
-  to {
-    filter: hue-rotate(75deg);
-  }
 }
 .hero::before {
   background: radial-gradient(circle, rgba(255, 150, 200, 0.4), rgba(120, 100, 255, 0.18) 52%, transparent 72%);
