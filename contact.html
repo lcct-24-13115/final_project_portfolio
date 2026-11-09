@@ -42,9 +42,11 @@
   <link rel="stylesheet" href="css/space-theme.css?v=3">
   <link rel="stylesheet" href="css/about-plus.css?v=3">
   <link rel="stylesheet" href="css/pages.css?v=3">
+  <link rel="stylesheet" href="css/contact-plus.css?v=1">
   <script src="js/julia-main.js?v=3" defer></script>
   <script src="js/space-loader.js?v=3" defer></script>
   <script src="js/cursor.js?v=3" defer></script>
+  <script src="js/contact-plus.js?v=1" defer></script>
 </head>
 <body>
   <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
@@ -85,51 +87,120 @@
   </header>
 
   <main id="main">
-    <section class="page-top section" id="contact" aria-labelledby="contact-title">
+    <!-- ===== Contact redesign: hero, channels, working style (css/contact-plus.css, js/contact-plus.js) ===== -->
+    <div class="contact-space">
+      <section class="c-hero" id="top-hero" aria-labelledby="c-hero-title">
+        <div class="c-wrap c-hero-grid">
+          <div class="c-hero-copy">
+            <p class="c-eyebrow">Let&rsquo;s talk</p>
+            <h1 id="c-hero-title">Ready to make <span class="c-grad">something great?</span></h1>
+            <p class="c-lead">Got a project, an internship or a team-up in mind, or just want to say hello? I&rsquo;d love to hear from you. I&rsquo;m open to opportunities, collaborations and school projects.</p>
+            <div class="c-actions">
+              <a class="c-btn c-btn-light" href="mailto:cassandraalemania@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email me <span class="c-btn-arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
+              <a class="c-btn c-btn-dark" href="tel:+639562973655"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call me</a>
+            </div>
+            <ul class="c-chips" aria-label="Status">
+              <li class="chip-ok"><span class="dot" aria-hidden="true"></span> Available for opportunities</li>
+              <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Tanauan City, PH</li>
+              <li><i class="fa-regular fa-clock" aria-hidden="true"></i> <span id="localTime">--:--</span> local time</li>
+            </ul>
+          </div>
+          <div class="c-hero-art" aria-hidden="true">
+            <div class="orbit-wrap">
+              <span class="ring"></span><span class="ring r2"></span>
+              <img src="images/profile.jpg" alt="" width="400" height="400">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="c-channels" aria-labelledby="c-channels-title">
+        <div class="c-wrap">
+          <p class="c-eyebrow c-center">Channels</p>
+          <h2 class="c-title c-center" id="c-channels-title">Pick your frequency</h2>
+
+          <div class="c-big">
+            <article class="c-card c-card-email">
+              <div class="c-card-top">
+                <span class="c-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+                <span class="c-tag">Best for projects</span>
+                <button type="button" class="c-copy copy-btn" data-copy="cassandraalemania@gmail.com" data-label="Email" aria-label="Copy email"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy</button>
+              </div>
+              <h3>Email</h3>
+              <p class="c-value">cassandraalemania@gmail.com</p>
+              <p class="c-desc">The best way to reach me about a project, an internship or a collaboration, or anything that needs a proper, thought-out reply.</p>
+              <a class="c-btn c-btn-light" href="mailto:cassandraalemania@gmail.com">Write an email <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <i class="fa-solid fa-envelope c-watermark" aria-hidden="true"></i>
+            </article>
+
+            <article class="c-card c-card-phone">
+              <div class="c-card-top">
+                <span class="c-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                <span class="c-tag">Quick &amp; urgent</span>
+                <button type="button" class="c-copy copy-btn" data-copy="0956-297-3655" data-label="Phone" aria-label="Copy phone number"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy</button>
+              </div>
+              <h3>Call / Text</h3>
+              <p class="c-value">0956-297-3655</p>
+              <p class="c-desc">Message or call me if something is urgent, if you need a quick update, or if you just want to bounce some ideas around.</p>
+              <a class="c-btn c-btn-white" href="tel:+639562973655">Call now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <i class="fa-solid fa-phone c-watermark" aria-hidden="true"></i>
+            </article>
+          </div>
+
+          <ul class="c-small">
+            <li><a class="c-card c-s-linkedin" href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer"><span class="c-icon"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></span><span class="c-tag">Professional</span><strong>LinkedIn</strong><span class="c-handle">Julia Cassandra Alemania</span><span class="c-desc">Work history and recommendations</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="c-card c-s-github" href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer"><span class="c-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></span><span class="c-tag">Open source</span><strong>GitHub</strong><span class="c-handle">@lcct-24-13115</span><span class="c-desc">Code and school projects</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="c-card c-s-facebook" href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener noreferrer"><span class="c-icon"><i class="fa-brands fa-facebook" aria-hidden="true"></i></span><span class="c-tag">Say hi</span><strong>Facebook</strong><span class="c-handle">JCUA24</span><span class="c-desc">Easy to message, quick to reply</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="c-card c-s-instagram" href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener noreferrer"><span class="c-icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span><span class="c-tag">Day to day</span><strong>Instagram</strong><span class="c-handle">@makethoiu_</span><span class="c-desc">Life outside the code</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a class="c-card c-s-tiktok" href="https://www.tiktok.com/@liaxdcute" target="_blank" rel="noopener noreferrer"><span class="c-icon"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></span><span class="c-tag">Fun side</span><strong>TikTok</strong><span class="c-handle">@liaxdcute</span><span class="c-desc">The lighter side of me</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="c-way" aria-labelledby="c-way-title">
+        <div class="c-wrap c-way-grid">
+          <div class="c-way-art" aria-hidden="true">
+            <div class="c-planet"><i class="fa-solid fa-user-astronaut"></i><span class="c-moon"></span></div>
+          </div>
+          <div>
+            <p class="c-eyebrow">How I work</p>
+            <h2 class="c-title" id="c-way-title">Solving problems, <span class="c-grad">one step at a time</span></h2>
+            <p class="c-lead">Good projects start with a good conversation. Whether you bring a detailed brief or a rough idea, I&rsquo;ll help shape it, keep you updated at every stage and focus on what matters most to the people using it.</p>
+
+            <div class="c-acc" id="cAcc">
+              <div class="c-item c-blue open">
+                <h3><button type="button" class="c-trigger" id="acc-h1" aria-expanded="true" aria-controls="acc-p1"><span class="c-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span><span class="c-num">01</span><span class="c-name">Discovery &amp; Planning</span><span class="c-toggle" aria-hidden="true"></span></button></h3>
+                <div class="c-panel" id="acc-p1" role="region" aria-labelledby="acc-h1"><div><p>First I get to know the goal, who it&rsquo;s for and any limits we have, like deadlines or requirements. Then we agree on a plan so every decision later has a clear reason behind it.</p></div></div>
+              </div>
+              <div class="c-item c-violet">
+                <h3><button type="button" class="c-trigger" id="acc-h2" aria-expanded="false" aria-controls="acc-p2"><span class="c-icon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></span><span class="c-num">02</span><span class="c-name">Design &amp; Prototype</span><span class="c-toggle" aria-hidden="true"></span></button></h3>
+                <div class="c-panel" id="acc-p2" role="region" aria-labelledby="acc-h2"><div><p>Next I turn the plan into layouts and simple prototypes, so you can see and try the idea before it&rsquo;s built. I care about how it looks and how it works, so it&rsquo;s easy to use.</p></div></div>
+              </div>
+              <div class="c-item c-amber">
+                <h3><button type="button" class="c-trigger" id="acc-h3" aria-expanded="false" aria-controls="acc-p3"><span class="c-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span><span class="c-num">03</span><span class="c-name">Build &amp; Test</span><span class="c-toggle" aria-hidden="true"></span></button></h3>
+                <div class="c-panel" id="acc-p3" role="region" aria-labelledby="acc-h3"><div><p>Then I build it with HTML, CSS, JavaScript and other tools from my course, keeping the code clean and testing on phones, tablets and desktops so it works for everyone.</p></div></div>
+              </div>
+              <div class="c-item c-green">
+                <h3><button type="button" class="c-trigger" id="acc-h4" aria-expanded="false" aria-controls="acc-p4"><span class="c-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span><span class="c-num">04</span><span class="c-name">Review &amp; Improve</span><span class="c-toggle" aria-hidden="true"></span></button></h3>
+                <div class="c-panel" id="acc-p4" role="region" aria-labelledby="acc-h4"><div><p>Finishing isn&rsquo;t the end. I take feedback from teachers, teammates and users, fix what&rsquo;s not working and keep improving, because every project is a chance to learn.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">Open a channel</p>
-          <h2 id="contact-title">Contact</h2>
+          <p class="eyebrow">Prefer typing?</p>
+          <h2 id="contact-title">Send a message</h2>
         </header>
         <div class="grid grid-2 contact-grid">
           <div>
             <p class="save-contact reveal"><a class="btn" href="docs/Julia_Alemania.vcf" download><i class="fa-solid fa-address-card" aria-hidden="true"></i> Save my contact</a></p>
             <ul class="contact-list">
-              <li class="card reveal">
-                <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
-                <a href="mailto:cassandraalemania@gmail.com"><span class="label">Email</span><span class="value">cassandraalemania@gmail.com</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="cassandraalemania@gmail.com" data-label="Email" aria-label="Copy Email"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-solid fa-phone contact-icon" aria-hidden="true"></i>
-                <a href="tel:+639562973655"><span class="label">Phone</span><span class="value">0956-297-3655</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="0956-297-3655" data-label="Phone" aria-label="Copy Phone"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-facebook contact-icon" aria-hidden="true"></i>
-                <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener noreferrer"><span class="label">Facebook</span><span class="value">facebook.com/JCUA24</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="facebook.com/JCUA24" data-label="Facebook" aria-label="Copy Facebook"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-instagram contact-icon" aria-hidden="true"></i>
-                <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener noreferrer"><span class="label">Instagram</span><span class="value">instagram.com/makethoiu_</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="instagram.com/makethoiu_" data-label="Instagram" aria-label="Copy Instagram"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-tiktok contact-icon" aria-hidden="true"></i>
-                <a href="https://www.tiktok.com/@liaxdcute" target="_blank" rel="noopener noreferrer"><span class="label">TikTok</span><span class="value">tiktok.com/@liaxdcute</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="tiktok.com/@liaxdcute" data-label="TikTok" aria-label="Copy TikTok"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
-                <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/julia-cassandra-alemania-911831444</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="linkedin.com/in/julia-cassandra-alemania-911831444" data-label="LinkedIn" aria-label="Copy LinkedIn"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
-              <li class="card reveal">
-                <i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>
-                <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span><span class="value">github.com/lcct-24-13115</span><span class="sr-only"> (opens in a new tab)</span></a>
-                <button type="button" class="icon-btn copy-btn" data-copy="github.com/lcct-24-13115" data-label="GitHub" aria-label="Copy GitHub"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-              </li>
               <li class="card reveal">
                 <i class="fa-solid fa-location-dot contact-icon" aria-hidden="true"></i>
                 <a href="https://www.google.com/maps/search/?api=1&query=Blk%2025%20Lot%2012%20Phase%201%2C%20Tanauan%20Park%20Place%2C%20Bagumbayan%2C%20Tanauan%20City%2C%20Batangas%204232" target="_blank" rel="noopener noreferrer"><span class="label">Address</span><span class="value">Blk 25 Lot 12 Phase 1, Tanauan Park Place, Bagumbayan, Tanauan City, Batangas 4232</span><span class="sr-only"> (opens in a new tab)</span></a>
