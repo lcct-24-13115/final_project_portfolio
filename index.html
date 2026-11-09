@@ -47,6 +47,7 @@
   <script src="js/cursor.js?v=3" defer></script>
   <script src="js/crewpass.js?v=3" defer></script>
   <script src="js/mission-play.js?v=1" defer></script>
+  <script src="js/liftoff-jet.js?v=1" defer></script>
 </head>
 <body>
   <!-- Launch screen: shown once per visit, removed by js/space-loader.js -->
@@ -288,7 +289,19 @@
       <p class="feat-more reveal"><a class="btn btn-primary" href="projects.html">See all projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div></section>
 
-    <section class="section" aria-labelledby="liftoff-title"><div class="container"><div class="liftoff reveal"><p class="eyebrow">Ready for liftoff?</p><h2 id="liftoff-title">Let&rsquo;s build something out of this world</h2><div class="btn-row"><a class="btn btn-light" href="contact.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Say hi</a><a class="btn btn-ghost" href="projects.html"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> See my projects</a></div></div></div></section>
+    <section class="section liftoff-sec" aria-labelledby="liftoff-title"><div class="container"><div class="liftoff reveal"><p class="eyebrow">Ready for liftoff?</p><h2 id="liftoff-title">Let&rsquo;s build <span>something out of this world</span></h2><div class="btn-row"><a class="btn btn-light" href="contact.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Say hi</a><a class="btn btn-ghost" id="launch-btn" href="projects.html"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> <span>See my projects</span></a></div><div class="lo-astro-wrap" aria-hidden="true"><svg class="lo-astro" viewBox="0 0 260 300">
+<defs><linearGradient id="aVisor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f43c9"/><stop offset="1" stop-color="#080b2a"/></linearGradient><radialGradient id="aGlow" cx=".5" cy=".5"><stop offset="0" stop-color="#ffe98a"/><stop offset="1" stop-color="#ffb23d"/></radialGradient></defs>
+<g class="a-flag"><line x1="214" y1="206" x2="214" y2="112" stroke="#b9c0ff" stroke-width="4" stroke-linecap="round"/><path d="M216 114 L252 124 L216 140 Z" fill="#ff7ad9"/><text x="226" y="132" font-size="12" font-weight="800" fill="#fff" font-family="Poppins,Arial,sans-serif">J</text></g>
+<rect x="66" y="126" width="128" height="120" rx="26" fill="#c3cbf5"/>
+<rect x="78" y="130" width="104" height="130" rx="42" fill="#f4f6ff" stroke="#cfd6f5" stroke-width="3"/>
+<rect x="104" y="170" width="52" height="36" rx="9" fill="#dfe4ff"/><circle cx="116" cy="188" r="5" fill="#3fe08c"/><circle cx="130" cy="188" r="5" fill="#ffc24b"/><circle cx="144" cy="188" r="5" fill="#ff7ad9"/>
+<line x1="176" y1="162" x2="208" y2="204" stroke="#f4f6ff" stroke-width="26" stroke-linecap="round"/><circle cx="212" cy="208" r="15" fill="#fff" stroke="#cfd6f5" stroke-width="3"/>
+<g class="a-wave"><line x1="84" y1="162" x2="48" y2="104" stroke="#f4f6ff" stroke-width="26" stroke-linecap="round"/><circle cx="44" cy="96" r="16" fill="#fff" stroke="#cfd6f5" stroke-width="3"/></g>
+<rect x="98" y="136" width="64" height="14" rx="7" fill="#aab4ff"/>
+<circle cx="130" cy="86" r="64" fill="#f4f6ff" stroke="#cfd6f5" stroke-width="4"/>
+<ellipse cx="130" cy="90" rx="48" ry="41" fill="url(#aVisor)"/>
+<ellipse cx="112" cy="72" rx="16" ry="8" fill="#fff" fill-opacity=".5" transform="rotate(-28 112 72)"/><circle cx="150" cy="104" r="3" fill="#fff" fill-opacity=".6"/>
+</svg></div></div></div></section>
   </main>
 
   <footer class="site-footer">

@@ -200,3 +200,24 @@
 @media(max-width:700px){.social-grid{grid-template-columns:repeat(2,1fr)}.social-card{min-height:200px}}
 @media(max-width:440px){.social-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.social-card,.sc-ico,.sc-mark,.sc-cta i{transition:none}.social-card:hover{transform:none}}
+
+/* ---------- Liftoff: astronaut + jet launch ---------- */
+.liftoff h2{font-size:clamp(2rem,5.2vw,3.8rem);line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin-inline:auto}
+.liftoff h2 span{background:linear-gradient(90deg,#6fd8ff,#c08bff 55%,#7fe8a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lo-astro-wrap{width:min(260px,66%);height:150px;margin:2rem auto calc(-1 * clamp(2.5rem,6vw,4.5rem));overflow:hidden;pointer-events:none}
+.lo-astro{display:block;width:100%;height:auto;animation:astroBob 6s ease-in-out infinite}
+@keyframes astroBob{50%{transform:translateY(-10px) rotate(2deg)}}
+.a-wave,.a-flag{transform-box:fill-box}
+.a-wave{transform-origin:85% 90%;animation:astroWave 1.6s ease-in-out infinite}
+@keyframes astroWave{50%{transform:rotate(-18deg)}}
+.a-flag{transform-origin:50% 100%;animation:flagSway 3s ease-in-out infinite}
+@keyframes flagSway{50%{transform:rotate(3deg)}}
+#launch-btn.launching{pointer-events:none;opacity:.85}
+
+.jet-fly{position:fixed;z-index:9999;width:84px;height:170px;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 0 22px rgba(127,240,255,.7))}
+.jet-fly svg{display:block;width:100%;height:100%;overflow:visible}
+.jet-fly .flame{transform-box:fill-box;transform-origin:50% 0;animation:flame .08s linear infinite alternate}
+@keyframes flame{from{transform:scaleY(.85) scaleX(.9)}to{transform:scaleY(1.25) scaleX(1.05)}}
+.jet-smoke{position:fixed;z-index:9998;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.85),rgba(160,190,255,.35) 60%,transparent 72%);pointer-events:none}
+.jet-flash{position:fixed;inset:0;z-index:9997;background:radial-gradient(circle at 50% 100%,rgba(127,240,255,.55),transparent 60%);opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.lo-astro,.a-wave,.a-flag{animation:none}}
