@@ -24,6 +24,8 @@
           <div class="loading-ring"></div>
           <div class="loading-ring"></div>
           <div class="loading-ring"></div>
+          <div class="loading-ring"></div>
+          <div class="loading-center"></div>
         </div>
         <div class="loading-text">Preparing your experience</div>
         <div class="loading-progress">
@@ -33,6 +35,19 @@
       document.body.appendChild(this.screen);
       this.fill = this.screen.querySelector('.loading-fill');
       this.progress = 0;
+      this.createParticles();
+    }
+
+    createParticles() {
+      // Create floating particles
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'loading-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        particle.style.animationDelay = (Math.random() * 2) + 's';
+        this.screen.appendChild(particle);
+      }
     }
 
     start() {
