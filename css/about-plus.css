@@ -178,3 +178,25 @@
   .m-ufo.zap,.m-ufo.zap *,.m-art.bump,.m-hint,.m-spark,.mission-stage.zapping .m-beam{animation:none!important}
   .m-spark{display:none}
 }
+
+/* ---------- Find me online: social cards ---------- */
+.socials{padding-top:1rem}
+.socials .container{width:min(1200px,100% - 2rem);max-width:none}
+.social-grid{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.social-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:230px;height:100%;padding:1.2rem;overflow:hidden;border-radius:22px;text-decoration:none;color:var(--text);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 22%,var(--surface)),var(--surface) 75%);border:1px solid color-mix(in srgb,var(--c) 40%,var(--border));transition:transform .35s cubic-bezier(.3,1.4,.5,1),box-shadow .35s,border-color .35s}
+.social-card:hover,.social-card:focus-visible{transform:translateY(-8px) rotate(-.6deg);border-color:var(--c);box-shadow:0 18px 40px color-mix(in srgb,var(--c) 38%,transparent)}
+.social-card:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sc-ico{position:absolute;top:1.2rem;left:1.2rem;width:52px;height:52px;display:grid;place-items:center;border-radius:15px;font-size:1.5rem;color:var(--c);background:color-mix(in srgb,var(--c) 20%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.social-card:hover .sc-ico{transform:scale(1.12) rotate(-8deg)}
+.sc-mark{position:absolute;right:-18px;bottom:-14px;font-size:8.5rem;color:var(--c);opacity:.14;transition:transform .5s,opacity .4s;pointer-events:none}
+.social-card:hover .sc-mark{transform:scale(1.15) rotate(-8deg);opacity:.24}
+.sc-cta{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;font-size:0;color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.sc-cta i{font-size:.7rem;transition:transform .3s}
+.social-card:hover .sc-cta i{transform:translate(2px,-2px)}
+.sc-kind{font:800 .72rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.social-card strong{position:relative;font:800 1.45rem/1.15 var(--display);letter-spacing:.01em}
+.sc-handle{position:relative;margin-top:.2rem;color:var(--text-muted);font-size:.85rem;overflow-wrap:anywhere}
+@media(max-width:1100px){.social-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.social-grid{grid-template-columns:repeat(2,1fr)}.social-card{min-height:200px}}
+@media(max-width:440px){.social-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.social-card,.sc-ico,.sc-mark,.sc-cta i{transition:none}.social-card:hover{transform:none}}
