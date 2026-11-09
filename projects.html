@@ -9,135 +9,80 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/design-a-base.css?v=1">
 <style>
-:root{--bg:#04050d;--ink:#f4efee;--mute:#a9a3b5;--rose:#e8b4a6;--teal:#14a3a0;--blue:#6ec6ff;--violet:#c9a4ff;--line:rgba(255,255,255,.14);--serif:'Gloock',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
-*{box-sizing:border-box;margin:0}
-html{background:var(--bg)}
-body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;min-height:100svh;overflow-x:hidden}
-canvas#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.aurora i{position:absolute;top:22%;width:60vw;height:26vh;border-radius:50%;filter:blur(80px);opacity:.45;animation:drift 22s ease-in-out infinite alternate}
-.aurora i:nth-child(1){left:-12vw;background:#0f6b66}
-.aurora i:nth-child(2){right:-10vw;background:#1b4f9c;top:18%;animation-delay:-8s}
-@keyframes drift{to{transform:translate(6vw,-4vh) scale(1.15)}}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
-main,header,footer{position:relative;z-index:1}
+/* Projects-specific */
+.proj-hero{min-height:70svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 40px}
+.proj-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:1;letter-spacing:-.02em;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.proj-hero .sub{max-width:720px;margin:14px auto 0;color:var(--mute);font-size:1.02rem}
+.proj-hero .eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3;margin-bottom:10px}
 
-/* top bar */
-.top{display:flex;align-items:center;justify-content:center;gap:28px;padding:26px 20px 0;position:relative}
-.brand{font-family:var(--serif);font-size:1.35rem;letter-spacing:.01em;white-space:nowrap}
-.pill{display:flex;align-items:center;gap:4px;padding:8px;border:1px solid var(--line);border-radius:99px;background:rgba(14,15,23,.72);backdrop-filter:blur(10px)}
-.pill a{white-space:nowrap;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:12px 20px;border-radius:99px;color:#c9c4d3;transition:background .2s,color .2s}
-.pill a:hover{color:#fff}
-.pill a[aria-current=page]{background:rgba(255,255,255,.1);color:#fff}
-.pill .sep{width:1px;height:22px;background:var(--line);margin:0 6px}
-.pill a.hi{color:#fff}
-.back{position:absolute;top:26px;left:26px;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(14,15,23,.8);display:grid;place-items:center;font-size:1rem;color:var(--ink);transition:transform .2s}
-.back:hover{transform:translateX(-3px)}
+/* Big project category card */
+.choose{max-width:1020px;margin:0 auto;padding:0 24px 80px}
+.cat-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(620px,82svh);padding:40px;border-radius:44px;border:1px solid var(--line);overflow:hidden;isolation:isolate;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;text-decoration:none}
+.cat-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.cat-card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(1.1)}
+.cat-card:hover .bg{transform:scale(1.02)}
+.cat-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(4,5,13,.97) 10%,rgba(4,5,13,.7) 38%,rgba(4,5,13,0) 62%)}
+.cat-num,.cat-count{position:absolute;top:30px;font-size:.7rem;font-weight:800;letter-spacing:.16em;padding:10px 16px;border-radius:99px;background:rgba(8,9,16,.7);border:1px solid var(--line);backdrop-filter:blur(8px);color:#c9c4d3}
+.cat-num{left:30px}
+.cat-count{right:30px;display:flex;align-items:center;gap:9px;text-transform:uppercase}
+.cat-count::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.cat-kicker{font-size:.72rem;font-weight:800;letter-spacing:.38em;text-transform:uppercase;color:var(--dot)}
+.cat-card h2{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;margin:12px 0 28px;color:var(--ink)}
+.cat-go{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;padding:8px 8px 8px 30px;border-radius:99px;border:1px solid var(--line);background:rgba(8,9,16,.55);backdrop-filter:blur(8px);font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#c9c4d3}
+.cat-go i{width:50px;height:50px;border-radius:50%;background:#f1eeee;color:#0b0b12;display:grid;place-items:center;transition:transform .3s}
+.cat-card:hover .cat-go i{transform:rotate(45deg)}
+.web-cat{--dot:var(--blue)}
+.web-cat .bg{background:linear-gradient(135deg,#0a1628,#0d2847)}
 
-/* hero */
-.head{text-align:center;padding:64px 20px 44px}
-.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:1;letter-spacing:-.02em;margin-top:10px;text-shadow:0 6px 40px rgba(0,0,0,.6)}
-.sub{max-width:720px;margin:14px auto 0;color:var(--mute);font-size:1.02rem}
-
-/* cards */
-.choose{max-width:1020px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr;position:relative}
-.card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(620px,82svh);padding:40px;border-radius:44px;border:1px solid var(--line);overflow:hidden;isolation:isolate;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
-.card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 80px rgba(0,0,0,.55)}
-.card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(1.1)}
-.card:hover .bg{transform:scale(1.02)}
-.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(4,5,13,.97) 10%,rgba(4,5,13,.7) 38%,rgba(4,5,13,0) 62%)}
-.num,.count{position:absolute;top:30px;font-size:.7rem;font-weight:800;letter-spacing:.16em;padding:10px 16px;border-radius:99px;background:rgba(8,9,16,.7);border:1px solid var(--line);backdrop-filter:blur(8px)}
-.num{left:30px}.count{right:30px;display:flex;align-items:center;gap:9px;text-transform:uppercase}
-.count::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot)}
-.kicker{font-size:.72rem;font-weight:800;letter-spacing:.38em;text-transform:uppercase;color:var(--dot)}
-.card h2{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;margin:12px 0 28px;background:linear-gradient(180deg,#fff,var(--tint));-webkit-background-clip:text;background-clip:text;color:transparent}
-.go{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;padding:8px 8px 8px 30px;border-radius:99px;border:1px solid var(--line);background:rgba(8,9,16,.55);backdrop-filter:blur(8px);font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-.go i{width:50px;height:50px;border-radius:50%;background:#f1eeee;color:#0b0b12;display:grid;place-items:center;transition:transform .3s}
-.card:hover .go i{transform:rotate(45deg)}
-.web{--dot:var(--blue);--tint:#9fc3d6}
-.web .bg{background:url(images/web-design-bg.jpg) center/cover no-repeat}
-.shots img{position:absolute;display:block;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:16px;border:1px solid rgba(255,255,255,.22);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.04);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.shots .s1{top:9%;left:7%;width:44%;transform:rotate(-5deg);z-index:1}
-.shots .s2{top:7%;right:6%;width:42%;transform:rotate(4deg);z-index:2}
-.shots .s3{top:25%;left:31%;width:40%;transform:rotate(-1.5deg);z-index:3}
-.card:hover .s1{transform:rotate(-7deg) translate(-8px,-6px)}
-.card:hover .s2{transform:rotate(6deg) translate(8px,-6px)}
-.card:hover .s3{transform:rotate(-1.5deg) translateY(-10px) scale(1.03)}
-
-footer{display:flex;justify-content:space-between;align-items:center;padding:46px 28px 30px;color:var(--mute)}
-.socials{display:flex;gap:18px;font-size:1.2rem}
-.socials a{color:#d7d2dd;opacity:.85}.socials a:hover{color:var(--rose);opacity:1}
-.copy{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
-
-@media(max-width:900px){
-  .top{flex-direction:column;gap:14px;padding-top:84px}
-  .pill{max-width:100%;overflow-x:auto}
-  .pill a{padding:11px 14px;font-size:.66rem}
-  .choose{grid-template-columns:1fr;gap:26px}
-  .card{min-height:500px;padding:28px;border-radius:34px}
-  .head{padding-top:40px}
-  footer{flex-direction:column;gap:14px}
+@media(max-width:640px){
+  .cat-card{min-height:500px;padding:28px;border-radius:34px}
 }
-@media(prefers-reduced-motion:reduce){.aurora i,.card,.card .bg,.go i{animation:none;transition:none}}
 </style>
-  <link rel="stylesheet" href="css/orbit-ui.css?v=1">
-  <script src="js/orbit-ui.js?v=1" defer></script>
+<script src="js/design-a-common.js?v=1" defer></script>
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
 <div class="aurora" aria-hidden="true"><i></i><i></i></div>
 
-<header class="top">
-  <a class="back" href="index.html" aria-label="Back to home"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
-  <a class="brand" href="index.html">Julia Alemania</a>
-  <nav class="pill" aria-label="Main">
-    <a href="index.html#about">About Me</a>
-    <a href="experience.html">Experience</a>
-    <a href="projects.html" aria-current="page">Projects</a>
-    <a href="links.html">Quick Links</a>
-    <span class="sep" aria-hidden="true"></span>
-    <a class="hi" href="contact.html">Say Hi &#128075;</a>
-  </nav>
-</header>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="about.html"><span>About Me</span><small>Who I am and how I work</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
+</nav>
 
 <main>
-  <section class="head">
+  <section class="proj-hero">
     <p class="eyebrow">Creative Portfolio</p>
     <h1>Project Nexus</h1>
     <p class="sub">A curated selection of my digital work, from complete web systems to games and apps, built from the database to the dashboard.</p>
   </section>
 
-  <section class="choose" aria-label="Web design and development projects">
-    <a class="card web" href="web-projects.html">
+  <section class="choose">
+    <a class="cat-card web-cat" href="web-projects.html">
       <span class="bg" aria-hidden="true"></span>
-      <span class="num">01</span>
-      <span class="count">4 Projects</span>
-      <span class="kicker">Digital Systems</span>
+      <span class="cat-num">01</span>
+      <span class="cat-count">4 Projects</span>
+      <span class="cat-kicker">Digital Systems</span>
       <h2>Web Design &amp; Development</h2>
-      <span class="go">Enter Portfolio <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+      <span class="cat-go">Enter Portfolio <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
     </a>
   </section>
 </main>
 
-<footer>
-  <div class="socials">
-    <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-    <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-    <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-  </div>
-  <div class="copy">&copy; 2026 Julia Alemania</div>
-</footer>
-
-<script>
-const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
-const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-function size(){W=c.width=innerWidth;H=c.height=innerHeight;stars=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,p:Math.random()*6.28,s:Math.random()*.02+.005,g:Math.random()<.08}))}
-function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.p+=s.s;const a=.45+.55*Math.sin(s.p);x.globalAlpha=a;x.fillStyle=s.g?'#bcd6ff':'#fff';if(s.g){x.shadowColor='#9cc4ff';x.shadowBlur=14}else x.shadowBlur=0;x.beginPath();x.arc(s.x,s.y,s.g?s.r+1.6:s.r,0,6.28);x.fill()}x.globalAlpha=1;if(!still)requestAnimationFrame(draw)}
-addEventListener('resize',()=>{size();if(still)draw()});size();draw();
-</script>
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
 </body>
 </html>

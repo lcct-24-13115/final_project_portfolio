@@ -1,0 +1,63 @@
+/* ==========================================================
+   Links page — Design A specific styles
+   ========================================================== */
+
+/* ---------- Layout ---------- */
+.links-layout{display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:40px;max-width:1000px;margin:0 auto;padding:100px 24px 80px}
+@media(max-width:768px){.links-layout{grid-template-columns:1fr;padding-top:90px}}
+
+/* ---------- Sidebar ---------- */
+.links-side{text-align:center;position:sticky;top:100px;align-self:start}
+@media(max-width:768px){.links-side{position:static;margin-bottom:20px}}
+.links-photo{width:min(200px,50vw);aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(from 200deg,var(--rose),#7b5a74,var(--teal),var(--rose));box-shadow:0 0 70px rgba(232,180,166,.18);margin:0 auto 20px}
+.links-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 22%;border:4px solid var(--bg);display:block}
+.links-name{font-family:var(--serif);font-size:2rem;line-height:1.05;margin-bottom:8px}
+.links-roles{font-size:.82rem;color:var(--mute);margin-bottom:8px;line-height:1.5}
+.links-status{font-size:.78rem;color:var(--teal);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px}
+.links-status .dot{width:7px;height:7px;border-radius:50%;background:#3ee0b0;display:inline-block}
+.links-meta{font-size:.76rem;color:var(--mute);display:flex;flex-direction:column;gap:4px;margin-bottom:20px}
+.links-meta i{color:var(--rose);width:16px}
+.links-actions{display:flex;flex-direction:column;gap:10px}
+.links-act{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 .78rem var(--sans);transition:transform .2s,background .2s}
+.links-act:hover{transform:translateY(-2px);background:rgba(255,255,255,.06)}
+.links-act i{color:var(--rose)}
+.links-act.save{color:var(--teal)}
+
+/* ---------- Main area ---------- */
+.links-main{min-width:0}
+.links-head{margin-bottom:20px}
+.links-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05}
+.links-head .eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3;margin-bottom:8px}
+
+/* Feature link */
+.links-feature{display:flex;align-items:center;gap:18px;padding:22px 24px;border:1px solid var(--line);border-radius:22px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin-bottom:24px;transition:transform .3s,border-color .3s}
+.links-feature:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
+.links-feature .lf-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--teal));display:grid;place-items:center;font-size:1.4rem;color:var(--bg);flex-shrink:0}
+.links-feature .lf-txt{flex:1}
+.links-feature .lf-kind{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.links-feature strong{font-size:1.1rem;display:block;margin:2px 0}
+.links-feature .lf-url{font-size:.76rem;color:var(--mute)}
+.links-feature .lf-go{font-size:1.2rem;color:var(--rose)}
+
+/* Grid cards */
+.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px}
+.links-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 16px;border:1px solid var(--line);border-radius:20px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);text-align:center;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.links-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22)}
+.links-card .lc-ico{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:1.2rem}
+.links-card strong{font-size:.95rem}
+.links-card .lc-sub{font-size:.76rem;color:var(--mute)}
+.links-card .lc-mark{position:absolute;right:-8px;bottom:-8px;font-size:3.5rem;opacity:.04;color:var(--ink);pointer-events:none}
+.links-card .lc-num{position:absolute;top:10px;right:14px;font-size:.62rem;color:var(--mute);letter-spacing:.1em}
+
+/* Wide cards */
+.links-wide{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin-bottom:12px;transition:transform .2s,border-color .2s;position:relative;overflow:hidden}
+.links-wide:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.22)}
+.links-wide .lw-ico{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+.links-wide .lw-txt{flex:1;min-width:0}
+.links-wide .lw-kind{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.links-wide strong{font-size:.95rem;display:block}
+.links-wide .lw-sub{font-size:.76rem;color:var(--mute)}
+.links-wide .lw-btn{font-size:.72rem;font-weight:600;color:var(--rose);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.links-wide .lw-mark{position:absolute;right:-6px;bottom:-6px;font-size:3rem;opacity:.04;color:var(--ink);pointer-events:none}
+
+.links-section-gap{margin-top:36px;margin-bottom:12px}
