@@ -1552,3 +1552,37 @@ ul, ol {
 .save-contact {
   margin-bottom: 1rem;
 }
+
+/* ---------- Collapsible project details ---------- */
+.project-more {
+  margin: 0.9rem 0 1rem;
+  border-top: 1px solid var(--border);
+}
+.project-more summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  color: var(--link);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  list-style: none;
+}
+.project-more summary::-webkit-details-marker {
+  display: none;
+}
+.project-more summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.project-more[open] summary::after {
+  content: "\2212";
+}
+.project-more summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
