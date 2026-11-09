@@ -17,22 +17,15 @@
 @keyframes twinkle{0%{opacity:.5}100%{opacity:1}}
 @keyframes nebulaFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(100px,50px) scale(1.2)}}
 
-.loading-logo{width:100px;height:100px;position:relative;margin-bottom:30px;z-index:10}
+/* Logo container */
+.loading-logo{width:200px;height:200px;position:relative;margin-bottom:30px;z-index:10;animation:logoFloat 3s ease-in-out infinite}
 
-/* Color-changing orbital rings */
-.loading-ring{position:absolute;inset:0;border:3px solid transparent;border-radius:50%;animation:spin 1.5s cubic-bezier(.5,0,.5,1) infinite,colorCycle 3s linear infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-.loading-ring:nth-child(1){border-top-color:#e8b4a6;border-right-color:#e8b4a6;animation-duration:1.5s,3s;filter:drop-shadow(0 0 8px #e8b4a6)}
-.loading-ring:nth-child(2){inset:10px;border-top-color:#14a3a0;border-right-color:#14a3a0;animation:spin 2s cubic-bezier(.5,0,.5,1) infinite reverse,colorCycle 3s linear infinite 1s;animation-duration:2s,3s;filter:drop-shadow(0 0 8px #14a3a0)}
-.loading-ring:nth-child(3){inset:20px;border-top-color:#6ec6ff;border-right-color:#6ec6ff;animation:spin 2.5s cubic-bezier(.5,0,.5,1) infinite,colorCycle 3s linear infinite 2s;animation-duration:2.5s,3s;filter:drop-shadow(0 0 8px #6ec6ff)}
-.loading-ring:nth-child(4){inset:30px;border-top-color:#c9a4ff;border-right-color:#c9a4ff;animation:spin 3s cubic-bezier(.5,0,.5,1) infinite reverse,colorCycle 3s linear infinite 0.5s;animation-duration:3s,3s;filter:drop-shadow(0 0 8px #c9a4ff)}
+/* Logo image */
+.loading-logo img{width:100%;height:100%;filter:drop-shadow(0 0 20px rgba(232,180,166,0.5));animation:logoGlow 3s ease-in-out infinite}
 
-/* Center planet/rocket */
-.loading-center{position:absolute;inset:35px;background:radial-gradient(circle at 30% 30%,#e8b4a6,#0a0e27);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 30px rgba(232,180,166,.5),inset -5px -5px 15px rgba(0,0,0,.3)}
-
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes colorCycle{0%{filter:drop-shadow(0 0 8px #e8b4a6)}25%{filter:drop-shadow(0 0 12px #14a3a0)}50%{filter:drop-shadow(0 0 8px #6ec6ff)}75%{filter:drop-shadow(0 0 12px #c9a4ff)}100%{filter:drop-shadow(0 0 8px #e8b4a6)}}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}}
+@keyframes logoGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(232,180,166,0.5))}50%{filter:drop-shadow(0 0 30px rgba(110,198,255,0.7))}}
 
 .loading-text{font-family:var(--sans);font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;background:linear-gradient(90deg,#e8b4a6,#14a3a0,#6ec6ff,#c9a4ff,#e8b4a6);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 3s linear infinite;margin-bottom:20px;z-index:10;position:relative}
 
