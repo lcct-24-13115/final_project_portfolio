@@ -56,3 +56,20 @@
 .tl li:nth-child(1){--c:#1fa8c9}.tl li:nth-child(2){--c:#8f56e6}.tl li:nth-child(3){--c:#d98a1f}
 @media(max-width:860px){.crew{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.holo,.pass-hello::after{animation:none}.crew-pass{transition:none}}
+
+/* ---------- Sticky pass, dimming timeline, aurora ---------- */
+#about{position:relative;overflow:hidden}
+#about::before{content:"";position:absolute;left:-10%;right:-10%;top:30%;height:55%;pointer-events:none;background:radial-gradient(ellipse at 30% 50%,rgba(31,200,160,.20),transparent 60%),radial-gradient(ellipse at 75% 40%,rgba(143,86,230,.16),transparent 60%);filter:blur(30px)}
+#about>.container{position:relative}
+.crew{align-items:start}
+.pass-wrap{position:sticky;top:calc(var(--header-h) + 1rem);align-self:start}
+.tl li{min-height:52vh;padding-bottom:4rem}
+.tl p{font-size:clamp(1.05rem,1.6vw,1.3rem)}
+.js .tl li{opacity:.3;transition:opacity .45s}
+.js .tl li.active{opacity:1}
+.tl li.active::before{background:linear-gradient(var(--c),color-mix(in srgb,var(--c) 15%,transparent))}
+.crafts-head{text-align:center;margin:4rem 0 1.5rem}
+.crafts-head .eyebrow{letter-spacing:.3em;text-transform:uppercase}
+.crafts-head h3{margin:.4rem 0 0;font:800 clamp(2.2rem,6vw,4.2rem)/1.05 var(--display);letter-spacing:-.02em}
+.crafts-head h3 span{background:linear-gradient(90deg,#3ee0b0,#6fa8ff,#c08bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:860px){.pass-wrap{position:static}.tl li{min-height:0;padding-bottom:2rem}}
