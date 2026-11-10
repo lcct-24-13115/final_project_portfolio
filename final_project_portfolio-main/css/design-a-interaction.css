@@ -1,0 +1,284 @@
+/* ==========================================================
+   Interaction Enhancements CSS
+   Typing animation, progress dots, mouse trail
+   ========================================================== */
+
+/* ---------- Typing Animation ---------- */
+.typing-container {
+  display: inline-block;
+  position: relative;
+}
+
+.typing-text {
+  display: inline;
+  border-right: 3px solid var(--rose);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--rose); }
+}
+
+/* ---------- Progress Dots ---------- */
+.progress-dots {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.progress-dot:hover {
+  background: rgba(232, 180, 166, 0.5);
+  border-color: var(--rose);
+  transform: scale(1.3);
+}
+
+.progress-dot.active {
+  background: var(--rose);
+  border-color: var(--rose);
+  box-shadow: 0 0 12px rgba(232, 180, 166, 0.6);
+}
+
+.progress-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(14, 15, 23, 0.9);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border: 1px solid var(--line);
+}
+
+.progress-dot:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .progress-dots {
+    right: 15px;
+  }
+  
+  .progress-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .progress-dot::before {
+    display: none;
+  }
+}
+
+/* ---------- Mouse Trail ---------- */
+.trail-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--rose), transparent);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+.trail-dot.fading {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trail-dot {
+    display: none;
+  }
+}
+
+/* ---------- Back to Top Button ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(14, 15, 23, 0.9);
+  border: 2px solid var(--rose);
+  color: var(--rose);
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--rose);
+  color: #04050d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(232, 180, 166, 0.4);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+/* ---------- Page Indicator Badge ---------- */
+.page-indicator-badge {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: linear-gradient(135deg, #e94560, #f5a623);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 8px rgba(233, 69, 96, 0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.page-indicator-badge.show {
+  transform: translateX(-50%) scale(1);
+}
+
+/* ---------- Mobile Swipe Hints ---------- */
+@media (max-width: 768px) {
+  /* Add subtle swipe indicator on edges */
+  .swipe-hint-left,
+  .swipe-hint-right {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom, 
+      transparent, 
+      rgba(233, 69, 96, 0.5), 
+      transparent);
+    pointer-events: none;
+    opacity: 0;
+    animation: swipeHintPulse 2s ease-in-out infinite;
+    z-index: 5;
+  }
+
+  .swipe-hint-left {
+    left: 0;
+    background: linear-gradient(to right, 
+      rgba(233, 69, 96, 0.3), 
+      transparent);
+    animation-delay: 0s;
+  }
+
+  .swipe-hint-right {
+    right: 0;
+    background: linear-gradient(to left, 
+      rgba(233, 69, 96, 0.3), 
+      transparent);
+    animation-delay: 1s;
+  }
+
+  @keyframes swipeHintPulse {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  /* Show hints briefly after page load, then fade out */
+  .swipe-hint-left,
+  .swipe-hint-right {
+    animation: 
+      swipeHintPulse 2s ease-in-out infinite,
+      swipeHintFadeOut 0.5s ease-out 4s forwards;
+  }
+
+  @keyframes swipeHintFadeOut {
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+
+/* ---------- Enhanced Mobile Menu ---------- */
+@media (max-width: 768px) {
+  /* Add touch feedback to menu items */
+  .overlay nav a {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .overlay nav a:active {
+    transform: scale(0.95);
+  }
+
+  /* Smoother menu animations on mobile */
+  .overlay {
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .overlay nav {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Add subtle bounce to menu button on mobile */
+  #menuBtn {
+    animation: menuBtnBounce 0.6s ease-out 1s;
+  }
+
+  @keyframes menuBtnBounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+}

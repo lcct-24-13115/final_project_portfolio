@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Julia Alemania">
+  <defs>
+    <radialGradient id="pl" cx="0.34" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="#b9c2ff"/>
+      <stop offset="0.35" stop-color="#6a5cff"/>
+      <stop offset="0.75" stop-color="#2a1fb0"/>
+      <stop offset="1" stop-color="#130d58"/>
+    </radialGradient>
+    <radialGradient id="shade" cx="0.3" cy="0.25" r="0.9">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05021f" stop-opacity="0.65"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ff0ff"/>
+      <stop offset="0.5" stop-color="#a78bff" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#ff7ad9"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7ff0ff"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ff9ae6"/>
+    </linearGradient>
+    <linearGradient id="jg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffe3a3"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0.55" stop-color="#7a6bff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#7a6bff" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="clip"><circle cx="32" cy="32" r="18"/></clipPath>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    .tw{animation:tw 2.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+    .tw2{animation-delay:1.1s}
+    @keyframes tw{from{opacity:.25;transform:scale(.7)}to{opacity:1;transform:scale(1.15)}}
+    .halo{animation:pulse 3.2s ease-in-out infinite;transform-origin:32px 32px}
+    @keyframes pulse{50%{opacity:.6;transform:scale(1.06)}}
+  </style>
+  <circle class="halo" cx="32" cy="32" r="31" fill="url(#halo)"/>
+  <!-- back half of ring -->
+  <g transform="rotate(-25 32 32)">
+    <path d="M2 32 A30 10 0 0 1 62 32" fill="none" stroke="url(#ring)" stroke-opacity="0.45" stroke-width="2"/>
+  </g>
+  <!-- planet -->
+  <circle cx="32" cy="32" r="18" fill="url(#pl)"/>
+  <g clip-path="url(#clip)">
+    <path d="M10 24 Q32 18 54 26" fill="none" stroke="#fff" stroke-opacity="0.10" stroke-width="3"/>
+    <path d="M10 42 Q32 36 54 45" fill="none" stroke="#fff" stroke-opacity="0.08" stroke-width="4"/>
+    <circle cx="32" cy="32" r="18" fill="url(#shade)"/>
+  </g>
+  <circle cx="32" cy="32" r="17.6" fill="none" stroke="url(#rim)" stroke-width="0.9"/>
+  <!-- the J -->
+  <g filter="url(#glow)">
+    <path d="M27.5 22 H40 M35 22 V34.5 Q35 40.5 29.8 40.5 Q25 40.5 24.4 35.4" fill="none" stroke="url(#jg)" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- front half of ring -->
+  <g transform="rotate(-25 32 32)">
+    <path d="M2 32 A30 10 0 0 0 62 32" fill="none" stroke="url(#ring)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle r="3" fill="#ffc24b" filter="url(#glow)">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M2 32 A30 10 0 1 0 62 32 A30 10 0 1 0 2 32"/>
+    </circle>
+  </g>
+  <!-- sparkles -->
+  <path class="tw" d="M10 6 Q10 11 15 11 Q10 11 10 16 Q10 11 5 11 Q10 11 10 6Z" fill="#ffc24b"/>
+  <path class="tw tw2" d="M54 46 Q54 50 58 50 Q54 50 54 54 Q54 50 50 50 Q54 50 54 46Z" fill="#7ff0ff"/>
+  <circle class="tw" cx="52" cy="10" r="1.2" fill="#fff"/>
+  <circle class="tw tw2" cx="8" cy="52" r="1" fill="#ff9ae6"/>
+</svg>

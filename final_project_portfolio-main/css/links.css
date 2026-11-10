@@ -1,0 +1,88 @@
+/* Quick Links page (links.html): profile on the left, link cards on the right */
+.ql-page{width:min(1180px,100% - 2rem);margin:0 auto;padding:clamp(1.5rem,4vw,3rem) 0 4rem;display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.ql-side{position:sticky;top:calc(var(--header-h,68px) + 1.5rem);display:flex;flex-direction:column;align-items:center;text-align:center}
+.ql-main{min-width:0}
+
+/* photo with orbiting dot */
+.ql-photo{position:relative;width:min(290px,70vw);aspect-ratio:1;display:grid;place-items:center}
+.ql-photo img{width:86%;height:86%;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:0 0 50px rgba(111,120,240,.35)}
+.ql-photo::before{content:"";position:absolute;inset:3%;border-radius:50%;padding:3px;background:conic-gradient(from 140deg,#3ee0b0,#6fa8ff,#c08bff,#ff7ad9,#3ee0b0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.ql-orbit{position:absolute;inset:3%;border-radius:50%;animation:qlSpin 9s linear infinite}
+.ql-orbit i{position:absolute;top:-6px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#fff;box-shadow:0 0 14px 3px rgba(127,240,255,.9)}
+@keyframes qlSpin{to{transform:rotate(360deg)}}
+
+.ql-roles{margin:1.4rem 0 .5rem;font:700 .78rem/1.8 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted)}
+.ql-roles span{margin:0 .4rem;opacity:.6}
+.ql-name{margin:0;font:800 clamp(3rem,6vw,4.6rem)/1 var(--display);letter-spacing:-.03em;color:var(--text)}
+.ql-status{display:inline-flex;align-items:center;gap:.5rem;margin:1.1rem 0 .8rem;padding:.4rem 1rem;border-radius:999px;font:800 .75rem var(--display);letter-spacing:.12em;text-transform:uppercase;color:#2fb872;background:rgba(63,224,140,.12);border:1px solid rgba(63,224,140,.35)}
+.ql-status .dot{width:8px;height:8px;border-radius:50%;background:#3fe08c;box-shadow:0 0 0 0 rgba(63,224,140,.6);animation:qlPulse 2s infinite}
+@keyframes qlPulse{70%{box-shadow:0 0 0 8px rgba(63,224,140,0)}100%{box-shadow:0 0 0 0 rgba(63,224,140,0)}}
+.ql-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem;margin:0 0 1.4rem;color:var(--text-muted);font-size:.92rem}
+.ql-meta i{margin-right:.35rem;color:var(--link)}
+.ql-meta b{color:var(--text);font-variant-numeric:tabular-nums}
+.ql-actions{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;width:100%}
+.ql-act{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1rem;border-radius:999px;font:800 .82rem var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--border);transition:transform .25s,border-color .25s,box-shadow .25s}
+.ql-act:hover,.ql-act:focus-visible{transform:translateY(-3px);border-color:var(--link);box-shadow:0 10px 24px rgba(80,90,230,.25)}
+.ql-save{grid-column:1/-1;color:var(--bg);background:var(--text);border-color:var(--text)}
+.ql-save:hover{box-shadow:0 10px 26px rgba(255,255,255,.18)}
+
+/* headings */
+.ql-head{margin:0 0 1.1rem}
+.ql-head .eyebrow{letter-spacing:.3em;text-transform:uppercase}
+.ql-head h2{margin:.3rem 0 0;font:800 clamp(2.4rem,5vw,3.8rem)/1.05 var(--display);letter-spacing:-.03em}
+.ql-head:not(:first-child){margin-top:3.2rem}
+
+/* featured pill */
+.ql-feature{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.2rem;border-radius:999px;text-decoration:none;color:var(--text);background:linear-gradient(100deg,color-mix(in srgb,#8a5cff 38%,var(--surface)),var(--surface) 80%);border:1px solid color-mix(in srgb,#b06cff 55%,var(--border));transition:transform .3s,box-shadow .3s}
+.ql-feature:hover,.ql-feature:focus-visible{transform:translateY(-4px);box-shadow:0 16px 40px rgba(138,92,255,.35)}
+.ql-orb{flex:none;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f2e8ff,#a77bff 45%,#4630c8);box-shadow:0 0 0 6px rgba(176,108,255,.18),0 0 26px rgba(176,108,255,.6);animation:qlPulseOrb 3s ease-in-out infinite}
+@keyframes qlPulseOrb{50%{transform:scale(1.07)}}
+.ql-txt{display:flex;flex-direction:column;min-width:0;flex:1}
+.ql-kind{font:800 .7rem var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--c,#b06cff)}
+.ql-txt strong{font:800 1.3rem/1.2 var(--display);letter-spacing:.01em;text-transform:uppercase}
+.ql-url{font-size:.82rem;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ql-url i{margin-right:.35rem;color:var(--link)}
+.ql-go{flex:none;width:56px;height:56px;display:grid;place-items:center;border-radius:50%;color:var(--bg);background:var(--text);font-size:1rem;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.ql-feature:hover .ql-go{transform:rotate(45deg) scale(1.08)}
+
+/* grids and cards */
+.ql-grid,.ql-stack{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.9rem}
+.ql-grid{grid-template-columns:1fr 1fr}
+.ql-grid>li,.ql-stack>li{min-width:0}
+.ql-card,.ql-wide{position:relative;display:flex;text-decoration:none;color:var(--text);overflow:hidden;height:100%;border-radius:22px;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 18%,var(--surface)),var(--surface) 78%);border:1px solid color-mix(in srgb,var(--c) 38%,var(--border));transition:transform .3s cubic-bezier(.3,1.4,.5,1),box-shadow .3s,border-color .3s}
+.ql-card:hover,.ql-card:focus-visible,.ql-wide:hover,.ql-wide:focus-visible{transform:translateY(-5px);border-color:var(--c);box-shadow:0 14px 34px color-mix(in srgb,var(--c) 34%,transparent)}
+.ql-card:focus-visible,.ql-wide:focus-visible,.ql-feature:focus-visible,.ql-act:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.ql-card{flex-direction:column;justify-content:flex-end;min-height:178px;padding:1.2rem}
+.ql-ico{display:grid;place-items:center;flex:none;width:52px;height:52px;border-radius:15px;font-size:1.4rem;color:var(--c);background:color-mix(in srgb,var(--c) 18%,transparent);border:1px solid color-mix(in srgb,var(--c) 42%,transparent)}
+.ql-card .ql-ico{position:absolute;top:1.2rem;left:1.2rem}
+.ql-arrow{position:absolute;top:1.3rem;right:1.3rem;font-size:.75rem;color:var(--text-muted);transition:transform .3s,color .3s}
+.ql-card:hover .ql-arrow{transform:translate(3px,-3px);color:var(--c)}
+.ql-card strong{position:relative;font:800 1.25rem/1.15 var(--display);letter-spacing:.02em;text-transform:uppercase}
+.ql-sub{position:relative;margin-top:.2rem;color:var(--text-muted);font-size:.88rem;overflow-wrap:anywhere}
+.ql-card .ql-kind{position:relative;margin-bottom:.15rem}
+.ql-num{position:absolute;right:.9rem;bottom:-.35rem;font:800 4.2rem/1 var(--display);color:var(--c);opacity:.16;pointer-events:none}
+.ql-mark{position:absolute;right:-14px;bottom:-12px;font-size:7rem;color:var(--c);opacity:.12;pointer-events:none;transition:transform .5s,opacity .3s}
+.ql-card:hover .ql-mark,.ql-wide:hover .ql-mark{transform:scale(1.12) rotate(-8deg);opacity:.2}
+
+.ql-wide{align-items:center;gap:1rem;padding:1.05rem 1.2rem}
+.ql-wide .ql-txt strong{font-size:1.15rem}
+.ql-wide .ql-mark{right:90px;bottom:-26px;font-size:7.5rem}
+.ql-btn{position:relative;flex:none;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border-radius:999px;font:800 .75rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--text)}
+.ql-btn i{font-size:.65rem}
+.ql-cv{margin-top:.9rem}
+.ql-last{margin-top:.9rem}
+
+@media(max-width:900px){
+  .ql-page{grid-template-columns:1fr;gap:2.5rem}
+  .ql-side{position:static}
+  .ql-side .ql-actions{max-width:460px}
+}
+@media(max-width:520px){
+  .ql-grid{grid-template-columns:1fr}
+  .ql-feature{border-radius:34px;padding:1rem}
+  .ql-orb{width:48px;height:48px}.ql-go{width:46px;height:46px}
+  .ql-wide{flex-wrap:wrap}.ql-btn{margin-left:auto}
+  .ql-wide .ql-mark{display:none}
+  .ql-card{min-height:150px}
+}
+@media(prefers-reduced-motion:reduce){.ql-orbit,.ql-orb,.ql-status .dot{animation:none}.ql-card,.ql-wide,.ql-feature,.ql-act{transition:none}}

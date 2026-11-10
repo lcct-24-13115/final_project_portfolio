@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Julia Cassandra Alemania</title>
+<meta name="description" content="A curated selection of Julia Alemania's web systems and apps.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/design-a-base.css?v=1">
+<link rel="stylesheet" href="css/design-a-enhancements.css?v=1">
+<link rel="stylesheet" href="css/design-a-interaction.css?v=1">
+<style>
+/* Projects-specific */
+.proj-hero{min-height:70svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 40px}
+.proj-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,10vw,7.4rem);line-height:1;letter-spacing:-.02em;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.proj-hero .sub{max-width:720px;margin:14px auto 0;color:var(--mute);font-size:1.02rem}
+.proj-hero .eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:#6f8fb3;margin-bottom:10px}
+
+/* Big project category card */
+.choose{max-width:1020px;margin:0 auto;padding:0 24px 80px}
+.cat-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(620px,82svh);padding:40px;border-radius:44px;border:1px solid var(--line);overflow:hidden;isolation:isolate;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;text-decoration:none}
+.cat-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.cat-card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(1.1)}
+.cat-card:hover .bg{transform:scale(1.02)}
+.cat-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(4,5,13,.97) 10%,rgba(4,5,13,.7) 38%,rgba(4,5,13,0) 62%)}
+.cat-num,.cat-count{position:absolute;top:30px;font-size:.7rem;font-weight:800;letter-spacing:.16em;padding:10px 16px;border-radius:99px;background:rgba(8,9,16,.7);border:1px solid var(--line);backdrop-filter:blur(8px);color:#c9c4d3}
+.cat-num{left:30px}
+.cat-count{right:30px;display:flex;align-items:center;gap:9px;text-transform:uppercase}
+.cat-count::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.cat-kicker{font-size:.72rem;font-weight:800;letter-spacing:.38em;text-transform:uppercase;color:var(--dot)}
+.cat-card h2{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase;margin:12px 0 28px;color:var(--ink)}
+.cat-go{align-self:flex-start;display:inline-flex;align-items:center;gap:20px;padding:8px 8px 8px 30px;border-radius:99px;border:1px solid var(--line);background:rgba(8,9,16,.55);backdrop-filter:blur(8px);font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#c9c4d3}
+.cat-go i{width:50px;height:50px;border-radius:50%;background:#f1eeee;color:#0b0b12;display:grid;place-items:center;transition:transform .3s}
+.cat-card:hover .cat-go i{transform:rotate(45deg)}
+.web-cat{--dot:var(--blue)}
+.web-cat .bg{background:linear-gradient(135deg,#0a1628,#0d2847)}
+
+@media(max-width:640px){
+  .cat-card{min-height:500px;padding:28px;border-radius:34px}
+}
+</style>
+<script src="js/design-a-common.js?v=1" defer></script>
+<script src="js/design-a-enhancements.js?v=1" defer></script>
+<script src="js/design-a-interaction.js?v=1" defer></script>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="about.html"><span>About Me</span><small>Who I am and how I work</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
+</nav>
+
+<main>
+  <section class="proj-hero">
+    <p class="eyebrow">Creative Portfolio</p>
+    <h1>Project Nexus</h1>
+    <p class="sub">A curated selection of my digital work, from complete web systems to games and apps, built from the database to the dashboard.</p>
+  </section>
+
+  <section class="choose">
+    <a class="cat-card web-cat" href="web-projects.html">
+      <span class="bg" aria-hidden="true"></span>
+      <span class="cat-num">01</span>
+      <span class="cat-count">4 Projects</span>
+      <span class="cat-kicker">Digital Systems</span>
+      <h2>Web Design &amp; Development</h2>
+      <span class="cat-go">Enter Portfolio <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+    </a>
+  </section>
+</main>
+
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
+</body>
+</html>

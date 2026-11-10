@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Links | Julia Cassandra Alemania</title>
+<meta name="description" content="All links and channels for Julia Cassandra U. Alemania — portfolio, projects, socials and contact.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/design-a-base.css?v=1">
+<link rel="stylesheet" href="css/design-a-links.css?v=1">
+<link rel="stylesheet" href="css/design-a-enhancements.css?v=1">
+<link rel="stylesheet" href="css/design-a-interaction.css?v=1">
+<script src="js/design-a-common.js?v=1" defer></script>
+<script src="js/design-a-enhancements.js?v=1" defer></script>
+<script src="js/design-a-interaction.js?v=1" defer></script>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i></i><i></i></div>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+<nav class="overlay" id="overlay" aria-label="Main" aria-hidden="true">
+  <div class="shards" id="shards" aria-hidden="true"></div>
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <a href="about.html"><span>About Me</span><small>Who I am and how I work</small></a>
+  <a href="experience.html"><span>Experience</span><small>Training, events and milestones</small></a>
+  <a href="projects.html"><span>Projects</span><small>Things I've designed and built</small></a>
+  <a href="contact.html"><span>Contact Me</span><small>Got a project in mind? Say hello</small></a>
+  <a href="links.html"><span>Quick Links</span><small>All my links and channels in one place</small></a>
+</nav>
+
+<main>
+  <div class="links-layout">
+    <!-- ===== Sidebar ===== -->
+    <aside class="links-side reveal-left">
+      <div class="links-photo"><img src="images/julia.jpg" width="700" height="700" alt="Portrait of Julia Cassandra Alemania"></div>
+      <h1 class="links-name">Julia<br>Alemania</h1>
+      <p class="links-roles">BSIT Student | Web Developer<br>Flutter Developer</p>
+      <p class="links-status"><span class="dot"></span> Dean&rsquo;s Lister</p>
+      <p class="links-meta">
+        <span><i class="fa-solid fa-location-dot"></i> Tanauan City, Philippines</span>
+        <span><i class="fa-regular fa-clock"></i> GMT+8 local time</span>
+      </p>
+      <div class="links-actions">
+        <a class="links-act" href="mailto:cassandraalemania@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a class="links-act" href="tel:+639562973655"><i class="fa-solid fa-phone"></i> Call</a>
+        <a class="links-act save" href="docs/Julia_Alemania.vcf" download><i class="fa-solid fa-address-card"></i> Save contact</a>
+      </div>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <div class="links-main reveal-right">
+      <header class="links-head">
+        <p class="eyebrow">Explore my work</p>
+        <h2>The Portfolio</h2>
+      </header>
+
+      <a class="links-feature" href="index.html">
+        <span class="lf-icon"><i class="fa-solid fa-globe"></i></span>
+        <span class="lf-txt">
+          <span class="lf-kind">The full site</span>
+          <strong>Enter the portfolio</strong>
+          <span class="lf-url"><i class="fa-solid fa-globe"></i> lcct-24-13115.github.io/final_project_portfolio</span>
+        </span>
+        <span class="lf-go"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <div class="links-grid">
+        <a class="links-card reveal-scale" href="projects.html">
+          <span class="lc-ico" style="color:var(--blue)"><i class="fa-solid fa-table-cells-large"></i></span>
+          <span class="lc-num">01</span>
+          <strong>Projects</strong>
+          <span class="lc-sub">4 projects built solo</span>
+          <i class="fa-brands fa-github lc-mark"></i>
+        </a>
+        <a class="links-card reveal-scale" href="experience.html">
+          <span class="lc-ico" style="color:var(--green)"><i class="fa-solid fa-briefcase"></i></span>
+          <span class="lc-num">02</span>
+          <strong>Experience</strong>
+          <span class="lc-sub">Career timeline</span>
+          <i class="fa-solid fa-briefcase lc-mark"></i>
+        </a>
+        <a class="links-card reveal-scale" href="about.html">
+          <span class="lc-ico" style="color:var(--violet)"><i class="fa-regular fa-user"></i></span>
+          <span class="lc-num">03</span>
+          <strong>About</strong>
+          <span class="lc-sub">Story &amp; stack</span>
+          <i class="fa-regular fa-user lc-mark"></i>
+        </a>
+      </div>
+
+      <a class="links-wide reveal" style="border-color:rgba(255,105,180,.2)" href="docs/Julia_Alemania_CV.pdf" download>
+        <span class="lw-ico" style="color:#ff7ad9"><i class="fa-solid fa-file-lines"></i></span>
+        <span class="lw-txt">
+          <span class="lw-kind">Resume</span>
+          <strong>Curriculum Vitae</strong>
+          <span class="lw-sub">PDF download</span>
+        </span>
+        <span class="lw-btn">Download <i class="fa-solid fa-download"></i></span>
+        <i class="fa-solid fa-file-lines lw-mark"></i>
+      </a>
+
+      <div class="links-section-gap">
+        <header class="links-head">
+          <p class="eyebrow">Find me online</p>
+          <h2>Socials</h2>
+        </header>
+      </div>
+
+      <a class="links-wide reveal" style="margin-bottom:14px" href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener noreferrer">
+        <span class="lw-ico" style="color:#3b8bff"><i class="fa-brands fa-linkedin"></i></span>
+        <span class="lw-txt">
+          <span class="lw-kind">Professional</span>
+          <strong>LinkedIn</strong>
+          <span class="lw-sub">julia-cassandra-alemania</span>
+        </span>
+        <span class="lw-btn">Connect <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <i class="fa-brands fa-linkedin lw-mark"></i>
+      </a>
+
+      <div class="links-grid">
+        <a class="links-card reveal-scale" href="https://github.com/lcct-24-13115" target="_blank" rel="noopener noreferrer">
+          <span class="lc-ico" style="color:#aab4ff"><i class="fa-brands fa-github"></i></span>
+          <span class="lc-num">01</span>
+          <strong>GitHub</strong>
+          <span class="lc-sub">@lcct-24-13115</span>
+          <i class="fa-brands fa-github lc-mark"></i>
+        </a>
+        <a class="links-card reveal-scale" href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener noreferrer">
+          <span class="lc-ico" style="color:#4c8dff"><i class="fa-brands fa-facebook"></i></span>
+          <span class="lc-num">02</span>
+          <strong>Facebook</strong>
+          <span class="lc-sub">JCUA24</span>
+          <i class="fa-brands fa-facebook lc-mark"></i>
+        </a>
+      </div>
+      <div class="links-grid">
+        <a class="links-card reveal-scale" href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener noreferrer">
+          <span class="lc-ico" style="color:#ff6fb5"><i class="fa-brands fa-instagram"></i></span>
+          <span class="lc-num">03</span>
+          <strong>Instagram</strong>
+          <span class="lc-sub">@makethoiu_</span>
+          <i class="fa-brands fa-instagram lc-mark"></i>
+        </a>
+        <a class="links-card reveal-scale" href="https://www.tiktok.com/@liaxdcute" target="_blank" rel="noopener noreferrer">
+          <span class="lc-ico" style="color:#35d3ee"><i class="fa-brands fa-tiktok"></i></span>
+          <span class="lc-num">04</span>
+          <strong>TikTok</strong>
+          <span class="lc-sub">@liaxdcute</span>
+          <i class="fa-brands fa-tiktok lc-mark"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="socials">
+  <a href="https://www.linkedin.com/in/julia-cassandra-alemania-911831444" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://github.com/lcct-24-13115" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.instagram.com/makethoiu_" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.facebook.com/JCUA24" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="copy">&copy; 2026 Julia Alemania</div>
+</body>
+</html>

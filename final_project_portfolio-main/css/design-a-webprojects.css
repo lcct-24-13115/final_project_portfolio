@@ -1,0 +1,64 @@
+/* ==========================================================
+   Web Projects page — Design A specific styles
+   ========================================================== */
+
+/* ---------- Project cards ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+@media(max-width:768px){.proj-grid{grid-template-columns:1fr}}
+
+.proj-card{border:1px solid var(--line);border-radius:24px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.proj-card:hover{transform:translateY(-12px) scale(1.02);border-color:rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(232,180,166,.25),0 0 40px rgba(110,198,255,.15),0 0 60px rgba(201,164,255,.1)}
+.proj-cover{position:relative;overflow:hidden;aspect-ratio:16/10;background:#0a0b14}
+.proj-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.proj-card:hover .proj-cover img{transform:scale(1.03)}
+.shots-badge{position:absolute;bottom:12px;right:12px;font-size:.7rem;padding:6px 12px;border-radius:99px;background:rgba(0,0,0,.6);color:var(--ink);display:flex;align-items:center;gap:6px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1)}
+
+.proj-body{padding:24px}
+.proj-body h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin-bottom:6px}
+.proj-body .meta{font-size:.78rem;color:var(--rose);margin-bottom:12px;font-weight:500}
+.proj-body p{color:#d3cdd9;font-size:.9rem;line-height:1.6;margin-bottom:10px}
+.proj-body p strong{color:var(--ink)}
+
+/* Details/case study */
+details{margin:12px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details summary{padding:12px 16px;font-size:.82rem;font-weight:600;color:var(--mute);cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::before{content:"›";color:var(--teal);font-weight:700;font-size:1.1rem;transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+details .case{padding:16px;display:grid;gap:10px}
+details .case div{display:grid;gap:2px}
+details dt{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+details dd{font-size:.85rem;color:#d3cdd9;margin:0}
+
+/* Checks */
+.checks{list-style:none;padding:0;display:grid;gap:6px;margin:12px 0}
+.checks li{display:flex;align-items:start;gap:8px;font-size:.82rem;color:#d3cdd9}
+.checks li i{color:var(--teal);margin-top:3px;flex-shrink:0}
+
+/* Chips */
+.proj-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.proj-chips li{font-size:.72rem;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.07);color:#c9c4d3}
+
+/* Buttons row */
+.proj-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.proj-btns a{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;font:600 .76rem var(--sans);letter-spacing:.06em;transition:transform .2s,background .2s;text-decoration:none}
+.proj-btns a:hover{transform:translateY(-2px)}
+.proj-btn{background:rgba(255,255,255,.08);color:var(--ink);border:1px solid var(--line)}
+.proj-btn:hover{background:rgba(255,255,255,.14)}
+.proj-btn-outline{background:transparent;color:var(--mute);border:1px solid var(--line)}
+.proj-btn-outline:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+
+/* ---------- Awards ---------- */
+.awards-section{max-width:1000px;margin:0 auto;padding:80px 24px 100px}
+.awards-section h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.awards-section h3 i{color:var(--amber)}
+.awards{list-style:none;padding:0;display:grid;gap:10px}
+.awards li{display:flex;align-items:start;gap:14px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .2s}
+.awards li:hover{transform:translateY(-2px)}
+.awards li i{color:var(--amber);margin-top:2px;flex-shrink:0}
+.awards li strong{font-size:.9rem;display:block;margin-bottom:2px}
+.awards li span{font-size:.78rem;color:var(--mute)}
+.awards li .date{font-size:.72rem;color:var(--rose);margin-left:auto;white-space:nowrap}
+
+/* Back link */
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--mute);margin-bottom:20px;transition:color .2s}
+.back-link:hover{color:var(--ink)}
